@@ -105,16 +105,15 @@ ToolTip
 
 ; conveniences
 
-CapsLock & 1:: Send {Home}
-CapsLock & 2:: Send {End}
-CapsLock & 3:: Send {PgUp}
-CapsLock & 4:: Send {PgDn}
-
-CapsLock & w:: Send {Up}
-CapsLock & s:: Send {Down}
-CapsLock & a:: Send {Left}
-CapsLock & d:: Send {Right}
-
+Enter & 1:: Send {Home}
+Enter & 2:: Send {End}
+Enter & 3:: Send {PgUp}
+Enter & 4:: Send {PgDn}
+Enter & w:: Send {Up}
+Enter & s:: Send {Down}
+Enter & a:: Send {Left}
+Enter & d:: Send {Right}
+$Enter UP::Send {enter}
 #q::Send !q
 
 ; é
