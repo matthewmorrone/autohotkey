@@ -41,7 +41,7 @@ WinActivate,
 ; Sleep,250
 ControlClick, No
 }
-If WinExist("Rename File")
+If WinExist("Rename")
 {
 WinActivate, 
 ; Sleep,250

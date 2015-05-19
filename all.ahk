@@ -1,29 +1,21 @@
-#EscapeChar \  ; Change it to be backslash instead of the default of accent (`).
+﻿#EscapeChar \  ; Change it to be backslash instead of the default of accent (`).
 #InstallKeybdHook  ; this MUST be called at the start of your script
 #Persistent
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #SingleInstance, force
-
+#HotkeyInterval 4000 ;2000  ; This is  the default value (milliseconds).
+#MaxHotkeysPerInterval 200
+#WinActivateForce
 SetTitleMatchMode 2 ; A window's title can contain WinTitle anywhere inside it to be a match. 
 
-; switch the ctrl and alt buttons for ergonomic ease
-LAlt::LCtrl
-LCtrl::LAlt
+; my left mouse button was broken once, now I can't un-get used to it
+; LButton::Click right
+; RButton::Click
 
-RAlt::RCtrl
-RCtrl::RAlt
+; script assumes mouse buttons are swapped in control panel
 
-
-; use the rightclick button as the window button
-AppsKey::LWin
-^AppsKey::
-send {AppsKey}
-return
-
-; disable insert button
-Insert::return
 
 ; clean up ascii in clipboard
 ^F11::
@@ -48,6 +40,17 @@ WinGetActiveTitle, Title
 WinClose %Title%
 return
 
+; close all windows
+; ^o::
+; WinGet, id, list, , , Program Manager
+; Loop, %id%
+; {
+;     StringTrimRight, this_id, id%a_index%, 0
+;     WinGetTitle, this_title, ahk_id %this_id%
+;     winclose,%this_title%
+; }
+; Return
+
 #g:: ; Win+g
 Run http://www.google.com/search?q=%clipboard%
 Return
@@ -57,50 +60,39 @@ Return
 !f::
 IfWinActive, Chrome
 {
-MouseClick, right
+Click, right
 Sleep, 100
 Send, {DOWN 2}{ENTER}
 }
 return
 
-; womp womp
-F3::
-MouseClick, right
-Send, {DOWN 4}{ENTER}
-
+; #z::
+; 	Click, Right
+; 	Send, {DOWN 13}{Enter}
+; return
+#z::
+Click, Right
+Send, {DOWN 16}{right}{down 1}{enter}
 Sleep, 500
-Send, {ENTER}
-Sleep, 1000
-
-Send, {^w}
+Send, {enter}
 return
-
-
-; move cursor with keys
-   *#Up::MouseMove,   0, -20, 0, R  ; Win+UpArrow    => Move cursor upward
- *#Down::MouseMove,   0,  20, 0, R  ; Win+DownArrow  => Move cursor downward
- *#Left::MouseMove, -20,   0, 0, R  ; Win+LeftArrow  => Move cursor to the left
-*#Right::MouseMove,  20,   0, 0, R  ; Win+RightArrow => Move cursor to the right
 
 ; activates the window under the mouse on scroll
-~$WheelDown::
-GetKeyState, state, Ctrl
-if state = U
-    MouseGetPos,,,OutWin,OutCtrl
-    WinActivate, ahk_id %OutWin%
-
-    ; controlsend,,WheelDown
-    ; Send, {WheelDown}
-return
-~$WheelUp::
-GetKeyState, state, Ctrl
-if state = U
-    MouseGetPos,,,OutWin,OutCtrl
-    WinActivate, ahk_id %OutWin%
-    ; controlsend,,WheelUp
-    ; Send, {WheelUp}
-return
-; make this work for typing too
+; WheelDown::
+; GetKeyState, state, Ctrl
+; if state = U
+;     MouseGetPos,,,OutWin,OutCtrl
+;     WinActivate, ahk_id %OutWin%
+;     Send, {WheelDown}
+; return
+; WheelUp::
+; GetKeyState, state, Ctrl
+; if state = U
+;     MouseGetPos,,,OutWin,OutCtrl
+;     WinActivate, ahk_id %OutWin%
+;     Send, {WheelUp}
+; return
+; ; make this work for typing too
 
 
 ; tooltip wrapper
@@ -108,13 +100,10 @@ coolTip(a, b:=1000)
 {
 ToolTip %a%
 Sleep b
-Tooltip
+ToolTip
 }
 
 ; conveniences
-CapsLock::       Send {enter}
-CapsLock & `::   Send {backspace}
-CapsLock & Tab:: Send {delete}
 
 CapsLock & 1:: Send {Home}
 CapsLock & 2:: Send {End}
@@ -126,6 +115,8 @@ CapsLock & s:: Send {Down}
 CapsLock & a:: Send {Left}
 CapsLock & d:: Send {Right}
 
+#q::Send !q
+
 ; é
  #2:: sendinput {asc 0233}
  #u:: sendinput {asc 163}
@@ -136,49 +127,6 @@ Send {Right}
 Send {Left}
 return
 
-; use extra mouse buttons for cut and copy
-; XButton1::
-; Sleep, 20
-; Send ^x
-; return
-; ^XButton1::
-; Click 3
-; Sleep, 20
-; Send ^x
-; return
-
-; XButton2::
-; Sleep, 20
-; Send ^c
-; return
-; ^XButton2::
-; Click 3
-; Sleep, 20
-; Send ^c
-; return
-
-; ; paste
-; XButton1 & XButton2::
-; XButton2 & XButton1::
-; GetKeyState, state, Ctrl
-; if state = D
-;     click 1
-; Sleep, 20
-; Send ^v
-; return
-
-; duplicate a file
-; ^d::
-; Send ^c
-; Sleep, 20
-; Send ^v
-; return
-
-; enter by clicking both mouse buttons
-; ~LButton & RButton::
-; ~RButton & LButton::
-; send {enter}
-; return
 
 ; move selection up a directory
 ^up::
@@ -200,6 +148,11 @@ F8::
 #InstallMouseHook
 KeyHistory
 return
+
+
+; turn off zoom scroll
+^WheelDown::return
+^WheelUp::return
 
 ; to see what's behind the current window
 #Space::   WinSet, Transparent,  50, A
@@ -236,15 +189,49 @@ return
 :*:m@2::matthewmorrone1@gmail.com
 :*:p@1::$hibboL33t
 :*:p@2::$HibboL33t
-:*:p@3::1PITTPANTHER
+:*:p@3::${#}ibbolee4
+:*:p@4::1PITTPANTHER
+:*:p@5::1pittpanther
+:*:p@6::1Pittpanther
+
+
+
 :*:,+::{+}" "{+}
 :*:-_-::{U+0CA0}_{U+0CA0}
 :*:clog::console.log(){left 1}
 
+SetTitleMatchMode 2
+
+~Esc::
+If WinActive("Microsoft Visual Studio") {
+	send ^q
+}
+return
+; #IfWinActive Sublime Text;
+; Esc::MsgBox You Pressed Escapade
+; #IfWinActive
+
+#IfWinActive ahk_class ExploreWClass
+^l::
+#IfWinActive ahk_class CabinetWClass
+^l::Send {F4}
+return
+^n::Send ^+n
+#IfWinActive
+
+~LButton & RButton::
+~RButton & LButton::
+Click 2
+return
+
+
+
+
+
 
 ; Here are two hotkeys that simulate the turning of the mouse wheel:
-; #up::MouseClick, WheelUp, , , 2  ; Turn it by two notches.
-; #down::MouseClick, WheelDown, , , 2
+; #up::Click, WheelUp, , , 2  ; Turn it by two notches.
+; #down::Click, WheelDown, , , 2
 
 ; Use ALT + Wheel to adjust the sound. Middle button toggles the mute function.
 ; !WheelUp::Send, {Volume_Up}{Volume_Up}
@@ -266,4 +253,5 @@ Else
 Send {^s} 
 }
 return
+
 
