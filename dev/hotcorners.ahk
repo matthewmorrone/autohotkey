@@ -2,7 +2,7 @@
 #Warn ; Recommended for catching common errors.
 ; SendMode Input ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir% ; Ensures a consistent starting directory
-DetectHiddenWindows, on  ; Might allow detection of menu sooner.
+; DetectHiddenWindows, on  ; Might allow detection of menu sooner.
 ; While CapsLock is toggled On
 ; Script will display Mouse Position (coordinates) as a tooltip at Top-Left corner of screen.
 ; Also allows to copy them (to clipboard) with a PrintScreen button.
