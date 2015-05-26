@@ -29,3 +29,6 @@ Insert::return
 CapsLock::       Send {enter}
 CapsLock & `::   Send {backspace}
 CapsLock & Tab:: Send {delete}
+
+; Enter & Tab:: Send {}
+Enter & Backspace:: Send {Delete}

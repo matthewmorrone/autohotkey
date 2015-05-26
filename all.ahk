@@ -10,29 +10,9 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #WinActivateForce
 SetTitleMatchMode 2 ; A window's title can contain WinTitle anywhere inside it to be a match. 
 
-; my left mouse button was broken once, now I can't un-get used to it
-; LButton::Click right
-; RButton::Click
 
-; script assumes mouse buttons are swapped in control panel
+Enter & Backspace:: Send {Delete}
 
-
-; clean up ascii in clipboard
-^F11::
-StringReplace, clipboard, clipboard, \%0d\%0a, \r\n, All
-StringReplace, clipboard, clipboard, \%2c, \,, All
-StringReplace, clipboard, clipboard, \%2f, \/, All
-StringReplace, clipboard, clipboard, \%3a, \:, All
-StringReplace, clipboard, clipboard, \%3b, \;, All
-StringReplace, clipboard, clipboard, \%3d, \=, All
-StringReplace, clipboard, clipboard, \%5c, \/, All
-StringReplace, clipboard, clipboard, &, \r\n&, All
-; StringReplace, clipboard, clipboard, \;\+, \r\n, All
-StringReplace, clipboard, clipboard, \{, \r\n\{\r\n, All
-StringReplace, clipboard, clipboard, \}, \r\n\}\r\n, All
-Sleep, 200
-Send {^v}
-return
 
 ; because esc doesn't always seem to work like it should
 ^Esc::
@@ -40,20 +20,12 @@ WinGetActiveTitle, Title
 WinClose %Title%
 return
 
-; close all windows
-; ^o::
-; WinGet, id, list, , , Program Manager
-; Loop, %id%
-; {
-;     StringTrimRight, this_id, id%a_index%, 0
-;     WinGetTitle, this_title, ahk_id %this_id%
-;     winclose,%this_title%
-; }
-; Return
+
 
 #g:: ; Win+g
 Run http://www.google.com/search?q=%clipboard%
 Return
+
 
 
 ; search google for highlighted text
@@ -66,10 +38,8 @@ Send, {DOWN 2}{ENTER}
 }
 return
 
-; #z::
-; 	Click, Right
-; 	Send, {DOWN 13}{Enter}
-; return
+
+; shortcut for zipping folder, careful not to move mouse
 #z::
 Click, Right
 Send, {DOWN 16}{right}{down 1}{enter}
@@ -95,13 +65,7 @@ return
 ; ; make this work for typing too
 
 
-; tooltip wrapper
-coolTip(a, b:=1000)
-{
-ToolTip %a%
-Sleep b
-ToolTip
-}
+
 
 ; conveniences
 
@@ -125,6 +89,15 @@ $Enter UP::Send {enter}
 Send {Right}
 Send {Left}
 return
+
+; a little bit of visual help
+~*^z::coolTip("undo!")
+~*^y::coolTip("redo!")
+~*+^z::coolTip("redo!")
+~*^x::coolTip("cut!")
+~*^c::coolTip("copied!")
+~*^v::coolTip("pasted!")
+
 
 
 ; move selection up a directory
@@ -168,6 +141,7 @@ WinWaitActive ahk_class MSPaintApp
 Send, ^v
 }
 clipboard = %clipsave%
+coolTip("screen printed!")
 return
 
 ; Start screen saver:
@@ -218,16 +192,15 @@ return
 
 
 
+; tooltip wrapper
+coolTip(a, b:=1000)
+{
+ToolTip %a%
+Sleep b
+ToolTip
+}
 
 
-; Here are two hotkeys that simulate the turning of the mouse wheel:
-; #up::Click, WheelUp, , , 2  ; Turn it by two notches.
-; #down::Click, WheelDown, , , 2
-
-; Use ALT + Wheel to adjust the sound. Middle button toggles the mute function.
-; !WheelUp::Send, {Volume_Up}{Volume_Up}
-; !WheelDown::Send, {Volume_Down}{Volume_Down}
-; !Mbutton::Send, {Volume_Mute}
 
 
 ; auto reload on save ($?)
