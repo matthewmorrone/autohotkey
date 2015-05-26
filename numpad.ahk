@@ -1,13 +1,4 @@
-#EscapeChar \  ; Change it to be backslash instead of the default of accent (`).
-#InstallKeybdHook  ; this MUST be called at the start of your script
-#Persistent
-#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
-; SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
-SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
-#SingleInstance, force
-
-SetTitleMatchMode 2 ; A window's title can contain WinTitle anywhere inside it to be a match. 
-
+#Include prelude.ahk
 
 ; Space - the spacebar
 ; Tab
@@ -63,18 +54,4 @@ NumPad9::Send {PgUp}
 
 
 
-; auto reload on save ($?)
-~^s::
-IfWinActive, %A_ScriptName%
-{
-SplashTextOn,,,Reloading %A_ScriptName%,
-Sleep,500
-SplashTextOff
-Reload
-}
-Else
-{
-Send {^s} 
-}
-return
-
+#Include autoload.ahk

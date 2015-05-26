@@ -1,13 +1,3 @@
-; #NoEnv ; Recommended for performance and compatibility with future AutoHotkey releases.
-#Warn ; Recommended for catching common errors.
-; SendMode Input ; Recommended for new scripts due to its superior speed and reliability.
-SetWorkingDir %A_ScriptDir% ; Ensures a consistent starting directory
-; DetectHiddenWindows, on  ; Might allow detection of menu sooner.
-; While CapsLock is toggled On
-; Script will display Mouse Position (coordinates) as a tooltip at Top-Left corner of screen.
-; Also allows to copy them (to clipboard) with a PrintScreen button.
-
-#SingleInstance force ; only one instance of script can run
 
 
 tx := A_ScreenWidth  - 1
@@ -99,29 +89,3 @@ Return
 
 
 
-
-
-; tooltip wrapper
-coolTip(a, b:=1000)
-{
-MouseGetPos x, y
-ToolTip %a%, x, y
-Sleep b
-ToolTip
-}
-
-
-; auto reload on save ($?)
-~^s::
-IfWinActive, %A_ScriptName%
-{
-SplashTextOn,,,Reloading %A_ScriptName%,
-Sleep,500
-SplashTextOff
-Reload
-}
-Else
-{
-Send {^s}
-}
-Return

@@ -1,7 +1,3 @@
-#NoEnv ; Recommended for performance and compatibility with future AutoHotkey releases.
-#Warn ; Recommended for catching common errors.
-SendMode Input ; Recommended for new scripts due to its superior speed and reliability.
-SetWorkingDir %A_ScriptDir% ; Ensures a consistent starting directory
 
 ; While CapsLock is toggled On
 ; Script will display Mouse Position (coordinates) as a tooltip at Top-Left corner of screen.
@@ -43,18 +39,3 @@ return
 	tooltip
 return
 
-
-; auto reload on save ($?)
-~^s::
-IfWinActive, %A_ScriptName%
-{
-SplashTextOn,,,Reloading %A_ScriptName%,
-Sleep,500
-SplashTextOff
-Reload
-}
-Else
-{
-Send {^s}
-}
-return

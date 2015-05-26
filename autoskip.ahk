@@ -1,11 +1,5 @@
 
-#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
-; SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
-SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
-
-
-SetTitleMatchMode 2
 
 ; autoskip annoying dialogs
 While, 1
@@ -49,19 +43,4 @@ ControlClick, Yes
 }
 }
 
-
-
-
-
-; auto reload on save
-~^s::
-SetTitleMatchMode 2
-IfWinActive, %A_ScriptName%
-{
-SplashTextOn,,,Reloading %A_ScriptName%,
-Sleep,500
-SplashTextOff
-Reload
-}
-return
 
