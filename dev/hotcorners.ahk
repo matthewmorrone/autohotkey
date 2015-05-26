@@ -24,34 +24,38 @@ start1:
 	; tooltip %tx% %ty% %sx% %sy%
 
 	If (sx <=  1 and sy <=  1) {
-		cooltip("top left")
+		; WinGet, id, list, , , Program Manager
+		; Loop, %id%
+		; {
+		; 	StringTrimRight, this_id, id%a_index%, 0
+		; 	WinGetTitle, this_title, ahk_id %this_id%
+		; 	WinShow, %this_title%
+		; }
+		; Return
+		WinMaximize, A
+		; cooltip("top left")
 	}
 	Else If (sx >= tx and sy <=  1) {
-		cooltip("top right")
+		; WinGetActiveTitle, title
+		WinMaximize, A
+		; cooltip("top right")
 	}
 	Else If	 (sx <=  1 and sy >= ty) {
+		; WinGet, id, list, , , Program Manager
+		; Loop, %id%
+		; {
+		; 	StringTrimRight, this_id, id%a_index%, 0
+		; 	WinGetTitle, this_title, ahk_id %this_id%
+		; 	WinHide, %this_title%
+		; }
+		; Return
+		WinMinimize, A
 		; cooltip("bottom left")
-		WinGet, id, list, , , Program Manager
-		Loop, %id%
-		{
-			StringTrimRight, this_id, id%a_index%, 0
-			WinGetTitle, this_title, ahk_id %this_id%
-			WinMaximize, %this_title%
-		}
-		Return
 	}
 	Else If (sx >= tx and sy >= ty) {
+		; WinGetActiveTitle, title
+		WinMinimize, A
 		; cooltip("bottom right")
-		; WinMinimizeAll
-		WinGet, id, list, , , Program Manager
-		Loop, %id%
-		{
-			StringTrimRight, this_id, id%a_index%, 0
-			WinGetTitle, this_title, ahk_id %this_id%
-			WinMinimize, %this_title%
-		}
-		Return
-
 	}
 Return
 
