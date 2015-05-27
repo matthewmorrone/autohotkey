@@ -1,6 +1,4 @@
-#Include prelude.ahk
-
-
+; #Include prelude.ahk
 
 #IfWinActive Beyond Earth
 Tab::
@@ -11,21 +9,8 @@ LWin::Browser_Search
 CapsLock::Enter
 #IfWinActive
 
-
-
 ; Sid Meier's Civilization: Beyond Earth (DX11)
 ; ahk_class WinClass_FXS
 ; ahk_exe civilizationbe_dx11.exe
 
-
-
-
-
-
-
-
-
-
-
-
-#Include autoload.ahk
+; #Include postlude.ahk

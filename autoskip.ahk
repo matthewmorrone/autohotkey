@@ -1,4 +1,4 @@
-
+#Include prelude.ahk
 
 
 ; autoskip annoying dialogs
@@ -44,3 +44,4 @@ ControlClick, Yes
 }
 
 
+#Include postlude.ahk
