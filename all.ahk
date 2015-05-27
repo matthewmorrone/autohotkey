@@ -8,14 +8,12 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #HotkeyInterval 4000 ;2000  ; This is  the default value (milliseconds).
 #MaxHotkeysPerInterval 200
 #WinActivateForce
-SetTitleMatchMode 2 ; A window's title can contain WinTitle anywhere inside it to be a match. 
-
-
+SetTitleMatchMode 2 ; A window's title can contain WinTitle anywhere inside it to be a match.
 
 
 #Include prelude.ahk
 #Include conveniences.ahk
-#Include passwords.ahk
+#Include *i passwords.ahk
 #Include cooltips.ahk
 #Include updir.ahk
 #Include trace.ahk
@@ -31,3 +29,10 @@ SetTitleMatchMode 2 ; A window's title can contain WinTitle anywhere inside it t
 #Include cooltip.ahk
 #Include autoload.ahk
 
+; try {
+
+; } catch e {
+
+; } finally {
+
+; }
