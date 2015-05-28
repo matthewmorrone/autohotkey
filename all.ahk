@@ -1,9 +1,11 @@
 ﻿#Include prelude.ahk
 
-#Include *i passwords.ahk
 
 #Include conveniences.ahk
 #Include hotstrings.ahk
+
+#Include *i passwords.ahk
+
 #Include cooltips.ahk
 #Include updir.ahk
 #Include trace.ahk

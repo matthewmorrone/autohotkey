@@ -19,10 +19,14 @@ return
 #IfWinActive ahk_class CabinetWClass
 ^l::Send {F4}
 return
-^n::Send ^+n
 #IfWinActive
 
-
+#IfWinActive ahk_class ExploreWClass
+^n::
+#IfWinActive ahk_class CabinetWClass
+^n::Send ^+n
+return
+#IfWinActive
 
 
 ; conveniences
