@@ -1,4 +1,3 @@
-#Include prelude.ahk
 
 ; Space - the spacebar
 ; Tab
@@ -54,4 +53,3 @@ NumPad9::Send {PgUp}
 
 
 
-#Include autoload.ahk
