@@ -53,8 +53,8 @@
 :*b0:<title>::</title>{left 8}
 :*b0:<label>::</label>{left 8}
 :*:<script>::<script type='text/javascript' src=''></script>{left 11}
-:*:<icon>::<link type='text/javascript' src=''></icon>{left 9}
-:*:<psi>::<link href="psi.ico" rel="shortcut icon" type="image/x-icon" />
+:*:<icon>::<link rel="shortcut icon" type="image/x-icon" href="" />{left 4}
+:*:<psi>::<link rel="shortcut icon" type="image/x-icon" href="psi.ico" />
 :*:<stylesheet>::<link rel="stylesheet" type="text/css" href="" />{left 4}
 :*:<img>::<img src="" />{left 4}
 :*:<meta>::<meta  />{left 4}

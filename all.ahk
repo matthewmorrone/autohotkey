@@ -8,6 +8,7 @@
 
 #Include cooltips.ahk
 #Include updir.ahk
+#Include be.ahk
 #Include trace.ahk
 #Include nozoomscroll.ahk
 #Include xray.ahk
