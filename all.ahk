@@ -19,7 +19,7 @@
 #Include tag.ahk
 #Include zip.ahk
 #Include doubleclick.ahk
-#Include unicode.ahk
+; #Include unicode.ahk
 
 Run, autoskip.ahk
 
