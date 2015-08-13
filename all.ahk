@@ -1,6 +1,8 @@
-﻿#Include prelude.ahk
+#Include prelude.ahk
 
 
+
+#Include switch.ahk
 #Include conveniences.ahk
 #Include hotstrings.ahk
 
@@ -10,7 +12,8 @@
 #Include updir.ahk
 #Include be.ahk
 #Include trace.ahk
-#Include nozoomscroll.ahk
+#Include hscroll.ahk
+; #Include nozoomscroll.ahk
 #Include xray.ahk
 #Include printscreen.ahk
 #Include search.ahk
@@ -24,3 +27,6 @@
 Run, autoskip.ahk
 
 #Include postlude.ahk
+
+
+

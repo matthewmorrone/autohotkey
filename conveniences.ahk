@@ -1,3 +1,4 @@
+#Include prelude.ahk
 
 ; because esc doesn't always seem to work like it should
 ^Esc::
@@ -14,17 +15,31 @@ return
 ; Esc::MsgBox You Pressed Escapade
 ; #IfWinActive
 
-#IfWinActive ahk_class ExploreWClass
-^l::
-#IfWinActive ahk_class CabinetWClass
-^l::Send {F4}
-return
-#IfWinActive
+; #IfWinActive ahk_class ExploreWClass
+; ^l::
+; #IfWinActive ahk_class CabinetWClass
+; ^l::Send {F4}
+; return
+; #IfWinActive
 
-#IfWinActive ahk_class ExploreWClass
-^n::
-#IfWinActive ahk_class CabinetWClass
-^n::Send ^+n
+; #IfWinActive ahk_class ExploreWClass
+; $^n::Send ^+n
+; return
+; #IfWinActive
+
+
+; #IfWinActive ahk_class CabinetWClass
+; ^n::Send ^+n
+; return
+; #IfWinActive
+
+
+
+
+#IfWinActive Chrome
+Tab::
+	MouseMove, 1907, 1148
+	Send {click}
 return
 #IfWinActive
 
@@ -48,3 +63,6 @@ $Enter UP::Send {enter}
 Send {Right}
 Send {Left}
 return
+
+#Include postlude.ahk
+

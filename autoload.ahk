@@ -1,6 +1,7 @@
 ; auto reload on save ($?)
 ~^s::
-IfWinActive, %A_ScriptName%
+; IfWinActive, %A_ScriptName%
+IfWinActive, .ahk
 {
 SplashTextOn,,,Reloading %A_ScriptName%,
 Sleep,500
@@ -9,6 +10,6 @@ Reload
 }
 Else
 {
-Send {^s} 
+Send {^s}
 }
 return
