@@ -22,24 +22,23 @@ return
 ; return
 ; #IfWinActive
 
-; #IfWinActive ahk_class ExploreWClass
-; $^n::Send ^+n
-; return
-; #IfWinActive
+#IfWinActive ahk_class ExploreWClass
+$^n::
+#IfWinActive ahk_class CabinetWClass
+$^n::
+send {AppsKey}wf
+return
+#IfWinActive
 
-
-; #IfWinActive ahk_class CabinetWClass
-; ^n::Send ^+n
-; return
-; #IfWinActive
 
 
 
 
 #IfWinActive Chrome
-Tab::
-	MouseMove, 1907, 1148
-	Send {click}
+F4::
+	MouseGetPos, xpos, ypos
+	Send {click 1907, 1148}
+	MouseMove, %xpos%, %ypos%
 return
 #IfWinActive
 

@@ -1,3 +1,4 @@
+#Include passwords.ahk
 #Include prelude.ahk
 
 
@@ -19,14 +20,16 @@
 #Include search.ahk
 #Include screensaver.ahk
 #Include hotcorners.ahk
-#Include tag.ahk
+; #Include tag.ahk
 #Include zip.ahk
 #Include doubleclick.ahk
 ; #Include unicode.ahk
 
+
+#Include syncscroll.ahk
+
 Run, autoskip.ahk
 
 #Include postlude.ahk
-
 
 
