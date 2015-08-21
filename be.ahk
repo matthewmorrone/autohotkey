@@ -1,4 +1,3 @@
-; #Include prelude.ahk
 
 #IfWinActive Beyond Earth
 Tab::
@@ -13,4 +12,3 @@ CapsLock::Enter
 ; ahk_class WinClass_FXS
 ; ahk_exe civilizationbe_dx11.exe
 
-; #Include postlude.ahk

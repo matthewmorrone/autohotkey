@@ -1,10 +1,10 @@
 #Include passwords.ahk
 #Include prelude.ahk
 
-
+; #Include clickAndReturn.ahk
+#Include conveniences.ahk
 
 #Include switch.ahk
-#Include conveniences.ahk
 #Include hotstrings.ahk
 
 #Include *i passwords.ahk
@@ -26,10 +26,14 @@
 ; #Include unicode.ahk
 
 
-#Include syncscroll.ahk
+; #Include syncscroll.ahk
 
-Run, autoskip.ahk
+; Run, autoskip.ahk
 
 #Include postlude.ahk
+
+
+
+#IncludeAgain passwords.ahk
 
 
