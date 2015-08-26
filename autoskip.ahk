@@ -36,6 +36,11 @@ If WinExist("Rename")
 WinActivate,
 ControlClick, Yes
 }
+If WinExist("User Account Control")
+{
+WinActivate,
+ControlClick, Yes
+}
 }
 
 
