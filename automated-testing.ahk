@@ -41,7 +41,8 @@ Numpad3::
 	MoveClickWait(75, 349)			; Mail Merges
 	MoveClickWait(1300, 265)		; Dropdown
 	MoveClickWait(1300, 255, 1500)	; All Mail Merges
-	MoveClickWait(372, 426)			; CLick record
+	; MoveClickWait(372, 426)			; CLick record
+	MoveClickWait(869, 382)			; CLick record
 	; MoveClickWait(372, 449)			; CLick record
 	MoveClickWait(450, 300)			; Click letters
 return

@@ -18,13 +18,16 @@
 
 
 SetTitleMatchMode, 2
+
+
+; #IfWinActive Sublime
 $~^s::
 SplashTextOn,,,Reloading %A_ScriptName%,
 Sleep,500
 SplashTextOff
 Reload
 return
-
+; #IfWinActive
 ; #IfWinActive Sublime Text
 ; ; ^r::
 ; ~^s::
