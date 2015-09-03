@@ -22,9 +22,8 @@ SetTitleMatchMode, 2
 
 ; #IfWinActive Sublime
 $~^s::
-SplashTextOn,,,Reloading %A_ScriptName%,
-Sleep,500
-SplashTextOff
+txt := % "Reloading " . A_ScriptName
+splashOn(txt, 750)
 Reload
 return
 ; #IfWinActive

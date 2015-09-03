@@ -3,7 +3,7 @@
 
 ; #Include clickAndReturn.ahk
 #Include conveniences.ahk
-#Include automated-testing.ahk
+; #Include automated-testing.ahk
 
 #Include switch.ahk
 #Include hotstrings.ahk
