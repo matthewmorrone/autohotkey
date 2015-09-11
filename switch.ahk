@@ -1,5 +1,5 @@
 
-F1::Suspend
+
 
 LAlt::LCtrl
 LCtrl::LAlt

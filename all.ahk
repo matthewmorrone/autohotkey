@@ -1,6 +1,10 @@
 #Include passwords.ahk
 #Include prelude.ahk
 
+
+#Include icon.ahk
+Menu, tray, icon, psi.ico, , 1
+
 ; #Include clickAndReturn.ahk
 #Include conveniences.ahk
 ; #Include automated-testing.ahk
