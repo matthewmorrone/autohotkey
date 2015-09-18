@@ -1,6 +1,12 @@
+Menu, tray, icon, psi_white.ico, , 1
+
+
+; F3::
+; Run, autoskip.ahk
+; return
 #Include passwords.ahk
 #Include prelude.ahk
-
+; #Include autoskip.ahk
 
 #Include icon.ahk
 Menu, tray, icon, psi.ico, , 1
@@ -33,7 +39,6 @@ Menu, tray, icon, psi.ico, , 1
 
 ; #Include syncscroll.ahk
 
-; Run, autoskip.ahk
 
 #Include postlude.ahk
 
