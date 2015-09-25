@@ -1,4 +1,7 @@
-#Include prelude.ahk
+; #IncludeAgain passwords.ahk
+#IncludeAgain prelude.ahk
+
+#SingleInstance, force
 
 
 ; autoskip annoying dialogs
@@ -41,7 +44,20 @@ If WinExist("Rename")
 WinActivate,
 ControlClick, Yes
 }
+If WinExist("User Account Control")
+{
+WinActivate,
+ControlClick, Yes
 }
+If WinExist("Open File - Security Warning")
+{
+WinActivate,
+ControlClick, Button4
+ControlClick, Run
+}
+}
+
+
 
 
 #Include postlude.ahk

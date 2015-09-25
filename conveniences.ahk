@@ -1,4 +1,5 @@
 
+
 ; because esc doesn't always seem to work like it should
 ^Esc::
 WinGetActiveTitle, Title
@@ -18,33 +19,70 @@ return
 ; Esc::MsgBox You Pressed Escapade
 ; #IfWinActive
 
+; #IfWinActive ahk_class ExploreWClass
+; ^l::
+; #IfWinActive ahk_class CabinetWClass
+; ^l::Send {F4}
+; return
+; #IfWinActive
+
 #IfWinActive ahk_class ExploreWClass
-^l::
+$^n::
 #IfWinActive ahk_class CabinetWClass
-^l::Send {F4}
+$^n::
+send {AppsKey}wf
 return
 #IfWinActive
 
-#IfWinActive ahk_class ExploreWClass
-^n::
-#IfWinActive ahk_class CabinetWClass
-^n::Send ^+n
+
+
+
+clickAndReturn(x, y)
+{
+	MouseGetPos, xpos, ypos
+	Send {click %x%, %y%}
+	MouseMove, %xpos%, %ypos%
+}
+
+
+; #IfWinActive Chrome
+F4::
+	clickAndReturn(1907, 1148)
 return
-#IfWinActive
+; shortcut for zipping folder, careful not to move mouse
+
+
+#a::
+	Click, Right
+	Send, {Down 8}{Enter}
+	KeyWait, LWin, D
+	; MouseGetPos, xpos, ypos
+	Send {click 640, 220}
+	Send {LWin UP}
+	; MouseMove, %xpos%, %ypos%
+	KeyWait, a, D
+	WinGetActiveTitle, Title
+	WinClose %Title%
+return
+; #IfWinActive
 
 
 ; conveniences
-Enter & Backspace:: Send {Delete}
-Enter & 1:: Send {Home}
-Enter & 2:: Send {End}
-Enter & 3:: Send {PgUp}
-Enter & 4:: Send {PgDn}
-Enter & w:: Send {Up}
-Enter & s:: Send {Down}
-Enter & a:: Send {Left}
-Enter & d:: Send {Right}
-$Enter UP::Send {enter}
+CapsLock & Backspace:: Send {Delete}
+CapsLock & 1:: Send {Home}
+CapsLock & 2:: Send {End}
+CapsLock & 3:: Send {PgUp}
+CapsLock & 4:: Send {PgDn}
+CapsLock & w:: Send {Up}
+CapsLock & s:: Send {Down}
+CapsLock & a:: Send {Left}
+CapsLock & d:: Send {Right}
+
 #q::Send !q
+
+
+
+
 
 
 ; to make renaming files a little less annoying

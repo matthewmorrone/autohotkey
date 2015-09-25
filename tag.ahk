@@ -4,6 +4,8 @@
 ; need to make inline or new line optional
 ; add attributes
 
+
+#IfWinNotActive, ahk_exe devenv.exe
 :*b0:<html>::</html>{left 7}
 ;{enter 2}{up}{tab}
 :*b0:<head>::</head>{left 7}
@@ -98,17 +100,6 @@
 :*b0:<select>::{enter}{tab}<option></option>{enter}{backspace}</select>{left 19}
 
 
-
-
-; for js
-:*:,+::{+}" "{+}
-:*:-_-::{U+0CA0}_{U+0CA0}
-:*:clog::console.log(){left 1}
-
-
-; for php
-:*b0:echo:: ."{\\}{n}";{left 6}
-:*:pr(::print_r(){left 1}
 
 
 

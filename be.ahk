@@ -1,11 +1,8 @@
+
 ;	#Include prelude.ahk
 
-ClickAndReturn(x, y)
-{
-	MouseGetPos, xpos, ypos
-	Send {click %x%, %y%}
-	MouseMove, %xpos%, %ypos%
-}
+
+
 
 ;	MouseGetPos, StartVarX, StartVarY
 ;	loop
@@ -160,4 +157,3 @@ v::p
 ;	Menu – Esc
 ;	Save – Ctrl-S
 ;	Load – Ctrl-L
-
