@@ -8,5 +8,6 @@
 
 :*:,+::{+}" "{+}
 :*:-_-::{U+0CA0}_{U+0CA0}
-:*:clog::console.log(){left 1}
+:*:clog::console.log()\;{left 2}
+:*:vlog::var log = console.log.bind(console)\;{enter}
 

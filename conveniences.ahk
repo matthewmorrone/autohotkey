@@ -5,6 +5,10 @@ WinGetActiveTitle, Title
 WinClose %Title%
 return
 
+!+Esc::
+Send {^+Esc}
+return
+
 ~Esc::
 If WinActive("Microsoft Visual Studio") {
 	send ^q

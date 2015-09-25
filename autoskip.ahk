@@ -31,6 +31,11 @@ IfWinExist, Microsoft SQL Server Management Studio ahk_class #32770
 WinActivate,
 ControlClick, No
 }
+IfWinExist, Welcome to SketchUp
+{
+WinActivate,
+ControlClick, Start using SketchUp
+}
 If WinExist("Rename")
 {
 WinActivate,
