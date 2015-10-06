@@ -7,8 +7,17 @@ RAlt::RCtrl
 RCtrl::RAlt
 
 AppsKey::LWin
+
 CapsLock::Send {Enter}
 ^CapsLock::return
++`::Delete
+`::Backspace
+\::Tab
+ScrollLock::\
+Insert::`
+
+
+
 ; CapsLock UP::return
 ; $Enter UP::Send {enter}
 

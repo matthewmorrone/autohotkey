@@ -1,6 +1,8 @@
 
 
 ; auto reload on save ($?)
+
+
 ; ~^s::
 ; ; IfWinActive, %A_ScriptName%
 ; IfWinActive, .ahk

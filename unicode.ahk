@@ -13,8 +13,8 @@ Return, NumGet(UnicodeChar,0,A_IsUnicode ? "UShort" : "UChar")
  #1:: sendinput {asc  173} ;¡
 
 ; é
- ; #2:: sendinput {asc 0233}
- ; #u:: sendinput {asc 163}
+ ^2:: sendinput {asc 0233}
+ #u:: sendinput {asc 163}
 
  #2:: sendinput {asc 0233} ;é
 +#2:: sendinput {asc 0201} ;É
@@ -83,18 +83,18 @@ Return, NumGet(UnicodeChar,0,A_IsUnicode ? "UShort" : "UChar")
 
 
 ; The latter half remaps the number row to the Mac option combos.
-!1::SendInput {Asc 173}  ;¡
-!2::SendInput {Asc 0153}  ;™
-!3::SendInput {Asc 0163}  ;£
-!4::SendInput {Asc 0162}  ;¢
-!5::SendInput {Asc 236}  ;∞
-!6::SendInput {Asc 0167}  ;§
-!7::SendInput {Asc 0182}  ;¶
-!8::SendInput {Asc 0149}  ;•
-!9::Send, {NumpadLeft}{NumpadRight}ª  ;Âª
-!0::Send, {NumpadLeft}{NumpadRight}°  ;Â°
-!-::Send, {NumpadLeft}{NumpadRight}─  ;â”€
-!=::Send, {NumpadLeft}{NumpadRight}≠  ;â‰
+; !1::SendInput {Asc 173}  ;¡
+; !2::SendInput {Asc 0153}  ;™
+; !3::SendInput {Asc 0163}  ;£
+; !4::SendInput {Asc 0162}  ;¢
+; !5::SendInput {Asc 236}  ;∞
+; !6::SendInput {Asc 0167}  ;§
+; !7::SendInput {Asc 0182}  ;¶
+; !8::SendInput {Asc 0149}  ;•
+; !9::Send, {NumpadLeft}{NumpadRight}ª  ;Âª
+; !0::Send, {NumpadLeft}{NumpadRight}°  ;Â°
+; !-::Send, {NumpadLeft}{NumpadRight}─  ;â”€
+; !=::Send, {NumpadLeft}{NumpadRight}≠  ;â‰
 
 ; ^e::é
 
@@ -162,8 +162,8 @@ Return, NumGet(UnicodeChar,0,A_IsUnicode ? "UShort" : "UChar")
 ; *!\::altShift("«","»")
 ; *!,::altShift("<=","¯")
 ; *!.::altShift(">=","breve")
-; *!/::altShift("÷","¿")	
-	
+; *!/::altShift("÷","¿")
+
 altShift(accented,accentedShift) {
 	if (!GetKeyState("Shift")) {
 		SendInput % accented
