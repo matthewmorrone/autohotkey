@@ -50,6 +50,11 @@ WinActivate,
 ControlClick, Button4
 ControlClick, Run
 }
+If WinExist("Unregistered copy")
+{
+WinActivate,
+ControlClick, Cancel
+}
 }
 
 
