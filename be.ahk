@@ -15,6 +15,7 @@
 ;		}
 ;	}
 
+#IfWinActive Beyond Earth
 
 
 ;	#Persistent
@@ -78,7 +79,6 @@ return
 ;	;	this is a double-press
 ;	return
 
-#IfWinActive Beyond Earth
 
 
 

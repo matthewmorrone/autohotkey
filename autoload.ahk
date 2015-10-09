@@ -18,17 +18,21 @@
 ; }
 ; return
 
+; C:\Users\c-mmorrone\Downloads\ahk\autoload.ahk (ahk) - Sublime Text (UNREGISTERED)
+; ahk_class PX_WINDOW_CLASS
+; ahk_exe sublime_text.exe
+
 
 SetTitleMatchMode, 2
 
 
-; #IfWinActive Sublime
+#IfWinActive, .ahk
 $~^s::
 txt := % "Reloading " . A_ScriptName
 splashOn(txt, 750)
 Reload
 return
-; #IfWinActive
+#IfWinActive
 ; #IfWinActive Sublime Text
 ; ; ^r::
 ; ~^s::
