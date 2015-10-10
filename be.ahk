@@ -9,39 +9,14 @@ x::i
 c::l
 v::p
 
-
 1::clickAndReturn(30, 922)
 2::clickAndReturn(80, 922)
 3::clickAndReturn(130, 922)
 4::clickAndReturn(180, 922)
 5::clickAndReturn(230, 922)
 
-; 1::Send {click 30, 922}
-; 2::Send {click 80, 922}
-; 3::Send {click 130, 922}
-; 4::Send {click 180, 922}
-; 5::Send {click 230, 922}
-
-return
 Tab::
 	Send {click 1625, 1000}
-return
-inCorner := false
-+Tab::
-	if (inCorner = true)
-	{
-		if (%xpos% = 1625 and %ypos% = 1000)
-		{
-			MouseMove, %xpos%, %ypos%
-			inCorner := False
-		}
-	}
-	else
-	{
-		MouseGetPos, xpos, ypos
-		Send {click 1625, 1000}
-		inCorner := true
-	}
 return
 
 MButton::
@@ -49,7 +24,28 @@ MButton::
 return
 
 
+
+
 #IfWinActive
+
+
+; inCorner := false
+; +Tab::
+; 	if (inCorner = true)
+; 	{
+; 		if (%xpos% = 1625 and %ypos% = 1000)
+; 		{
+; 			MouseMove, %xpos%, %ypos%
+; 			inCorner := False
+; 		}
+; 	}
+; 	else
+; 	{
+; 		MouseGetPos, xpos, ypos
+; 		Send {click 1625, 1000}
+; 		inCorner := true
+; 	}
+; return
 
 ; if (A_PriorHotkey <> "Tab" or A_TimeSincePriorHotkey > 400)
 ; {

@@ -4,6 +4,14 @@
 #SingleInstance, force
 
 
+#Persistent
+SetTimer, CloseMailWarnings, 250
+return
+CloseMailWarnings:
+WinClose, Microsoft Outlook, A timeout occured while communicating
+WinClose, Microsoft Outlook, A connection to the server could not be established
+return
+
 ; autoskip annoying dialogs
 While, 1
 {
@@ -54,6 +62,11 @@ If WinExist("Open File - Security Warning")
 WinActivate,
 ControlClick, Button4
 ControlClick, Run
+}
+If WinExist("Unregistered copy")
+{
+WinActivate,
+ControlClick, Cancel
 }
 }
 

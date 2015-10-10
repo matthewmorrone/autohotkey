@@ -1,4 +1,14 @@
-
+; #IfWinActive, ahk_class CabinetWClass
+; Backspace::
+;    ControlGet renamestatus,Visible,,Edit1,A
+;    ControlGetFocus focussed, A
+;    if(renamestatus!=1&&(focussed=”DirectUIHWND3″||focussed=SysTreeView321))
+;    {
+;     SendInput {Alt Down}{Up}{Alt Up}
+;   }else{
+;       Send {Backspace}
+;   }
+; #IfWinActive
 
 ; because esc doesn't always seem to work like it should
 ^Esc::
@@ -32,10 +42,15 @@ $^n::
 $^n::
 send {AppsKey}wf
 return
+; to make renaming files a little less annoying
+~F2::
+Send {Right}
+Send {Left}
+return
 #IfWinActive
 
 
-
+^SPACE::  Winset, Alwaysontop, , A
 
 clickAndReturn(x, y)
 {
@@ -45,7 +60,37 @@ clickAndReturn(x, y)
 }
 
 
-; #IfWinActive Chrome
+
+minState = 0
+^m::
+	if (minstate = 1) {
+		WinActivate, %Title%
+		WinRestore
+	}
+	else {
+		WinGetActiveTitle, Title
+		WinMinimize, A
+	}
+	minState := !minstate
+return
+
+minAllState = 0
+^+m::
+	if (minAllstate = 1) {
+		WinMinimizeAllUndo
+	}
+	else {
+		WinMinimizeAll
+	}
+	minAllState := !minAllstate
+return
+
+
+^Up::WinMaximize, A
+^Down::WinMinimize, A
+
+
+#IfWinActive Chrome
 F4::
 	clickAndReturn(1907, 1148)
 return
@@ -64,7 +109,7 @@ return
 	WinGetActiveTitle, Title
 	WinClose %Title%
 return
-; #IfWinActive
+#IfWinActive
 
 
 ; conveniences
@@ -81,12 +126,12 @@ CapsLock & d:: Send {Right}
 #q::Send !q
 
 
+#IfWinNotActive Total Commander
+RButton::click right
+RButton & WheelDown::Send {Browser_Back}
+RButton & WheelUp::Send {Browser_Forward}
+#IfWinNotActive
 
 
 
 
-; to make renaming files a little less annoying
-~F2::
-Send {Right}
-Send {Left}
-return

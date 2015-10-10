@@ -9,14 +9,9 @@
 ; for js
 :*:,+::{+}" "{+}
 :*:-_-::{U+0CA0}_{U+0CA0}
-<<<<<<< HEAD
+
 :*:clog::console.log()\;{left 2}
 :*:vlog::var log = console.log.bind(console)\;{enter}
-=======
-:*:clog::console.log(){left 1}
-:*:vlog::var log = console.log.bind(console){SC027}{SC01C}
->>>>>>> 0b6a060607a7f4633ab5e4fb8ec3cce15eb44b51
-
 
 ; for php
 :*b0:echo:: ."{\\}{n}";{left 6}
@@ -24,3 +19,6 @@
 
 ;for C#
 :*:csbreak::System.Diagnostics.Debugger.Break();
+
+
+

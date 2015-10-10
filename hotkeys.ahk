@@ -8,11 +8,14 @@ RCtrl::RAlt
 
 AppsKey::LWin
 
-CapsLock::Send {Enter}
-^CapsLock::return
-+`::Delete
+
+
+
+CapsLock::Send {enter}
+; ^CapsLock::return
+; +`::Delete
 `::Backspace
-\::Tab
+; \::Tab
 ScrollLock::\
 Insert::`
 
@@ -32,8 +35,8 @@ Insert::`
 
 
 
-$Insert::Send {SC029}
-$`::Send {Backspace}
+; $Insert::Send {SC029}
+; $`::Send {Backspace}
 
 ;ScrollLock::send {\}
 ;\::Send {Tab}
