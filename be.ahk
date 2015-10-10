@@ -2,49 +2,32 @@
 ;	#Include prelude.ahk
 
 
+#IfWinActive Beyond Earth
+
+z::l
+x::i
+c::l
+v::p
 
 
-;	MouseGetPos, StartVarX, StartVarY
-;	loop
-;	{
-;		Sleep, 100
-;		MouseGetPos, CheckVarX, CheckVarY
-;		If (StartVarX != CheckVarX) or (StartVarY != CheckVarY)
-;		{
-;			msgbox, Y U MOVE MY MOUSE!?
-;		}
-;	}
+1::clickAndReturn(30, 922)
+2::clickAndReturn(80, 922)
+3::clickAndReturn(130, 922)
+4::clickAndReturn(180, 922)
+5::clickAndReturn(230, 922)
 
+; 1::Send {click 30, 922}
+; 2::Send {click 80, 922}
+; 3::Send {click 130, 922}
+; 4::Send {click 180, 922}
+; 5::Send {click 230, 922}
 
-
-;	#Persistent
-;		SetTimer, Timer, 300
-;	Return
-
-;	Timer:
-;	MouseGetPos, x1, y1
-;	Sleep, 500
-;	MouseGetPos, x2, y2
-;	If ((%x1% <> %x2%) or (%y1% <> %y2%))
-;	{
-;		Msgbox, 262208, Mouse ,You moved`nUse Esc to quit this script , 1
-;		Return
-;	}
-;	return
-;	esc::exitapp
+return
 Tab::
 	Send {click 1625, 1000}
 return
 inCorner := false
 +Tab::
-	; if (A_PriorHotkey <> "Tab" or A_TimeSincePriorHotkey > 400)
-	; {
-	; 	;	Too much time between presses, so this isn't a double-press.
-	; 	inCorner := false
-
-	; 	KeyWait, Tab
-	; 	return
-	; }
 	if (inCorner = true)
 	{
 		if (%xpos% = 1625 and %ypos% = 1000)
@@ -59,9 +42,34 @@ inCorner := false
 		Send {click 1625, 1000}
 		inCorner := true
 	}
-	; SetTimer, Timer, 2000
 return
 
+MButton::
+	Send +{Click}
+return
+
+
+#IfWinActive
+
+; if (A_PriorHotkey <> "Tab" or A_TimeSincePriorHotkey > 400)
+; {
+; 	;	Too much time between presses, so this isn't a double-press.
+; 	inCorner := false
+
+; 	KeyWait, Tab
+; 	return
+; }
+
+;	MouseGetPos, StartVarX, StartVarY
+;	loop
+;	{
+;		Sleep, 100
+;		MouseGetPos, CheckVarX, CheckVarY
+;		If (StartVarX != CheckVarX) or (StartVarY != CheckVarY)
+;		{
+;			msgbox, Y U MOVE MY MOUSE!?
+;		}
+;	}
 
 ; Timer:
 ; 	inCorner := false
@@ -78,23 +86,21 @@ return
 ;	;	this is a double-press
 ;	return
 
-#IfWinActive Beyond Earth
+;	#Persistent
+;		SetTimer, Timer, 300
+;	Return
 
-
-
-MButton::
-	Send +{Click}
-return
-
-z::l
-x::i
-c::l
-v::p
-
-#IfWinActive
-
-
-
+;	Timer:
+;	MouseGetPos, x1, y1
+;	Sleep, 500
+;	MouseGetPos, x2, y2
+;	If ((%x1% <> %x2%) or (%y1% <> %y2%))
+;	{
+;		Msgbox, 262208, Mouse ,You moved`nUse Esc to quit this script , 1
+;		Return
+;	}
+;	return
+;	esc::exitapp
 
 ;	Esc::
 ;		Send {^x}
