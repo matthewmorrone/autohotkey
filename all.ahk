@@ -7,41 +7,9 @@ Menu, tray, icon, psi_white.ico, , 1
 ; F3::
 ; Run, autoskip.ahk
 ; return
-; #Include passwords.ahk
+#Include passwords.ahk
 #Include prelude.ahk
 ; #Include autoskip.ahk
-
-
-
-minState = 0
-^m::
-	if (minstate = 1) {
-		WinActivate, %Title%
-		WinRestore
-	}
-	else {
-		WinGetActiveTitle, Title
-		WinMinimize, A
-	}
-	minState := !minstate
-return
-
-minAllState = 0
-^+m::
-	if (minAllstate = 1) {
-		WinMinimizeAllUndo
-	}
-	else {
-		WinMinimizeAll
-	}
-	minAllState := !minAllstate
-return
-
-
-^Up::WinMaximize, A
-^Down::WinMinimize, A
-
-
 
 #Include icon.ahk
 Menu, tray, icon, psi.ico, , 1
@@ -49,7 +17,7 @@ Menu, tray, icon, psi.ico, , 1
 
 ; #Include clickAndReturn.ahk
 #Include conveniences.ahk
-#Include longpress.ahk
+; #Include longpress.ahk
 #Include linuxWindowDrag.ahk
 ; #Include automated-testing.ahk
 
@@ -66,7 +34,7 @@ Menu, tray, icon, psi.ico, , 1
 #Include hscroll.ahk
 ; #Include nozoomscroll.ahk
 #Include xray.ahk
-#Include printscreen.ahk
+; #Include printscreen.ahk
 #Include search.ahk
 #Include screensaver.ahk
 #Include hotcorners.ahk
@@ -78,7 +46,44 @@ Menu, tray, icon, psi.ico, , 1
 
 ; #Include syncscroll.ahk
 
+Numpad1::
+	WinActivate, index.php
+return
+Numpad2::
+	WinActivate, Sublime Text
+return
+running := false
+Numpad0::
+	WinGetActiveTitle, Title
+	WinActivate, PowerShell
+	if (running = true) {
+		Send ^c
+	}
+	SendInput clear
+	Send {enter}
+	Send {up}
+	Send {up}
 
+	Send {enter}
+	running := true
+	WinMinimize, ahk
+	; WinMinimize, PowerShell
+	WinActivate, icms.sql
+	; WinActivate, PowerShell
+Return
+NumpadDot::
+	WinActivate, PowerShell
+	Send ^c
+	running := false
+return
+NumpadEnter::
+	WinActivate, PowerShell
+	SendInput clear
+	Send {enter}
+return
+
+
+#Include window.ahk
 #Include postlude.ahk
 
 

@@ -20,6 +20,9 @@ return
 Send {^+Esc}
 return
 
+
+
+
 ~Esc::
 If WinActive("Microsoft Visual Studio") {
 	send ^q
@@ -46,6 +49,11 @@ return
 ~F2::
 Send {Right}
 Send {Left}
+return
+^d::
+Send ^c
+Send ^v
+Send up
 return
 #IfWinActive
 

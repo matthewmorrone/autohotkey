@@ -1,14 +1,14 @@
 
-$-::
-	KeyWait, -, T0.25
-	If ErrorLevel {
-		Send {Asc 0151}
-	}
-	Else {
-		Send {-}
-	}
-	KeyWait, -
-Return
+; $-::
+; 	KeyWait, -, T0.25
+; 	If ErrorLevel {
+; 		Send {Asc 0151}
+; 	}
+; 	Else {
+; 		Send {-}
+; 	}
+; 	KeyWait, -
+; Return
 
 $`::
 	KeyWait, SC029 T0.25
@@ -22,33 +22,7 @@ $`::
 	KeyWait, SC029
 Return
 
-running := false
-Numpad0::
-	WinGetActiveTitle, Title
-	WinActivate, PowerShell
-	if (running = true) {
-		Send ^c
-	}
-	SendInput clear
-	Send {enter}
-	Send {up}
-	Send {up}
 
-	Send {enter}
-	running := true
-	WinMinimize, PowerShell
-	WinActivate, %Title%
-Return
-NumPadDot::
-	WinActivate, PowerShell
-	Send ^c
-	running := false
-return
-NumPadEnter::
-	WinActivate, PowerShell
-	SendInput clear
-	Send {enter}
-return
 
 $Numpad1::
 	KeyWait, Numpad1, T0.25
