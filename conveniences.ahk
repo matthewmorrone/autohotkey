@@ -68,6 +68,9 @@ clickAndReturn(x, y)
 }
 
 
+
+
+
 #IfWinActive Chrome
 F4::
 	clickAndReturn(1907, 1148)
