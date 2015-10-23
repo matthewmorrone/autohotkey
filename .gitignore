@@ -1,5 +1,6 @@
 passwords.ahk
 automated-testing.ahk
-psi/*
-psi_red/*
-psi_white/*
+icons/psi/*
+icons/psi_red/*
+icons/psi_white/*
+dev/*

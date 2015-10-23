@@ -1,8 +1,6 @@
 ; #IncludeAgain passwords.ahk
-#IncludeAgain prelude.ahk
-
+#IncludeAgain _prelude.ahk
 #SingleInstance, force
-
 
 #Persistent
 SetTimer, CloseMailWarnings, 250
@@ -72,5 +70,3 @@ ControlClick, Cancel
 
 
 
-
-#Include postlude.ahk
