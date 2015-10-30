@@ -15,6 +15,7 @@ Menu, tray, icon, icons/psi_white.ico, , 1
 #Include explorer.ahk
 #Include console.ahk
 #Include chrome.ahk
+#Include ssms.ahk
 
 #Include *i be.ahk
 #Include *i sketchup.ahk
@@ -22,4 +23,6 @@ Menu, tray, icon, icons/psi_white.ico, , 1
 #Include woopsies.ahk
 #Include autoskip.ahk
 #Include autosave.ahk
+
+
 

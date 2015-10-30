@@ -3,10 +3,11 @@ LCtrl::LAlt
 RAlt::RCtrl
 RCtrl::RAlt
 AppsKey::LWin
-CapsLock::Enter
 `::Backspace
 ScrollLock::\
 Insert::`
+
+CapsLock::Enter
 
 CapsLock & `:: Send {Delete}
 CapsLock & 1:: Send {Home}
@@ -17,6 +18,8 @@ CapsLock & w:: Send {Up}
 CapsLock & s:: Send {Down}
 CapsLock & a:: Send {Left}
 CapsLock & d:: Send {Right}
+
+
 
 
 ; because esc doesn't always seem to work like it should

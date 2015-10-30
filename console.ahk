@@ -27,13 +27,13 @@ return
 
 :*:add::git add --all{enter}
 :*:commit::git commit -m ""{left 1}
-:*:push::
-	SendRaw git push
-	Send {enter}
-	Sleep,1000
-	Send %email%{enter}
-	Sleep,1000
-	Send %password%{enter}
-return
+; :*:push::
+; 	SendRaw git push
+; 	Send {enter}
+; 	Sleep,1000
+; 	Send %email%{enter}
+; 	Sleep,1000
+; 	Send %password%{enter}
+; return
 
 #IfWinActive
