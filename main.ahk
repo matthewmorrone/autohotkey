@@ -2,7 +2,7 @@ LAlt::LCtrl
 LCtrl::LAlt
 RAlt::RCtrl
 RCtrl::RAlt
-AppsKey::LWin
+; AppsKey::LWin
 `::Backspace
 ScrollLock::\
 Insert::`
@@ -18,6 +18,24 @@ CapsLock & w:: Send {Up}
 CapsLock & s:: Send {Down}
 CapsLock & a:: Send {Left}
 CapsLock & d:: Send {Right}
+
+
+
+; Browser_Home
+; Browser_Search
+; Launch_Mail
+; Volume_Down
+; Volume_Mute
+; Volume_Up
+; Media_Play_Pause
+; Launch_App2
+; LButton
+
+
+
+Media_Play_Pause::
+Run dev\\clean-keyboard.ahk, , Hide UseErrorLevel, OutputVarPID
+return
 
 
 
@@ -50,7 +68,15 @@ Return
 Click 2
 return
 
-
+~Numpad0::
+	if (A_PriorHotkey <> "~Numpad0" or A_TimeSincePriorHotkey > 200)
+	{
+		KeyWait, Numpad0
+		return
+	}
+	Send {backspace 2}
+	Run C:/Windows/System32/calc.exe
+return
 
 
 :*:afaik::as far as I know

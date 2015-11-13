@@ -26,3 +26,4 @@ Menu, tray, icon, icons/psi_white.ico, , 1
 
 
 
+RunAs  ; Reset to normal behavior.

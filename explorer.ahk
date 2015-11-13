@@ -1,8 +1,8 @@
 ; ahk_class CabinetWClass
 ; ahk_exe explorer.exe
 ; #IfWinActive ahk_class ExploreWClass
-#IfWinActive ahk_class CabinetWClass
-;#IfWinActive ahk_exe explorer.exe
+; #IfWinActive ahk_class CabinetWClass
+#IfWinActive ahk_exe explorer.exe
 
 ; mozilla-like search input focus
 ^l::
@@ -10,9 +10,9 @@ Send {F4}
 return
 
 ; new folder (can't have something selected, different context menu)
-$^n::
-send {AppsKey}wf
-return
+^n::send {AppsKey}wf
+~^+n::send {^n}
+
 
 ; shortcut for zipping folder, careful not to move mouse
 #z::
@@ -48,4 +48,8 @@ Sleep, 20
 Send {shift Up}
 return
 
+
+
 #IfWinActive
+
+

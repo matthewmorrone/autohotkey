@@ -6,6 +6,7 @@ F8::
 #InstallKeybdHook
 #InstallMouseHook
 KeyHistory
+#KeyHistory 500
 return
 
 ; tooltip wrapper
