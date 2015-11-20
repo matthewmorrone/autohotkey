@@ -8,7 +8,7 @@ Array() {
 	Return Object("base",ArrBase)
 }
 
-Array_Join(Arr,Sep="|") {
+Array_Join(Arr,Sep="\n") {
 	Loop, % Arr.Len() {
 		Str .= Arr[A_Index] . Sep
 	}

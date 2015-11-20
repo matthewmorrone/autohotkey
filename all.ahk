@@ -9,7 +9,7 @@ Menu, tray, icon, icons/psi_white.ico, , 1
 #Include main.ahk
 #Include tag.ahk
 
-; #Include window.ahk
+#Include window.ahk
 #Include scroll.ahk
 
 #Include explorer.ahk

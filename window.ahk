@@ -1,40 +1,40 @@
 
-minState = 0
-^m::
-	if (minstate = 1) {
-		WinActivate, %Title%
-		WinRestore
-	}
-	else {
-		WinGetActiveTitle, Title
-		WinMinimize, A
-	}
-	minState := !minstate
-return
+; minState = 0
+; ^m::
+; 	if (minstate = 1) {
+; 		WinActivate, %Title%
+; 		WinRestore
+; 	}
+; 	else {
+; 		WinGetActiveTitle, Title
+; 		WinMinimize, A
+; 	}
+; 	minState := !minstate
+; return
 
-minAllState = 0
-^+m::
-	if (minAllstate = 1) {
-		WinMinimizeAllUndo
-	}
-	else {
-		WinMinimizeAll
-	}
-	minAllState := !minAllstate
-return
+; minAllState = 0
+; ^+m::
+; 	if (minAllstate = 1) {
+; 		WinMinimizeAllUndo
+; 	}
+; 	else {
+; 		WinMinimizeAll
+; 	}
+; 	minAllState := !minAllstate
+; return
 
-#IfWinNotActive ahk_class CabinetWClass
-^Up::WinMaximize, A
-^Down::WinMinimize, A
+; #IfWinNotActive ahk_exe explorer.exe
+; ^Up::WinMaximize, A
+; ^Down::WinMinimize, A
 
-^+Up::WinMinimizeAllUndo
-^+Down::WinMinimizeAll
-#IfWinNotActive
+; ^+Up::WinMinimizeAllUndo
+; ^+Down::WinMinimizeAll
+; #IfWinNotActive
 
 ^SPACE::  Winset, Alwaysontop, , A
 
 ; to see what's behind the current window
-#Space::   WinSet, Transparent,  70, A
+#Space::   WinSet, Transparent,  50, A
 #Space UP::WinSet, Transparent, OFF, A
 return
 

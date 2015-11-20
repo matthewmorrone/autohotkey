@@ -44,7 +44,7 @@ ActivatorEnd(message, active:=true, timeout:=3) {
 	}
 }
 
-clickAndReturn(x, y) {
+ClickAndReturn(x, y) {
 	MouseGetPos, xpos, ypos
 	Send {click %x%, %y%}
 	MouseMove, %xpos%, %ypos%
@@ -55,17 +55,57 @@ MoveClickWait(x, y, z:=500) {
 	Sleep, %z%
 }
 
-!9::
-{
-	Sleep, 100
-	clipurl := clipboard
-	Send ^c
-	Sleep, 50
-	clipurl := "<a href=""" . clipurl . """>" . clipboard . "</a>"
-	SendInput {Raw}%clipurl%
-	clipboard := clipurl
-	clipurl =;
-	Return
+GetSelections(hwnd="") {
+	hwnd := hwnd ? hwnd : WinExist("A")
+	WinGetClass class, ahk_id %hwnd%
+	if (class = "CabinetWClass" or class = "ExploreWClass" or class="Progman")
+		for window in ComObjCreate("Shell.Application").Windows
+			if (window.hwnd==hwnd)
+	return window.Document.SelectedItems
+}
+GetSelection(hwnd="") {
+	hwnd := hwnd ? hwnd : WinExist("A")
+	WinGetClass class, ahk_id %hwnd%
+	if (class = "CabinetWClass" or class = "ExploreWClass" or class="Progman")
+		for window in ComObjCreate("Shell.Application").Windows
+			if (window.hwnd==hwnd)
+	sel := window.Document.SelectedItems
+	for item in sel {
+		; path := item.path
+		ToReturn .= item.path "\n"
+	}
+	return Trim(ToReturn,"\n")
+}
+ToString(array, depth:=6, indent:="") {
+	result := ""
+	if (IsObject(array)) {
+		for key, value in array {
+			result .= "\t" . indent . key
+			if (IsObject(value) && depth > 1) {
+				result .= "\n" . toString(value, depth - 1, indent . "\t")
+			}
+			else {
+				result .= "\t= [" . value . "]\n"
+			}
+		}
+	}
+	else {
+		result := array
+	}
+	return result
+}
+IsFolder(path) {
+	SplitPath, path, , , out
+	return out = ""
+}
+IsFile(path) {
+	SplitPath, path, , , out
+	if (out = "") {
+		return false
+	}
+	else {
+		return out
+	}
 }
 
 

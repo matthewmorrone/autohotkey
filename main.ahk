@@ -78,9 +78,21 @@ return
 	Run C:/Windows/System32/calc.exe
 return
 
+!9::
+Sleep, 100
+clipurl := clipboard
+Send ^c
+Sleep, 50
+clipurl := "<a href=""" . clipurl . """>" . clipboard . "</a>"
+SendInput {Raw}%clipurl%
+clipboard := clipurl
+clipurl =;
+Return
+
+
 
 :*:afaik::as far as I know
-:*:brb::be right backbe right
+:*:brb::be right back
 :*:btw::by the way
 :*:-----::{Asc 0151}  ; em dash
 :*:m@1::matthewmorrone1
