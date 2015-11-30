@@ -11,6 +11,7 @@ Menu, tray, icon, icons/psi_white.ico, , 1
 
 #Include window.ahk
 #Include scroll.ahk
+#Include cursor.ahk
 
 #Include explorer.ahk
 #Include console.ahk
@@ -23,7 +24,5 @@ Menu, tray, icon, icons/psi_white.ico, , 1
 #Include woopsies.ahk
 #Include autoskip.ahk
 #Include autosave.ahk
-
-
 
 RunAs  ; Reset to normal behavior.
