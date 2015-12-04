@@ -2,7 +2,7 @@ LAlt::LCtrl
 LCtrl::LAlt
 RAlt::RCtrl
 RCtrl::RAlt
-; AppsKey::LWin
+AppsKey::RWin
 `::Backspace
 ScrollLock::\
 Insert::`

@@ -12,6 +12,7 @@ Menu, tray, icon, icons/psi_white.ico, , 1
 #Include window.ahk
 #Include scroll.ahk
 #Include cursor.ahk
+#Include draglock.ahk
 
 #Include explorer.ahk
 #Include console.ahk
