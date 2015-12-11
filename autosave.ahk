@@ -8,5 +8,3 @@ splashOn(txt, 1000)
 Reload
 Return
 #IfWinActive
-
-

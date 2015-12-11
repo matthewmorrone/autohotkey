@@ -26,12 +26,19 @@ return
 :*:add]::git add --all{enter}
 :*:comm]::git commit -m ""{left 1}
 :*:commit]::git commit -m ""{left 1}
+
+
 :*:push]::
-	SendRaw git push
-	Send {enter}
-	KeyWait, Enter
+	Send git push{enter}
+	KeyWait, ], D
+	Send {bs}
+	email := email()
 	Send %email%{enter}
-	KeyWait, Enter
+	KeyWait, ], D
+	Send {bs}
+	password := password()
 	Send %password%{enter}
 return
+
 #IfWinActive
+
