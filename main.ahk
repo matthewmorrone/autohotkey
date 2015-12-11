@@ -1,14 +1,20 @@
+
+
 LAlt::LCtrl
 LCtrl::LAlt
 RAlt::RCtrl
 RCtrl::RAlt
-AppsKey::RWin
+; AppsKey::RWin
 `::Backspace
 ScrollLock::\
 Insert::`
-
+!a::Send ^a
+!z::Send ^z
+!x::Send ^x
+!c::Send ^c
+!v::Send ^v
+!y::Send ^y
 CapsLock::Enter
-
 CapsLock & `:: Send {Delete}
 CapsLock & 1:: Send {Home}
 CapsLock & 2:: Send {End}
@@ -21,24 +27,17 @@ CapsLock & d:: Send {Right}
 
 
 
+Media_Play_Pause::
+Run dev\\clean-keyboard.ahk, , Hide UseErrorLevel, OutputVarPID
+return
+
 ; Browser_Home
 ; Browser_Search
 ; Launch_Mail
 ; Volume_Down
 ; Volume_Mute
 ; Volume_Up
-; Media_Play_Pause
 ; Launch_App2
-; LButton
-
-
-
-Media_Play_Pause::
-Run dev\\clean-keyboard.ahk, , Hide UseErrorLevel, OutputVarPID
-return
-
-
-
 
 ; because esc doesn't always seem to work like it should
 ^Esc::
