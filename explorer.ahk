@@ -7,12 +7,12 @@
 
 #IfWinActive ahk_exe explorer.exe
 
-^+a::
-send !e{up 2}{enter}
-return
-^a::
-send !e{up}{enter}
-return
+; ^+a::
+; send !e{up 2}{enter}
+; return
+; ^a::
+; send !e{up}{enter}
+; return
 
 ; mozilla-like search input focus
 ^l::
