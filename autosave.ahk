@@ -1,9 +1,10 @@
 
-SetTitleMatchMode, 2
+
 #IfWinActive, .ahk
+SetTitleMatchMode, 2
 $~^s::
 txt := % "Reloading " . A_ScriptName
-splashOn(txt, 750)
+splashOn(txt, 1000)
 Reload
-return
+Return
 #IfWinActive

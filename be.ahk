@@ -1,13 +1,31 @@
 
-;	#Include prelude.ahk
-
+ClipCursor(Confine = True, x1 = 0, y1 = 0, x2 = 1, y2 = 1, d = false) {
+	VarSetCapacity(R, 16, 0), NumPut(x1, &R+0), NumPut(y1, &R+4), NumPut(x2, &R+8), NumPut(y2, &R+12)
+	Return Confine ? DllCall("ClipCursor", UInt, &R) : DllCall("ClipCursor")
+}
 
 #IfWinActive ahk_exe civilizationbe_dx11.exe
 
+*e::
+Confine := !Confine
+ClipCursor(Confine, 25, 10, A_screenwidth-25, A_screenheight-25, false)
+Return
+
+*f::
+; DllCall("SetCursorPos", int, 100, int, 400)
+ClipCursor(false)
+MouseMove, 2000, 0, , R
+return
+
 z::l
 x::i
-c::m
+c::s
 v::p
+
+; w::up
+; a::left
+; s::down
+; d::right
 
 1::clickAndReturn(30, 922)
 2::clickAndReturn(80, 922)
@@ -18,92 +36,16 @@ v::p
 Tab::
 	Send {click 1625, 1000}
 return
-
++Tab::
+	clickAndReturn(1625, 1000)
+return
 MButton::
 	Send +{Click}
 return
 
-
-
-
 #IfWinActive
 
 
-; inCorner := false
-; +Tab::
-; 	if (inCorner = true)
-; 	{
-; 		if (%xpos% = 1625 and %ypos% = 1000)
-; 		{
-; 			MouseMove, %xpos%, %ypos%
-; 			inCorner := False
-; 		}
-; 	}
-; 	else
-; 	{
-; 		MouseGetPos, xpos, ypos
-; 		Send {click 1625, 1000}
-; 		inCorner := true
-; 	}
-; return
-
-; if (A_PriorHotkey <> "Tab" or A_TimeSincePriorHotkey > 400)
-; {
-; 	;	Too much time between presses, so this isn't a double-press.
-; 	inCorner := false
-
-; 	KeyWait, Tab
-; 	return
-; }
-
-;	MouseGetPos, StartVarX, StartVarY
-;	loop
-;	{
-;		Sleep, 100
-;		MouseGetPos, CheckVarX, CheckVarY
-;		If (StartVarX != CheckVarX) or (StartVarY != CheckVarY)
-;		{
-;			msgbox, Y U MOVE MY MOUSE!?
-;		}
-;	}
-
-; Timer:
-; 	inCorner := false
-; 	SetTimer, Timer, Off
-; return
-
-;	~Tab::
-;	if (A_PriorHotkey <> "~Tab" or A_TimeSincePriorHotkey > 400)
-;	{
-;	;	Too much time between presses, so this isn't a double-press.
-;	KeyWait, Tab
-;	return
-;	}
-;	;	this is a double-press
-;	return
-
-;	#Persistent
-;		SetTimer, Timer, 300
-;	Return
-
-;	Timer:
-;	MouseGetPos, x1, y1
-;	Sleep, 500
-;	MouseGetPos, x2, y2
-;	If ((%x1% <> %x2%) or (%y1% <> %y2%))
-;	{
-;		Msgbox, 262208, Mouse ,You moved`nUse Esc to quit this script , 1
-;		Return
-;	}
-;	return
-;	esc::exitapp
-
-;	Esc::
-;		Send {^x}
-;	return
-;	$^Esc::
-;		Send {esc}
-;	return
 
 ;	x::
 ;		Send {ctrl}

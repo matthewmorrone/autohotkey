@@ -21,19 +21,24 @@ return
 #IfWinActive, PowerShell
 
 :*:clone]::git clone http://www.github.com/matthewmorrone1/
-
 :*:stat]::git status -s{enter}
 :*:diff]::git diff{enter}
-
 :*:add]::git add --all{enter}
+:*:comm]::git commit -m ""{left 1}
 :*:commit]::git commit -m ""{left 1}
+
+
 :*:push]::
-	SendRaw git push
-	Send {enter}
-; 	Sleep,1000
-; 	Send %email%{enter}
-; 	Sleep,1000
-; 	Send %password%{enter}
+	Send git push{enter}
+	KeyWait, ], D
+	Send {bs}
+	email := email()
+	Send %email%{enter}
+	KeyWait, ], D
+	Send {bs}
+	password := password()
+	Send %password%{enter}
 return
 
 #IfWinActive
+
