@@ -4,8 +4,14 @@ Menu, tray, icon, icons/psi_white.ico, , 1
 #Include icon.ahk
 #Include *i passwords.ahk
 
+
+
 #Include *i array.ahk
 #Include util.ahk
+
+
+
+
 #Include main.ahk
 #Include tag.ahk
 

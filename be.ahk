@@ -4,23 +4,49 @@ ClipCursor(Confine = True, x1 = 0, y1 = 0, x2 = 1, y2 = 1, d = false) {
 	Return Confine ? DllCall("ClipCursor", UInt, &R) : DllCall("ClipCursor")
 }
 
+;	Sid Meier's Civilization: Beyond Earth (DX11)
+;	ahk_class WinClass_FXS
+;	ahk_exe civilizationbe_dx11.exe
+
 #IfWinActive ahk_exe civilizationbe_dx11.exe
 
-*e::
-Confine := !Confine
-ClipCursor(Confine, 25, 10, A_screenwidth-25, A_screenheight-25, false)
-Return
-
-*f::
-; DllCall("SetCursorPos", int, 100, int, 400)
-ClipCursor(false)
-MouseMove, 2000, 0, , R
-return
+^r::Send !r
 
 z::l
 x::i
 c::s
 v::p
+
+; NumpadAdd::
+; NumpadClear::
+; NumpadDel::
+; NumpadDown::
+; NumpadEnter::
+; NumpadHome::
+; NumpadLeft::
+; NumpadRight::
+; NumpadSub::
+; NumpadUp::
+NumpadEnd::,
+NumpadHome::^i
+NumpadIns::Tab
+NumpadPgDn::.
+NumpadPgUp::F3
+NumpadDiv::Esc
+NumpadMult::
+Confine := !Confine
+ClipCursor(Confine, 25, 10, A_screenwidth-25, A_screenheight-25, false)
+Return
+
+Numpad7::r
+Numpad8::i
+Numpad9::e
+Numpad4::a
+Numpad5::s
+Numpad6::f
+Numpad1::h
+Numpad2::l
+Numpad3::p
 
 ; w::up
 ; a::left
@@ -47,26 +73,14 @@ return
 
 
 
-;	x::
-;		Send {ctrl}
-;		Sleep 152
-;		Send {r}
-;		Sleep 16
-;		Send {r UP}
-;		Sleep 176
-;		Send {ctrl UP}
-;		;Send {!r}	;	Remove Road – Alt-R
-;	return
-;	c::
-;		Send {!i}	;	Clear a Marsh – Alt-I
-;	return
-;	v::
-;		Send {^+r}	;	Route to Mode – Shift-Ctrl-R
-;	return
 
-;	Sid Meier's Civilization: Beyond Earth (DX11)
-;	ahk_class WinClass_FXS
-;	ahk_exe civilizationbe_dx11.exe
+; Send {ctrl}
+; Sleep 152
+; Send {r}
+; Sleep 16
+; Send {r UP}
+; Sleep 176
+; Send {ctrl UP}
 
 ;	Next Unit – Period
 ;	Previous Unit – Comma
