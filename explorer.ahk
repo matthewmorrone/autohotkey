@@ -24,15 +24,12 @@ return
 ~^+n::send {^n}
 
 
-; shortcut for zipping folder, careful not to move mouse
+; ; shortcut for zipping folder, careful not to move mouse
 #z::
 Click, Right
 Send, {DOWN 9}
 Send, {right}
-; Send, {down 1}
 Send, {enter}
-; Sleep, 500
-; Send, {enter}
 return
 
 ; to make renaming files a little less annoying
@@ -69,7 +66,7 @@ Sleep, 20
 Send {shift Up}
 return
 
- ; remove -master affix from folders and zip files
+; remove -master affix from folders and zip files
 ^[::
 len := 0
 sel := GetSelections()
@@ -98,6 +95,9 @@ for item in sel {
 		from := Trim(from, "\n \t\r")
 		FileMoveDir, %from%, %to%, R
 	}
+}
+if (len = 0) {
+	send ^a
 }
 return
 
