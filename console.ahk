@@ -28,6 +28,7 @@ return
 ::add]::git add --all{enter}
 ::comm]::git commit -m ""{left 1}
 ::commit]::git commit -m ""{left 1}
+::pull]::git pull{enter}
 
 
 
