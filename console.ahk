@@ -20,15 +20,26 @@ return
 
 #IfWinActive, PowerShell
 
-:*:clone]::git clone http://www.github.com/matthewmorrone1/
-:*:stat]::git status -s{enter}
-:*:diff]::git diff{enter}
-:*:add]::git add --all{enter}
-:*:comm]::git commit -m ""{left 1}
-:*:commit]::git commit -m ""{left 1}
+#Hotstring *
+
+::clone]::git clone http://www.github.com/matthewmorrone1/
+::stat]::git status -s{enter}
+::diff]::git diff{enter}
+::add]::git add --all{enter}
+::comm]::git commit -m ""{left 1}
+::commit]::git commit -m ""{left 1}
 
 
-:*:push]::
+
+::name]::git config --global user.name "Matthew Morrone"{enter}
+::email]::git config --global user.email "matthewmorrone1@gmail.com"{enter}
+::simple]::git config --global push.default simple{enter}
+
+
+::config]::git config --global user.name "Matthew Morrone"{enter}git config --global user.email "matthewmorrone1@gmail.com"{enter}git config --global push.default simple{enter}
+
+
+::push]::
 	Send git push{enter}
 	KeyWait, ], D
 	Send {bs}
@@ -38,7 +49,17 @@ return
 	Send {bs}
 	password := password()
 	Send %password%{enter}
-return
+Return
+
+
+#Hotstring *0
 
 #IfWinActive
+
+
+
+
+
+
+
 

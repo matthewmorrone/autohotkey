@@ -70,8 +70,59 @@ Sleep, 20
 Send {shift Up}
 return
 
-; remove -master affix from folders and zip files
+
+
+
+
+
+
 ^[::
+#EscapeChar `
+InputBox, prefix, "Prefix", "Prefix?", , , , , , , ;, "-"
+len := 0
+sel := GetSelections()
+for item in sel {
+    len++
+}
+if (len = 0) {
+	send ^a
+	sel := GetSelections()
+}
+for item in sel {
+	from := item.path
+	SplitPath, from, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
+	befor = %OutDir%\%OutFileName%
+	after = %OutDir%\%Prefix%%OutFileName%
+	FileMove, %befor%, %after%, 1
+}
+#EscapeChar \
+return
+
+^]::
+#EscapeChar `
+InputBox, suffix, "Suffix", "Suffix?", , , , , , , ;, "-"
+len := 0
+sel := GetSelections()
+for item in sel {
+    len++
+}
+if (len = 0) {
+	send ^a
+	sel := GetSelections()
+}
+for item in sel {
+	from := item.path
+	SplitPath, from, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
+	befor = %OutDir%\%OutFileName%
+	after = %OutDir%\%OutFileName%%Suffix%
+	FileMove, %befor%, %after%, 1
+}
+#EscapeChar \
+return
+
+
+; remove -master affix from folders and zip files
+^+[::
 len := 0
 sel := GetSelections()
 for item in sel {
@@ -106,9 +157,12 @@ if (len = 0) {
 return
 
 
-^]::
+
+
+^+]::
 #EscapeChar `
-InputBox, prefix, "Prefix", "Prefix?", , , , , , , ;, "-"
+InputBox, replace, "Replace", "Replace?", , , , , , , ;, "-"
+InputBox, with, "With", "With?", , , , , , , ;, "-"
 len := 0
 sel := GetSelections()
 for item in sel {
@@ -121,21 +175,18 @@ if (len = 0) {
 for item in sel {
 	from := item.path
 	SplitPath, from, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
-	before = %OutDir%\%OutFileName%
-	after = %OutDir%\%Prefix%%OutFileName%
-	FileMove, %before%, %after%, 1
-
+	befor = %OutFileName%
+	after := StrReplace(befor, replace, with, , -1) 
+	FileMove, %OutDir%\%befor%, %OutDir%\%after%, 1
 }
 #EscapeChar \
+
+
+
 return
 
 
 #IfWinActive
-
-
-
-
-
 
 
 

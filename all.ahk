@@ -7,6 +7,7 @@ Menu, tray, icon, icons/psi_white.ico, , 1
 #Include *i array.ahk
 #Include util.ahk
 #Include main.ahk
+#Include unicode.ahk
 #Include tag.ahk
 
 #Include window.ahk
@@ -27,3 +28,4 @@ Menu, tray, icon, icons/psi_white.ico, , 1
 #Include autosave.ahk
 
 RunAs  ; Reset to normal behavior.
+#EscapeChar `
