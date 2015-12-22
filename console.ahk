@@ -1,16 +1,16 @@
 
 #IfWinActive ahk_class ConsoleWindowClass
 +PgUp::
-Send {WheelUp} 
+Send {WheelUp}
 Return
 +PgDn::
 Send {WheelDown}
 Return
-^Up:: 
+^Up::
 Send {WheelUp}
 Return
-^Down:: 
-Send {WheelDown} 
+^Down::
+Send {WheelDown}
 Return
 
 ^v::
@@ -29,7 +29,7 @@ return
 ::comm]::git commit -m ""{left 1}
 ::commit]::git commit -m ""{left 1}
 ::pull]::git pull{enter}
-
+::merge]::git merge{enter}
 
 
 ::name]::git config --global user.name "Matthew Morrone"{enter}
