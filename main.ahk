@@ -94,7 +94,7 @@ Return
 
 
 
-#Hotstring *
+#Hotstring * ?
 
 
 ::afaik::as far as I know
@@ -119,5 +119,5 @@ Return
 ; for C#
 ::csbreak::System.Diagnostics.Debugger.Break() ; 
 
-#Hotstring *0
+#Hotstring *0 ?0
 
