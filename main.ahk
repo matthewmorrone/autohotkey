@@ -85,7 +85,7 @@ Sleep, 50
 clipurl := "<a href=""" . clipurl . """>" . clipboard . "</a>"
 SendInput {Raw}%clipurl%
 clipboard := clipurl
-clipurl = ; 
+clipurl = ;
 Return
 
 
@@ -94,7 +94,7 @@ Return
 
 
 
-#Hotstring *
+#Hotstring * ?
 
 
 ::afaik::as far as I know
@@ -109,15 +109,15 @@ Return
 
 ; for js
 ::,+::{+}" "{+}
-::clog::console.log()\ ; {left 2}
-::vlog::var log = console.log.bind(console)\ ; {enter}
+::clog::console.log()\;{left 2}
+::vlog::var log = console.log.bind(console)\;{enter}
 
 ; for php
-:b0:echo:: ."{\\}{n}" ; {left 6}
-::pr(::print_r() ; {left 2}
+:b0:echo:: ."{\\}{n}";{left 6}
+::pr(::print_r();{left 2}
 
 ; for C#
-::csbreak::System.Diagnostics.Debugger.Break() ; 
+::csbreak::System.Diagnostics.Debugger.Break();
 
-#Hotstring *0
+#Hotstring *0 ?0
 
