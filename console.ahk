@@ -22,7 +22,7 @@ return
 
 #Hotstring *
 
-::clone]::git clone http://www.github.com/matthewmorrone1/
+::clone]::git clone --depth=1 http://www.github.com/matthewmorrone1/
 ::stat]::git status -s{enter}
 ::diff]::git diff{enter}
 ::add]::git add --all{enter}

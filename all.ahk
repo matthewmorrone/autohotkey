@@ -8,12 +8,13 @@ Menu, tray, icon, icons/psi_white.ico, , 1
 
 #Include *i array.ahk
 #Include util.ahk
-
+; #Include hotstrings.ahk
 
 
 
 #Include main.ahk
 #Include unicode.ahk
+#Include unicode-all.ahk
 #Include tag.ahk
 
 #Include window.ahk

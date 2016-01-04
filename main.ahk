@@ -1,4 +1,4 @@
-
+SendMode Input
 
 LAlt::LCtrl
 LCtrl::LAlt
@@ -9,12 +9,15 @@ RCtrl::RAlt
 +`::Send {Delete}
 ScrollLock::\
 Insert::`
-!a::Send ^a
-!z::Send ^z
-!x::Send ^x
-!c::Send ^c
-!v::Send ^v
-!y::Send ^y
+
+; !a::Send ^a
+; !c::Send ^c
+; !s::Send ^s
+; !v::Send ^v
+; !x::Send ^x
+; !y::Send ^y
+; !z::Send ^z
+
 CapsLock::Enter
 CapsLock & `:: Send {Delete}
 CapsLock & 1:: Send {Home}
@@ -83,11 +86,10 @@ clipurl := clipboard
 Send ^c
 Sleep, 50
 clipurl := "<a href=""" . clipurl . """>" . clipboard . "</a>"
-SendInput {Raw}%clipurl%
+Send {Raw}%clipurl%
 clipboard := clipurl
 clipurl = ;
 Return
-
 
 
 
@@ -121,3 +123,4 @@ Return
 
 #Hotstring *0 ?0
 
+SendMode Event
