@@ -53,6 +53,7 @@ Numpad3::p
 ; s::down
 ; d::right
 
++3::clickAndReturn(55, 852)
 1::clickAndReturn(30, 922)
 2::clickAndReturn(80, 922)
 3::clickAndReturn(130, 922)
@@ -62,7 +63,7 @@ Numpad3::p
 Tab::
 	Send {click 1625, 1000}
 return
-+Tab::
+^Tab::
 	clickAndReturn(1625, 1000)
 return
 MButton::
