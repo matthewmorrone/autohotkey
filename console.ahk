@@ -22,6 +22,19 @@ return
 
 #Hotstring *
 
+::init]::
+	InputBox, repo, "New Github Repo", "Repo name?", , , , , , , ;, "-"
+
+	Send git init %repo%{enter}
+	Send cd %repo%{enter}
+	Send git remote add origin http://www.github.com/matthewmorrone1/%repo%{enter}
+	Send git push --set-upstream origin master{enter}	
+	email := email()
+	Send %email%{enter}
+	password := password()
+	Send %password%{enter}
+return
+
 ::clone]::git clone --depth=1 http://www.github.com/matthewmorrone1/
 ::stat]::git status -s{enter}
 ::diff]::git diff{enter}
