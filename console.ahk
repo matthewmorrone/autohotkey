@@ -37,6 +37,7 @@ return
 
 ::clone]::git clone --depth=1 http://www.github.com/matthewmorrone1/
 ::stat]::git status -s{enter}
+::init]::git init{enter}
 ::diff]::git diff{enter}
 ::add]::git add --all{enter}
 ::comm]::git commit -m ""{left 1}

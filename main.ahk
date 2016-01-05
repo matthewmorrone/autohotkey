@@ -5,7 +5,8 @@ LCtrl::LAlt
 RAlt::RCtrl
 RCtrl::RAlt
 ; AppsKey::RWin
-`::Backspace
+`::Send {Backspace}
++`::Send {Delete}
 ScrollLock::\
 Insert::`
 
@@ -27,11 +28,6 @@ CapsLock & w:: Send {Up}
 CapsLock & s:: Send {Down}
 CapsLock & a:: Send {Left}
 CapsLock & d:: Send {Right}
-
-
-
-
-
 
 
 Media_Play_Pause::
