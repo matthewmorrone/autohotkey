@@ -1,4 +1,6 @@
 #SingleInstance, force
+#Include icon.ahk
+
 
 #Hotstring C ? * O
 
