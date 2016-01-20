@@ -14,6 +14,8 @@
 ; send !e{up}{enter}
 ; return
 
+; backspace::send !{up}
+
 ; mozilla-like search input focus
 ^l::
 Send {F4}
@@ -57,7 +59,8 @@ return
 ^up::
 Send ^x
 Sleep, 20
-Send {BS}
+; Send {BS}
+send !{up}
 Sleep, 20
 Send {F5}
 Sleep, 20
