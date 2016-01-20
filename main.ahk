@@ -5,21 +5,19 @@ LCtrl::LAlt
 RAlt::RCtrl
 RCtrl::RAlt
 ; AppsKey::RWin
-`::Send {Backspace}
-+`::Send {Delete}
-ScrollLock::\
-Insert::`
 
-; !a::Send ^a
-; !c::Send ^c
-; !s::Send ^s
-; !v::Send ^v
-; !x::Send ^x
-; !y::Send ^y
-; !z::Send ^z
+
+
+$`::Send {Backspace}
+$+`::Send {Delete}
+$Insert::Send {`}
+$+Insert::Send {~}
+$ScrollLock::\
+\::Tab
 
 CapsLock::Enter
-CapsLock & `:: Send {Delete}
+CapsLock & `:: Send {`}
+; CapsLock & `:: Send {~}
 CapsLock & 1:: Send {Home}
 CapsLock & 2:: Send {End}
 CapsLock & 3:: Send {PgUp}
@@ -29,6 +27,15 @@ CapsLock & s:: Send {Down}
 CapsLock & a:: Send {Left}
 CapsLock & d:: Send {Right}
 
+
+
+; !a::Send ^a
+; !c::Send ^c
+; !s::Send ^s
+; !v::Send ^v
+; !x::Send ^x
+; !y::Send ^y
+; !z::Send ^z
 
 Media_Play_Pause::
 Run dev\\clean-keyboard.ahk, , Hide UseErrorLevel, OutputVarPID

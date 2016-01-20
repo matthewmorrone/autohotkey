@@ -53,12 +53,18 @@ Numpad3::p
 ; s::down
 ; d::right
 
-+3::clickAndReturn(55, 852)
-1::clickAndReturn(30, 922)
-2::clickAndReturn(80, 922)
-3::clickAndReturn(130, 922)
-4::clickAndReturn(180, 922)
-5::clickAndReturn(230, 922)
+
+; ~s::
+; 	clickAndReturn(55, 852)
+
+; return
+
+3::clickAndReturn(55, 852)
+; 1::clickAndReturn(30, 922)
+; 2::clickAndReturn(80, 922)
+; 3::clickAndReturn(130, 922)
+; 4::clickAndReturn(180, 922)
+; 5::clickAndReturn(230, 922)
 
 Tab::
 	Send {click 1625, 1000}
