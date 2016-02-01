@@ -14,6 +14,8 @@
 ; send !e{up}{enter}
 ; return
 
+; backspace::send !{up}
+
 ; mozilla-like search input focus
 ^l::
 Send {F4}
@@ -58,7 +60,8 @@ return
 ^up::
 Send ^x
 Sleep, 20
-Send {BS}
+; Send {BS}
+send !{up}
 Sleep, 20
 Send {F5}
 Sleep, 20
@@ -117,8 +120,7 @@ for item in sel {
 #EscapeChar \
 return
 
-
-; remove -master affix from folders and zip files
+; remove -master and/or -gh-pages affix from folders and zip files
 ^+[::
 len := 0
 sel := GetSelections()
@@ -134,15 +136,22 @@ for item in sel {
 	from := item.path
 	StringRight, post1, from, 7
 	StringRight, post2, from, 11
-	if (post2 = "-master.zip") {
+	StringRight, post3, from, 9
+	if (post1 = "-master") {
+		StringLeft, to, from, strlen(from)-7
+		to := Trim(to, "\n \t\r")
+		from := Trim(from, "\n \t\r")
+		FileMoveDir, %from%, %to%, R
+	}
+	else if (post2 = "-master.zip") {
 		StringLeft, to, from, strlen(from)-11
 		to := Trim(to, "\n \t\r")
 		from := Trim(from, "\n \t\r")
 		to := to . ".zip"
 		FileMove, %from%, %to%, 1
 	}
-	else if (post1 = "-master") {
-		StringLeft, to, from, strlen(from)-7
+	else if (post3 = "-gh-pages") {
+		StringLeft, to, from, strlen(from)-9
 		to := Trim(to, "\n \t\r")
 		from := Trim(from, "\n \t\r")
 		FileMoveDir, %from%, %to%, R
@@ -152,9 +161,6 @@ if (len = 0) {
 	send ^a
 }
 return
-
-
-
 
 ^+]::
 #EscapeChar `
@@ -177,9 +183,6 @@ for item in sel {
 	FileMove, %OutDir%\%befor%, %OutDir%\%after%, 1
 }
 #EscapeChar \
-
-
-
 return
 
 

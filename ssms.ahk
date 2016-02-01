@@ -9,4 +9,6 @@ return
 
 :*:@@r::@@ROWCOUNT
 
+:*:recent::order by created_datetime desc
+
 #IfWinActive
