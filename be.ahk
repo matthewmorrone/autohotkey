@@ -10,12 +10,28 @@ ClipCursor(Confine = True, x1 = 0, y1 = 0, x2 = 1, y2 = 1, d = false) {
 
 #IfWinActive ahk_exe civilizationbe_dx11.exe
 
+
+; Loop 20
+; {
+;     Send {Tab down}  ; Auto-repeat consists of consecutive down-events (with no up-events).
+;     Sleep 30  ; The number of milliseconds between keystrokes (or use SetKeyDelay).
+; }
+; Send {Tab up}  ; Release the key.
+
+
+
 ^r::Send !r
 
 z::l
 x::i
 c::s
 v::p
+
+; l::z
+; i::x
+; s::c
+; p::v
+
 
 ; NumpadAdd::
 ; NumpadClear::
@@ -66,10 +82,10 @@ Numpad3::p
 ; 4::clickAndReturn(180, 922)
 ; 5::clickAndReturn(230, 922)
 
-Tab::
+^Tab::
 	Send {click 1625, 1000}
 return
-^Tab::
+Tab::
 	clickAndReturn(1625, 1000)
 return
 MButton::

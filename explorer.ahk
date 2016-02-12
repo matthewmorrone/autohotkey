@@ -22,8 +22,9 @@ Send {F4}
 return
 
 ; new folder (can't have something selected, different context menu)
-^n::send {AppsKey}wf
-~^+n::send {^n}
+^n::send ^+n
+; ^n::send {AppsKey}wf
+; ~^+n::send {^n}
 
 
 ; ; shortcut for zipping folder, careful not to move mouse
