@@ -12,8 +12,8 @@ Menu, tray, icon, icons/psi_white.ico, , 1
 
 
 #Include main.ahk
+#Include hotstrings.ahk
 #Include unicode.ahk
-#Include unicode-all.ahk
 #Include html-entities.ahk
 #Include tag.ahk
 
@@ -26,6 +26,7 @@ Menu, tray, icon, icons/psi_white.ico, , 1
 #Include console.ahk
 #Include chrome.ahk
 #Include ssms.ahk
+#Include sublime.ahk
 
 #Include *i be.ahk
 #Include *i sketchup.ahk
@@ -38,4 +39,3 @@ RunAs  ; Reset to normal behavior.
 #EscapeChar `
 
 
- 

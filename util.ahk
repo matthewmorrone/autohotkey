@@ -107,7 +107,18 @@ IsFile(path) {
 		return out
 	}
 }
-
-
-
+StrPad(p_str, p_padstr=" ", p_padnum=1) {
+	If (A_IsUnicode)
+	{
+		char := Asc(p_padstr)
+		VarSetCapacity(p_padstr, p_padnum << 1, 0)
+		p_padstr .= Chr(char) Chr(char)
+		While 1 << A_Index < p_padnum 
+		{
+			p_padstr .= p_padstr
+		}
+	}
+	; Else VarSetCapacity(p_padstr, p_padnum, Asc(p_padstr))
+	return SubStr(p_padstr p_str, 1 - p_padnum)
+}
 
