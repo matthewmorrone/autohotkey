@@ -72,7 +72,7 @@ return
 return
 ::push]::
 	email := username("e")
-	password := password(4)
+	password := password(0)
 	Send git push{enter}
 	KeyWait, ], D
 	Send {bs}

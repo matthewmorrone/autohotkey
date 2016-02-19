@@ -31,24 +31,42 @@ CapsLock & s:: Send {Down}
 CapsLock & a:: Send {Left}
 CapsLock & d:: Send {Right}
 
+
+
+clicker := false
 Insert::
-	Hotkey, LButton, Toggle
-	Hotkey, LButton Up, Toggle
+	; if (clicker = false) {
+	; 	Hotkey, LButton, Off
+	; 	Hotkey, LButton Up, Off
+	; }
+	; else {
+	; 	Hotkey, LButton, On
+	; 	Hotkey, LButton Up, On
+	; }
+	clicker := !clicker
 Return
-LButton::
-	Loop
-	{
-		If (Stop)
-			Break
-		Send {LButton}
-		Sleep 250
+
+~LButton::
+	if (clicker = true) {
+		Loop
+		{
+			If (Stop)
+				Break
+			Send {LButton}
+			Sleep 250
+		}
+		Stop := 0
 	}
-	Stop := 0
 Return
-LButton Up::
-	Stop := 1
-	Send {LButton}
+~LButton Up::
+	if (clicker = true) {
+		Stop := 1
+		Send {LButton}
+	}
 return
+
+
+Send {Insert}
 
 ; !a::Send ^a
 ; !c::Send ^c
