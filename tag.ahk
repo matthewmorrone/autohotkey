@@ -64,7 +64,7 @@
 ::<i class=''>::< /i>{left 3}{backspace}{left 3}
 
 ::<script>::< /script>{left 8}{backspace}{left 1}
-:b:<script src=::<script type='text/javascript' src=''>< /script>{left 8}{backspace}{left 2}
+:b:<script ::<script type='text/javascript' src=''>< /script>{left 8}{backspace}{left 3}
 
 #HotString B
 ::<icon>::<link rel="shortcut icon" type="image/x-icon" href="" />{left 4}

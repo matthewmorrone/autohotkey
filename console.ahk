@@ -1,5 +1,9 @@
 
+
+
+
 #IfWinActive ahk_class ConsoleWindowClass
+
 +PgUp::
 Send {WheelUp}
 Return
@@ -16,26 +20,14 @@ Return
 ^v::
 SendInput {Raw}%clipboard%
 return
+
 #IfWinActive
+
 
 #IfWinActive, PowerShell
 
-#Hotstring *
+#Hotstring C ? *
 
-::init]::
-	InputBox, repo, "New Github Repo", "Repo name?", , , , , , , ;, "-"
-
-	Send git init %repo%{enter}
-	Send cd %repo%{enter}
-	Send git remote add origin http://www.github.com/matthewmorrone1/%repo%{enter}
-	Send git push --set-upstream origin master{enter}	
-	email := email()
-	Send %email%{enter}
-	password := password()
-	Send %password%{enter}
-return
-
-::clone]::git clone --depth=1 http://www.github.com/matthewmorrone1/
 ::init]::git init{enter}
 ::stat]::git status -s{enter}
 ::diff]::git diff{enter}
@@ -45,29 +37,54 @@ return
 ::pull]::git pull{enter}
 ::merge]::git merge{enter}
 
+name := username("n")
+email := username("e")
+github := username("g")
+password := password(4)
 
-::name]::git config --global user.name "Matthew Morrone"{enter}
-::email]::git config --global user.email "matthewmorrone1@gmail.com"{enter}
-::simple]::git config --global push.default simple{enter}
-
-
-::config]::git config --global user.name "Matthew Morrone"{enter}git config --global user.email "matthewmorrone1@gmail.com"{enter}git config --global push.default simple{enter}
-
-
+::init]::
+	InputBox, repo, "New Github Repo", "Repo name?", , , , , , , ;, "-"
+	Send git init %repo%{enter}
+	Send cd %repo%{enter}
+	Send git remote add origin %github%%repo%{enter}
+	Send git push --set-upstream origin master{enter}
+	Send %email%{enter}
+	Send %password%{enter}
+return
+::clone]::
+	Send, git clone --depth=1 %github%
+return
+::name]::
+	name := username("n")
+	Send, git config --global user.name %name%{enter}
+return
+::email]::
+	email := username("e")
+	Send, git config --global user.email %email%{enter}
+return
+::simple]::
+	Send, git config --global push.default simple{enter}
+return
+::config]::
+	name := username("n")
+	email := username("e")
+	Send, git config --global user.name %name%{enter}git config --global user.email %email%{enter}git config --global push.default simple{enter}
+return
 ::push]::
+	email := username("e")
+	password := password(4)
 	Send git push{enter}
 	KeyWait, ], D
 	Send {bs}
-	email := email()
 	Send %email%{enter}
 	KeyWait, ], D
 	Send {bs}
-	password := password()
 	Send %password%{enter}
 Return
 
+#Hotstring C0 ?0 *0
 
-#Hotstring *0
+
 
 #IfWinActive
 
