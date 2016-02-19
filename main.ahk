@@ -10,10 +10,14 @@ RCtrl::RAlt
 
 $`::Send {Backspace}
 $+`::Send {Delete}
-$Insert::Send {`}
-$+Insert::Send {~}
+
+; $Insert::Send {`}
+; $+Insert::Send {~}
 ; $ScrollLock::\
 ; \::Tab
+
+
+
 
 CapsLock::Enter
 CapsLock & `:: Send {`}
@@ -27,7 +31,24 @@ CapsLock & s:: Send {Down}
 CapsLock & a:: Send {Left}
 CapsLock & d:: Send {Right}
 
-
+Insert::
+	Hotkey, LButton, Toggle
+	Hotkey, LButton Up, Toggle
+Return
+LButton::
+	Loop
+	{
+		If (Stop)
+			Break
+		Send {LButton}
+		Sleep 250
+	}
+	Stop := 0
+Return
+LButton Up::
+	Stop := 1
+	Send {LButton}
+return
 
 ; !a::Send ^a
 ; !c::Send ^c
