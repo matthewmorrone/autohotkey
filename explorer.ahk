@@ -7,32 +7,28 @@
 
 #IfWinActive ahk_exe explorer.exe
 
+; for windows 10
 ^+a::
 send !hsi
 return
-; ^a::
+; for windows 7
+; ^+a::
 ; send !e{up}{enter}
 ; return
-
-; backspace::send !{up}
 
 ; mozilla-like search input focus
 ^l::
 Send {F4}
 return
 
-; new folder (can't have something selected, different context menu)
+; new folder
 ^n::send ^+n
-; ^n::send {AppsKey}wf
-; ~^+n::send {^n}
+^+n::send ^n
 
 
 ; ; shortcut for zipping folder, careful not to move mouse
 #z::
-Click, Right
-Send, {DOWN 9}
-Send, {right}
-Send, {enter}
+Send, {SC15D}{DOWN 4}{enter}
 return
 
 ; to make renaming files a little less annoying
@@ -57,6 +53,7 @@ return
 
 ; move selection up a directory
 ; !up (alt+up) moves up a directory
+; backspace::send !{up}
 ^up::
 Send ^x
 Sleep, 20
@@ -77,7 +74,7 @@ return
 ^\::
 #EscapeChar `
 InputBox, replace, "Incremental Replace", "Replace?", , , , , , , ;, "-"
-with := 
+with :=
 len := 0
 ind := 0
 sel := GetSelections()
@@ -95,7 +92,7 @@ for item in sel {
 	SplitPath, from, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
 	befor = %OutFileName%
 	with := StrPad(A_Index, 0, 3)
-	after := RegExReplace(befor, replace, with, out, -1, 1) 
+	after := RegExReplace(befor, replace, with, out, -1, 1)
 	; MsgBox %after%`n%befor%`n%replace%`n%with%`n%out%`n%ind%
 
 	FileMove, %OutDir%\%befor%, %OutDir%\%after%, 1
@@ -103,7 +100,7 @@ for item in sel {
 #EscapeChar \
 return
 
-
+; ![::
 ; #EscapeChar `
 ; InputBox, replace, "Remove", "Remove?", , , , , , , ;, "-"
 ; with := 
@@ -126,7 +123,6 @@ return
 ; #EscapeChar \
 ; return
 
-; ![::
 ^[::
 #EscapeChar `
 len := 0
@@ -142,7 +138,6 @@ for item in sel {
 	from := item.path
 	SplitPath, from, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
 	befor = %OutFileName%
-	; after := RegExReplace(befor, replace, with, out, -1, 1) 
 	StringLower, after, befor
 	; MsgBox %after% %befor%
 	FileMove, %OutDir%\%befor%, %OutDir%\%after%, 1
@@ -168,7 +163,7 @@ for item in sel {
 	from := item.path
 	SplitPath, from, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
 	befor = %OutFileName%
-	after := RegExReplace(befor, replace, with, out, -1, 1) 
+	after := RegExReplace(befor, replace, with, out, -1, 1)
 	If befor <> %after% 
 	{
 		FileMove, %OutDir%\%befor%, %OutDir%\%after%, 1
