@@ -31,24 +31,26 @@ CapsLock & s:: Send {Down}
 CapsLock & a:: Send {Left}
 CapsLock & d:: Send {Right}
 
-Insert::
-	Hotkey, LButton, Toggle
-	Hotkey, LButton Up, Toggle
-Return
-LButton::
-	Loop
-	{
-		If (Stop)
-			Break
-		Send {LButton}
-		Sleep 250
-	}
-	Stop := 0
-Return
-LButton Up::
-	Stop := 1
-	Send {LButton}
-return
+; Insert::
+; 	Hotkey, LButton, Toggle
+; 	Hotkey, LButton Up, Toggle
+; Return
+; LButton::
+; 	Loop
+; 	{
+; 		If (Stop)
+; 			Break
+; 		Send {LButton}
+; 		Sleep 250
+; 	}
+; 	Stop := 0
+; Return
+; LButton Up::
+; 	Stop := 1
+; 	Send {LButton}
+; return
+; Send, Insert
+
 
 ; !a::Send ^a
 ; !c::Send ^c

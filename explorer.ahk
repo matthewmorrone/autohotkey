@@ -7,9 +7,9 @@
 
 #IfWinActive ahk_exe explorer.exe
 
-; ^+a::
-; send !e{up 2}{enter}
-; return
+^+a::
+send !hsi
+return
 ; ^a::
 ; send !e{up}{enter}
 ; return
@@ -103,30 +103,31 @@ for item in sel {
 #EscapeChar \
 return
 
-^[::
-#EscapeChar `
-InputBox, replace, "Remove", "Remove?", , , , , , , ;, "-"
-with := 
-len := 0
-sel := GetSelections()
-for item in sel {
-    len++
-}
-if (len = 0) {
-	send ^a
-	sel := GetSelections()
-}
-for item in sel {
-	from := item.path
-	SplitPath, from, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
-	befor = %OutFileName%
-	after := RegExReplace(befor, replace, with, out, -1, 1) 
-	FileMove, %OutDir%\%befor%, %OutDir%\%after%, 1
-}
-#EscapeChar \
-return
 
-![::
+; #EscapeChar `
+; InputBox, replace, "Remove", "Remove?", , , , , , , ;, "-"
+; with := 
+; len := 0
+; sel := GetSelections()
+; for item in sel {
+;     len++
+; }
+; if (len = 0) {
+; 	send ^a
+; 	sel := GetSelections()
+; }
+; for item in sel {
+; 	from := item.path
+; 	SplitPath, from, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
+; 	befor = %OutFileName%
+; 	after := RegExReplace(befor, replace, with, out, -1, 1) 
+; 	FileMove, %OutDir%\%befor%, %OutDir%\%after%, 1
+; }
+; #EscapeChar \
+; return
+
+; ![::
+^[::
 #EscapeChar `
 len := 0
 sel := GetSelections()
@@ -154,6 +155,7 @@ return
 InputBox, replace, "Replace", "Replace?", , , , , , , ;, "-"
 InputBox, with, "With", "With?", , , , , , , ;, "-"
 len := 0
+res := 0
 sel := GetSelections()
 for item in sel {
     len++
@@ -167,8 +169,13 @@ for item in sel {
 	SplitPath, from, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
 	befor = %OutFileName%
 	after := RegExReplace(befor, replace, with, out, -1, 1) 
-	FileMove, %OutDir%\%befor%, %OutDir%\%after%, 1
+	If befor <> %after% 
+	{
+		FileMove, %OutDir%\%befor%, %OutDir%\%after%, 1
+		res++
+	}
 }
+MsgBox %res% replacements made.
 #EscapeChar \
 return
 
