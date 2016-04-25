@@ -1,13 +1,6 @@
 
 
-; to see a key/mouse trace
-F8::
-#persistent
-#InstallKeybdHook
-#InstallMouseHook
-KeyHistory
-#KeyHistory 500
-return
+
 
 ; tooltip wrapper
 coolTip(a:="is this thing on?", b:=1000) {
@@ -44,16 +37,22 @@ ActivatorEnd(message, active:=true, timeout:=3) {
 	}
 }
 
+ClipCursor(Confine = True, x1 = 0, y1 = 0, x2 = 1, y2 = 1, d = false) {
+	VarSetCapacity(R, 16, 0), NumPut(x1, &R+0), NumPut(y1, &R+4), NumPut(x2, &R+8), NumPut(y2, &R+12)
+	Return Confine ? DllCall("ClipCursor", UInt, &R) : DllCall("ClipCursor")
+}
+
+
 ClickAndReturn(x, y) {
 	MouseGetPos, xpos, ypos
 	Send {click %x%, %y%}
 	MouseMove, %xpos%, %ypos%
 }
 
-MoveClickWait(x, y, z:=500) {
-	Send {click %x%, %y%}
-	Sleep, %z%
-}
+; MoveClickWait(x, y, z:=500) {
+; 	Send {click %x%, %y%}
+; 	Sleep, %z%
+; }
 
 GetSelections(hwnd="") {
 	hwnd := hwnd ? hwnd : WinExist("A")

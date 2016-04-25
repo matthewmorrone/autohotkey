@@ -89,7 +89,16 @@
 #Hotstring C0 ?0 *0 B R0
 
 
-
+!9::
+Sleep, 100
+clipurl := clipboard
+Send ^c
+Sleep, 50
+clipurl := "<a href=""" . clipurl . """>" . clipboard . "</a>"
+Send {Raw}%clipurl%
+clipboard := clipurl
+clipurl = ;
+Return
 
 
 

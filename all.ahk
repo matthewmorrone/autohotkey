@@ -1,39 +1,37 @@
 
 #Include _prelude.ahk
-Menu, tray, icon, icons/psi_white.ico, , 1
 #Include icon.ahk
-#Include *i passwords.ahk
+#Include *i hotstrings/passwords.ahk
 
 
 
 #Include *i array.ahk
+#Include *i range.ahk
 #Include util.ahk
 
 
 
 #Include main.ahk
-#Include hotstrings.ahk
-#Include unicode.ahk
-#Include html-entities.ahk
-#Include tag.ahk
+#Include *i hotstrings/hotstrings.ahk
+#Include *i hotstrings/unicode.ahk
+#Include *i hotstrings/html-entities.ahk
+#Include *i hotstrings/tag.ahk
 
 #Include window.ahk
 #Include scroll.ahk
-#Include cursor.ahk
-#Include draglock.ahk
 
+#Include batch.ahk
 #Include explorer.ahk
-#Include console.ahk
+#Include *i hotstrings/console.ahk
 #Include chrome.ahk
-#Include ssms.ahk
-#Include sublime.ahk
+#Include *i hotstrings/ssms.ahk
+#Include *i civ.ahk
 
-#Include *i be.ahk
-#Include *i sketchup.ahk
 
-#Include woopsies.ahk
+#Include *i hotstrings/woopsies.ahk
 #Include autoskip.ahk
 #Include autosave.ahk
+
 
 RunAs  ; Reset to normal behavior.
 #EscapeChar `

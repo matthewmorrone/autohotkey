@@ -8,3 +8,5 @@ SetWorkingDir %A_ScriptDir%  	; Ensures a consistent starting directory.
 #MaxHotkeysPerInterval 200
 #WinActivateForce
 SetTitleMatchMode 2 			; A window's title can contain WinTitle anywhere inside it to be a match. 
+
+Menu, tray, icon, ico/psi_white.ico, , 1

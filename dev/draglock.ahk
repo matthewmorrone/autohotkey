@@ -8,8 +8,8 @@ CoordMode, Mouse, Screen
 
 
 
-hotkeyV = LWin
-hotkeyH = LShift
+hotkeyV = LShift
+hotkeyH = LWin
 hotkeydownV = ~*%hotkeyV%
 hotkeydownH = ~*%hotkeyH%
 Hotkey, %hotkeydownV%, HOTKEYV, On
@@ -17,7 +17,6 @@ Hotkey, %hotkeydownH%, HOTKEYH, On
 return
 
 HOTKEYV:
-MsgBox V
 MouseGetPos, mx1, my1, mwin, mctrl
 Loop
 {
@@ -45,7 +44,6 @@ Loop
 Return
 
 HOTKEYH:
-MsgBox H
 MouseGetPos, mx1, my1, mwin, mctrl
 Loop
 {

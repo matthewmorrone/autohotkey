@@ -35,7 +35,9 @@ return
 ::comm]::git commit -m ""{left 1}
 ::commit]::git commit -m ""{left 1}
 ::pull]::git pull{enter}
-::merge]::git merge{enter}
+; ::merge]::git merge{enter}
+::merge]::git commit -a -m "automated merge message"{enter}
+
 
 name := username("n")
 email := username("e")
