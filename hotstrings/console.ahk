@@ -54,7 +54,7 @@ password := password(4)
 	Send %password%{enter}
 return
 ::clone]::
-	Send, git clone --depth=1 %github%
+	Send, git clone --depth=1 http://www.github.com/matthewmorrone1/
 return
 ::name]::
 	name := username("n")

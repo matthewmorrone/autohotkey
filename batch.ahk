@@ -13,99 +13,135 @@ Sort, sel
 return
 
 
-recursive:
+
+
+
+; recursive:
+; #EscapeChar `
+; ; gosub selections
+; FileDelete, %A_WorkingDir%\out.txt
+; for item in sel {
+; 	from := item.path
+; 	if A_LoopFileAttrib contains H,R,S {
+; 	    continue
+; 	}
+; 	SplitPath, from, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
+; 	SetWorkingDir, %OutDir%
+; 	Loop, *.*, 0, 1 {
+; 		FileAppend, %A_LoopFileFullPath%`n, %A_WorkingDir%\out.txt
+; 	}
+; }
+; #EscapeChar \
+; return
+
+
+
+
+
+decopify:
 #EscapeChar `
-gosub selections
-FileDelete, %A_WorkingDir%\out.txt
-for item in sel 
-{
+ind := 0
+for item in sel {
 	from := item.path
-	if A_LoopFileAttrib contains H,R,S
-	{
-	    continue
-	}
 	SplitPath, from, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
-	SetWorkingDir, %OutDir%
-	Loop, *.*, 0, 1
-	{
-		FileAppend, %A_LoopFileFullPath%`n, %A_WorkingDir%\out.txt
-	}
+	befor = %OutFileName%
+	after := RegExReplace(befor, " \((\d+)\)",	"_$1", out, -1, 1)
+	FileMove, %OutDir%\%befor%, %OutDir%\%after%, %overwrite%
+	if !ErrorLevel
+		ind++
 }
+coolTip(ind . " replacements made.", 5000)
+#EscapeChar \
+return
+
+
+tounderscore:
+#EscapeChar `
+ind := 0
+for item in sel {
+	from := item.path
+	SplitPath, from, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
+	befor = %OutFileName%
+	after := RegExReplace(befor, "-",	"_", out, -1, 1)
+	after := RegExReplace(befor, " ",	"_", out, -1, 1)
+	after := RegExReplace(befor, "^_",	"", out, -1, 1)
+	after := RegExReplace(befor, "_$",	"", out, -1, 1)
+	after := RegExReplace(befor, "_\.png",	".png", out, -1, 1)
+	after := RegExReplace(befor, "_+",	"_", out, -1, 1)
+	FileMove, %OutDir%\%befor%, %OutDir%\%after%, %overwrite%
+	if !ErrorLevel
+		ind++
+}
+coolTip(ind . " replacements made.", 5000)
 #EscapeChar \
 return
 
 
 
-
-
-
-
-
-
-
 increment:
 #EscapeChar `
-InputBox, replace, "Incremental Replace", "Replace?", , , , , , , ;, "-"
 with :=
 ind := 0
-gosub selections
-
 for item in sel {
-	ind++
 	from := item.path
 	SplitPath, from, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
 	befor = %OutFileName%
 	with := StrPad(A_Index, 0, 3)
 	after := RegExReplace(befor, replace, with, out, -1, 1)
 	; MsgBox %after%`n%befor%`n%replace%`n%with%`n%out%`n%ind%
-
 	FileMove, %OutDir%\%befor%, %OutDir%\%after%, 1
+	if !ErrorLevel
+		ind++
 }
+coolTip(ind . " replacements made.", 5000)
 #EscapeChar \
 return
 
-remove: 
-#EscapeChar `
-InputBox, replace, "Remove", "Remove?", , , , , , , ;, "-"
-with := 
-len := 0
-sel := GetSelections()
-for item in sel {
-	 len++
-}
-if (len = 0) {
-		send ^a
-		sel := GetSelections()
-}
-for item in sel {
-	from := item.path
-	SplitPath, from, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
-	befor = %OutFileName%
-	after := RegExReplace(befor, replace, with, out, -1, 1) 
-	FileMove, %OutDir%\%befor%, %OutDir%\%after%, 1
-}
-#EscapeChar \
-return
+
+
 
 tolowercase:
 #EscapeChar `
-gosub selections
+ind := 0
 for item in sel {
 	from := item.path
 	SplitPath, from, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
 	befor = %OutFileName%
 	StringLower, after, befor
-	FileMove, %OutDir%\%befor%, %OutDir%\%after%, 1
+	FileMove, %OutDir%\%befor%, %OutDir%\%after%, %overwrite%
+	if !ErrorLevel
+		ind++
 }
+coolTip(ind . " replacements made.", 5000)
 #EscapeChar \
 return
 
+
+
+
+touppercase:
+#EscapeChar `
+; gosub selections
+ind := 0
+for item in sel {
+	from := item.path
+	SplitPath, from, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
+	befor = %OutFileName%
+	StringUpper, after, befor
+	FileMove, %OutDir%\%befor%, %OutDir%\%after%, %overwrite%
+	if !ErrorLevel
+		ind++
+}
+coolTip(ind . " replacements made.", 5000)
+#EscapeChar \
+return
+
+
+
+
 replacewith:
 #EscapeChar `
-InputBox, replace, "Replace", "Replace?", , , , , , , ;, "-"
-InputBox, with, "With", "With?", , , , , , , ;, "-"
-res := 0
-gosub selections
+ind := 0
 for item in sel {
 	from := item.path
 	SplitPath, from, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
@@ -113,47 +149,85 @@ for item in sel {
 	after := RegExReplace(befor, replace, with, out, -1, 1)
 	If befor <> %after% 
 	{
-		FileMove, %OutDir%\%befor%, %OutDir%\%after%, 1
-		res++
+		FileMove, %OutDir%\%befor%, %OutDir%\%after%, %overwrite%
+		if !ErrorLevel
+			ind++
 	}
 }
-MsgBox %res% replacements made.
+coolTip(ind . " replacements made.", 5000)
 #EscapeChar \
 return
 
 
+
+
+toflatten:
+#EscapeChar `
+ind := 0
+for item in sel {
+	from := item.path
+	SplitPath, from, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
+	output := StrSplit(from, "\")
+	dir := output[Array_Len(output)-1]
+	befor = %OutFileName%
+	after = %dir%_%OutFileName%
+	If befor <> %after% 
+	{
+		FileMove, %OutDir%\%befor%, %OutDir%\%after%, %overwrite%
+		if !ErrorLevel
+			ind++
+	}
+}
+coolTip(ind . " replacements made.", 5000)
+#EscapeChar \
+return
+
+
+
+
+
 prefix:
 #EscapeChar `
-gosub selections
-InputBox, prefix, "Prefix", "Prefix?", , , , , , , ;, "-"
+ind := 0
 for item in sel {
 	from := item.path
 	SplitPath, from, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
 	befor = %OutDir%\%OutFileName%
 	after = %OutDir%\%Prefix%%OutFileName%
-	FileMove, %befor%, %after%, 1
+	FileMove, %befor%, %after%, 0
+	if !ErrorLevel
+		ind++
 }
+coolTip(ind . " replacements made.", 5000)
 #EscapeChar \
 return
 
+
+
+
 suffix:
 #EscapeChar `
-gosub selections
-InputBox, suffix, "Suffix", "Suffix?", , , , , , , ;, "-"
+ind := 0
 for item in sel {
 	from := item.path
 	SplitPath, from, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
 	befor = %OutDir%\%OutFileName%
 	after = %OutDir%\%OutFileName%%Suffix%
-	FileMove, %befor%, %after%, 1
+	FileMove, %befor%, %after%, 0
+	if !ErrorLevel
+		ind++
 }
+coolTip(ind . " replacements made.", 5000)
 #EscapeChar \
 return
 
-; ; remove -master and/or -gh-pages affix from folders and zip files
-github:
-gosub selections
+
+
+
+; remove -master and/or -gh-pages affix from folders and zip files
+togithub:
 arr := Array()
+ind := 0
 for item in sel {
 	from := item.path
 	StringRight, post1, from, 7
@@ -170,7 +244,7 @@ for item in sel {
 		to := Trim(to, "\n \t\r")
 		from := Trim(from, "\n \t\r")
 		to := to . ".zip"
-		FileMove, %from%, %to%, 1
+		FileMove, %from%, %to%, 0
 	}
 	else if (post3 = "-gh-pages") {
 		StringLeft, to, from, strlen(from)-9
@@ -178,17 +252,18 @@ for item in sel {
 		from := Trim(from, "\n \t\r")
 		FileMoveDir, %from%, %to%, R
 	}
+	if !ErrorLevel
+		ind++
 }
-if (len = 0) {
-	send ^a
-}
+coolTip(ind . " replacements made.", 5000)
 return
 
 
 
 
-droidresource:
+todroid:
 #EscapeChar `
+ind := 0
 for item in sel {
 	from := item.path
 	SplitPath, from, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
@@ -205,10 +280,12 @@ for item in sel {
 	after := RegExReplace(after, "^_",		"", out, -1, 1)
 	after := RegExReplace(after, "_$",		"", out, -1, 1)
 	after := RegExReplace(after, "_+",		"_", out, -1, 1)
-
-	If (befor <> %after%) {
-		FileMove, %OutDir%\%befor%, %OutDir%\%after%, 1
+	If (befor <> after) {
+		FileMove, %OutDir%\%befor%, %OutDir%\%after%, %overwrite%
+		if !ErrorLevel
+			ind++
 	}
 }
+coolTip(ind . " replacements made.", 5000)
 #EscapeChar \
 return

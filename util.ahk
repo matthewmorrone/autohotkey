@@ -1,6 +1,28 @@
 
 
+RemoveDuplicates(String, Delimiter="`n") {
+	oUniques := []
+	Loop, parse, String, % Delimiter
+	{
+		For k,v in oUniques
+		{
+			if (v = A_LoopField)		; duplicate
+				continue 2
+		}
+		; unique
+		NewString .= Delimiter A_LoopField
+		oUniques.Insert(A_LoopField)
+	}
+	return LTrim(NewString, Delimiter)
+}
 
+debug(a:="") {
+	MsgBox, 4,, %a% Would you like to continue?, 5
+	IfMsgBox, No
+		Return
+	IfMsgBox, Timeout
+		Return
+}
 
 ; tooltip wrapper
 coolTip(a:="is this thing on?", b:=1000) {
@@ -106,6 +128,19 @@ IsFile(path) {
 		return out
 	}
 }
+FilePrepend(fileIN, string) {
+	IfNotExist, %fileIN%
+		return false
+	input := FileOpen(fileIN, 0)
+	text := input.Read()
+	input.Close()
+	output := FileOpen(fileIN, 5)
+	output.WriteLine(string)
+	output.Write(text)
+	output.Close()
+	return true
+}
+
 StrPad(p_str, p_padstr=" ", p_padnum=1) {
 	If (A_IsUnicode)
 	{
