@@ -149,9 +149,22 @@ for item in sel {
 	after := RegExReplace(befor, replace, with, out, -1, 1)
 	If befor <> %after% 
 	{
-		FileMove, %OutDir%\%befor%, %OutDir%\%after%, %overwrite%
-		if !ErrorLevel
+		FileMove, %OutDir%\%befor%, %OutDir%\%after%, 0
+		;%overwrite%
+		if !ErrorLevel {
 			ind++
+		}
+		else {
+			start := 2
+			while ErrorLevel {
+				; befor := after
+				after := RegExReplace(after, "(_\d+)?\.png", "", out, -1, 1)
+				; MsgBox %OutDir%\%befor%, %OutDir%\%after%_%start%.png
+				FileMove, %OutDir%\%befor%, %OutDir%\%after%_%start%.png, 0
+				start++
+			}
+			ind++
+		}
 	}
 }
 coolTip(ind . " replacements made.", 5000)

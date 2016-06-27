@@ -1,8 +1,9 @@
 ; #EscapeChar \
 #Include _prelude.ahk
-runasadmin()
+; runasadmin()
 #Include util.ahk
 
+; #include dev/mirror.ahk
 
 #Include *i hotstrings/passwords.ahk
 #Include *i hotstrings.ahk

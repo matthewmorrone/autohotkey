@@ -1,37 +1,14 @@
-#NoEnv
-SendMode Input
-#InstallKeybdHook
-#UseHook
+Mode := 0
+^m::
+mode := !mode
+return
 
-#SingleInstance force
 
-; SetCapsLockState, alwaysoff
-; *CapsLock::Return
+#If mode
 
 
 
-
-
-; CapsLock::       Send {enter}
-; CapsLock & `::   Send {backspace}
-; CapsLock & Tab:: Send {delete}
-
-
-; CapsLock::		; CapsLock
-; +CapsLock::	; Shift+CapsLock
-; !CapsLock::	; Alt+CapsLock
-; ^CapsLock::		; Ctrl+CapsLock
-; #CapsLock::		; Win+CapsLock
-; ^!CapsLock::	; Ctrl+Alt+CapsLock
-; ^!#CapsLock::	; Ctrl+Alt+Win+CapsLock
-; ;............	; You can add whatever you want to block
-; return			; Do nothing, return
-
-Browser_Back::return
-Browser_Forward::return
-
-
-Browser_Back & 1::
+Space & 1::
 	If GetKeyState("Shift") = 1 {
 		send +{`=}
 	}
@@ -42,7 +19,7 @@ Browser_Back & 1::
 		send {`=}
 	}
 return
-Browser_Back & 2::
+Space & 2::
 	If GetKeyState("Shift") = 1 {
 		send +{`-}
 	}
@@ -53,7 +30,7 @@ Browser_Back & 2::
 		send {`-}
 	}
 return
-Browser_Back & 3::
+Space & 3::
 	If GetKeyState("Shift") = 1 {
 		send +{0}
 	}
@@ -64,7 +41,7 @@ Browser_Back & 3::
 		send {0}
 	}
 return
-Browser_Back & 4::
+Space & 4::
 	If GetKeyState("Shift") = 1 {
 		send +{9}
 	}
@@ -75,7 +52,7 @@ Browser_Back & 4::
 		send {9}
 	}
 return
-Browser_Back & 5::
+Space & 5::
 	If GetKeyState("Shift") = 1 {
 		send +{8}
 	}
@@ -86,7 +63,7 @@ Browser_Back & 5::
 		send {8}
 	}
 return
-Browser_Back & 6::
+Space & 6::
 	If GetKeyState("Shift") = 1 {
 		send +{7}
 	}
@@ -97,7 +74,7 @@ Browser_Back & 6::
 		send {7}
 	}
 return
-Browser_Forward & 7::
+Space & 7::
 	If GetKeyState("Shift") = 1 {
 		send +{6}
 	}
@@ -108,7 +85,7 @@ Browser_Forward & 7::
 		send {6}
 	}
 return
-Browser_Forward & 8::
+Space & 8::
 	If GetKeyState("Shift") = 1 {
 		send +{5}
 	}
@@ -119,7 +96,7 @@ Browser_Forward & 8::
 		send {5}
 	}
 return
-Browser_Forward & 9::
+Space & 9::
 	If GetKeyState("Shift") = 1 {
 		send +{4}
 	}
@@ -130,7 +107,7 @@ Browser_Forward & 9::
 		send {4}
 	}
 return 
-Browser_Forward & 0::
+Space & 0::
 	If GetKeyState("Shift") = 1 {
 		send +{3}
 	}
@@ -141,7 +118,7 @@ Browser_Forward & 0::
 		send {3}
 	}
 return
-Browser_Forward & -::
+Space & -::
 	If GetKeyState("Shift") = 1 {
 		send +{2}
 	}
@@ -152,7 +129,7 @@ Browser_Forward & -::
 		send {2}
 	}
 return
-Browser_Forward & =::
+Space & =::
 	If GetKeyState("Shift") = 1 {
 		send +{1}
 	}
@@ -164,7 +141,7 @@ Browser_Forward & =::
 	}
 return
 
-Browser_Back & q::
+Space & q::
 	If GetKeyState("Shift") = 1 {
 		send +{p}
 	}
@@ -175,7 +152,7 @@ Browser_Back & q::
 		send {p}
 	}
 return
-Browser_Back & w::
+Space & w::
 	If GetKeyState("Shift") = 1 {
 		send +{o}
 	}
@@ -186,7 +163,7 @@ Browser_Back & w::
 		send {o}
 	}
 return 
-Browser_Back & e::
+Space & e::
 	If GetKeyState("Shift") = 1 {
 		send +{i}
 	}
@@ -197,7 +174,7 @@ Browser_Back & e::
 		send {i}
 	}
 return
-Browser_Back & r::
+Space & r::
 	If GetKeyState("Shift") = 1 {
 		send +{u}
 	}
@@ -208,7 +185,7 @@ Browser_Back & r::
 		send {u}
 	}
 return
-Browser_Back & t::
+Space & t::
 	If GetKeyState("Shift") = 1 {
 		send +{y}
 	}
@@ -219,7 +196,7 @@ Browser_Back & t::
 		send {y}
 	}
 return
-Browser_Forward & y::
+Space & y::
 	If GetKeyState("Shift") = 1 {
 		send +{t}
 	}
@@ -230,7 +207,7 @@ Browser_Forward & y::
 		send {t}
 	}
 return
-Browser_Forward & u::
+Space & u::
 	If GetKeyState("Shift") = 1 {
 		send +{r}
 	}
@@ -241,7 +218,7 @@ Browser_Forward & u::
 		send {r}
 	}
 return
-Browser_Forward & i::
+Space & i::
 	If GetKeyState("Shift") = 1 {
 		send +{e}
 	}
@@ -252,7 +229,7 @@ Browser_Forward & i::
 		send {e}
 	}
 return
-Browser_Forward & o::
+Space & o::
 	If GetKeyState("Shift") = 1 {
 		send +{w}
 	}
@@ -263,7 +240,7 @@ Browser_Forward & o::
 		send {w}
 	}
 return 
-Browser_Forward & p::
+Space & p::
 	If GetKeyState("Shift") = 1 {
 		send +{q}
 	}
@@ -275,7 +252,7 @@ Browser_Forward & p::
 	}
 return 
 
-Browser_Back & a::
+Space & a::
 	If GetKeyState("Shift") = 1 {
 		send +{SC027}
 	}
@@ -286,7 +263,7 @@ Browser_Back & a::
 		send {SC027}
 	}
 return
-Browser_Back & s::
+Space & s::
 	If GetKeyState("Shift") = 1 {
 		send +{l}
 	}
@@ -297,7 +274,7 @@ Browser_Back & s::
 		send {l}
 	}
 return
-Browser_Back & d::
+Space & d::
 	If GetKeyState("Shift") = 1 {
 		send +{k}
 	}
@@ -308,7 +285,7 @@ Browser_Back & d::
 		send {k}
 	}
 return
-Browser_Back & f::
+Space & f::
 	If GetKeyState("Shift") = 1 {
 		send +{j}
 	}
@@ -319,7 +296,7 @@ Browser_Back & f::
 		send {j}
 	}
 return
-Browser_Back & g::
+Space & g::
 	If GetKeyState("Shift") = 1 {
 		send +{h}
 	}
@@ -330,7 +307,7 @@ Browser_Back & g::
 		send {h}
 	}
 return
-Browser_Forward & h::
+Space & h::
 	If GetKeyState("Shift") = 1 {
 		send +{g}
 	}
@@ -341,7 +318,7 @@ Browser_Forward & h::
 		send {g} 
 	}
 return
-Browser_Forward & j::
+Space & j::
 	If GetKeyState("Shift") = 1 {
 		send +{f}
 	}
@@ -352,7 +329,7 @@ Browser_Forward & j::
 		send {f} 
 	}
 return
-Browser_Forward & k::
+Space & k::
 	If GetKeyState("Shift") = 1 {
 		send +{d}
 	}
@@ -363,7 +340,7 @@ Browser_Forward & k::
 		send {d}
 	}
 return
-Browser_Forward & l::
+Space & l::
 	If GetKeyState("Shift") = 1 {
 		send +{s}
 	}
@@ -374,7 +351,7 @@ Browser_Forward & l::
 		send {s}
 	}
 return
-Browser_Forward & SC027::
+Space & SC027::
 	If GetKeyState("Shift") = 1 {
 		send +{a}
 	}
@@ -386,7 +363,7 @@ Browser_Forward & SC027::
 	}
 return
 
-Browser_Back & z::
+Space & z::
 	If GetKeyState("Shift") = 1 {
 		send +{/}
 	}
@@ -397,7 +374,7 @@ Browser_Back & z::
 		send {/}
 	}
 return
-Browser_Back & x::
+Space & x::
 	If GetKeyState("Shift") = 1 {
 		send +{.}
 	}
@@ -408,7 +385,7 @@ Browser_Back & x::
 		send {.}
 	}
 return
-Browser_Back & c::
+Space & c::
 	If GetKeyState("Shift") = 1 {
 		send +{,}
 	}
@@ -419,7 +396,7 @@ Browser_Back & c::
 		send {,}
 	}
 return
-Browser_Back & v::
+Space & v::
 	If GetKeyState("Shift") = 1 {
 		send +{m}
 	}
@@ -430,7 +407,7 @@ Browser_Back & v::
 		send {m}
 	}
 return
-Browser_Back & b::
+Space & b::
 	If GetKeyState("Shift") = 1 {
 		send +{n}
 	}
@@ -441,7 +418,7 @@ Browser_Back & b::
 		send {n}
 	}
 return
-Browser_Forward & n::
+Space & n::
 	If GetKeyState("Shift") = 1 {
 		send +{b}
 	}
@@ -452,7 +429,7 @@ Browser_Forward & n::
 		send {b}
 	}
 return
-Browser_Forward & m::
+Space & m::
 	If GetKeyState("Shift") = 1 {
 		send +{v}
 	}
@@ -463,7 +440,7 @@ Browser_Forward & m::
 		send {v}
 	}
 return
-Browser_Forward & ,::
+Space & ,::
 	If GetKeyState("Shift") = 1 {
 		send +{c}
 	}
@@ -474,7 +451,7 @@ Browser_Forward & ,::
 		send {c}
 	}
 return
-Browser_Forward & .::
+Space & .::
 	If GetKeyState("Shift") = 1 {
 		send +{x}
 	}
@@ -485,7 +462,7 @@ Browser_Forward & .::
 		send {x}
 	}
 return
-Browser_Forward & /::
+Space & /::
 	If GetKeyState("Shift") = 1 {
 		send +{z}
 	}
@@ -497,20 +474,5 @@ Browser_Forward & /::
 	}
 return
 
+#If
 
-; auto reload on save
-~^s::
-IfWinActive, %A_ScriptName%
-{
-SplashTextOn,,,Reloading %A_ScriptName%,
-Sleep,500
-SplashTextOff
-Reload
-; MsgBox, 4,, The script could not be reloaded. Would you like to open it for editing?
-; IfMsgBox, Yes, Edit
-}
-Else
-{
-Send {^s} 
-}
-return

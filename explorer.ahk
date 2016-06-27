@@ -2,8 +2,12 @@
 
 #IfWinActive Awesome Duplicate
 
+Numpad0::clickAndReturn(844,269)
 r::clickAndReturn(844,269)
-
+d::clickAndReturn(452,639)
+f::clickAndReturn(1323,639)
+space::down
+b::up
 
 #IfWinActive
 
@@ -14,6 +18,12 @@ r::clickAndReturn(844,269)
 
 #IfWinActive ahk_exe explorer.exe
 
+
+; *$Shift::
+; key = 0
+; Input, key, L1 M
+; SendInput {Shift Down}{%key%}{Shift Up}
+; return
 
 ; for windows 7
 ; send !e{up}{enter}
@@ -69,22 +79,17 @@ Sleep, 20
 Send {shift Up}
 return
 
-^`::
-send !{up}
-return
 
-
-
+; ^`::
+; send !{up}
+; return
 
 
 ; Batch File renaming
 
 ^[::
-; currentTab = 3
-; gosub BatchGUI
-
-gosub selections
-gosub toflatten
+currentTab = 3
+gosub BatchGUI
 return
 
 ^]::
@@ -210,6 +215,10 @@ GuiEscape:
 Gui, Cancel 
 return
 
+
+
+
+
 ; ButtonLower:
 ; Gui, Submit
 ; MsgBox
@@ -222,8 +231,6 @@ return
 ; Gui, Destroy
 ; return
 
-
-
 ; ; Activate window under mouse
 ; MouseGetPos,,,OutWin,OutCtrl
 ; WinActivate, ahk_id %OutWin%
@@ -233,4 +240,4 @@ return
 ; WinActivate, ahk_id %active_id%
 
 
-
+#IfWinActive
