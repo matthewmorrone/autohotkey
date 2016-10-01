@@ -1,4 +1,15 @@
 
+WindowW() {
+	WinGetPos,,, WindowWidth
+	return %WindowWidth%
+}
+WindowH() {
+	WinGetPos,,,, WindowHeight
+	return %WindowHeight%
+}
+
+
+
 
 RemoveDuplicates(String, Delimiter="`n") {
 	oUniques := []
@@ -62,6 +73,19 @@ ActivatorEnd(message, active:=true, timeout:=3) {
 ClipCursor(Confine = True, x1 = 0, y1 = 0, x2 = 1, y2 = 1, d = false) {
 	VarSetCapacity(R, 16, 0), NumPut(x1, &R+0), NumPut(y1, &R+4), NumPut(x2, &R+8), NumPut(y2, &R+12)
 	Return Confine ? DllCall("ClipCursor", UInt, &R) : DllCall("ClipCursor")
+}
+
+ClickAnd(x, y) {
+	MouseGetPos, xpos, ypos
+	Send {click %x%, %y%}
+	; return [xpos, ypos]
+}
+ClickAndRepeat(x, y, n) {
+	MouseGetPos, xpos, ypos
+	for i in range(n) {
+		Send {click %x%, %y%}
+	}
+	MouseMove, %xpos%, %ypos%
 }
 
 

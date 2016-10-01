@@ -1,0 +1,1309 @@
+stuff	things
+x	y
+for you	for me
+abc	123
+xxx	yyy
+things	stuff
+a	b		
+c	dxxxhdpiv4	
+gog_	
+games_	
+sys_	
+app_	
+gam_	
+app__com_	
+xxxhdpiv4	
+- Copy	
+\((\d+)\)	 $1
+	_
+\((\d+)\)	_$1
+\.png	_3.png
+_3	_4
+s	
+__flat_white	
+^	google_
+maps	
+^	maps_
+^	play_
+^	greek_letter_
+\.png~	_tilde.png
+\(2\)	_42
+google	google__
+_+	_
+avast	avast_
+^com_	
+_\w+activity\.png	.png
+^android_	
+activity	
+main	
+splash	
+homescreen	
+startscreen	
+android	
+activities	
+home	
+_+\.png	.png
+_+	+
++	_
+\+	_
+__lines	
+_2	_3
+_42	_3
+_2_3	_3
+_4	_5
+_5	_8
+_brown	
+_orange	
+_blue_gray	
+\(	
+\)	
+_icon\.png	.png
+^play	play_
+google	google_
+google_	
+__golden	
+key	keyboard_
+android_	
+_1	
+(\d+)	_$1
+__	_
+_1\.png	.png
+av_	
+\(1\)	
+^	zodiac_
+_2	_4
+_4_3	_4
+_5_3	_5
+_white	
+\.png\.png	.png
+sans	alt
+yahoo	yahoo_
+^ic_	 (2)	_3
+\(2\)	_3
+calendar_	calendar_ic_
+_2\.png	_1.png
+\.png	_2.png
+_1_2	_1
+_3_2	
+_1_3	_1
+_2_3	_2
+^	ic_
+ic_calendar_ic_	ic_calendar
+ic_	
+calendar	calendar_a_
+calendar_ic_	calendar_b_
+calendar_ic_	calendar_c_
+_3\.png	.png
+_2\.png	.png
+_3\.png	_2.png
+app	app_
+\((\d+)\)	_3
+\((\d+)\)	_4
+_white_(\w\w+)	_$1_white
+(\d)_white	white_\d
+(\w+)_(\w+)_(\w+)_(\d)	$1_$3_$2_$4
+flight	flight_
+floating	floating_
+folder	folder_
+four	four_
+^org_	
+RES-	
+res-drawable-nodpi-v4-	
+res-drawable-hdpi-v4-	
+_key	
+^	key_
+-	_
+res_drawable_nodpi_v4_	
+res_drawable_\w+dpi_v4_	
+res_drawable_(\w+)dpi_v4_	
+res_drawable_x+hdpi_v4_	
+\	
+^	morse_
+^	braille_
+\((\d+)\)	_5
+\((\d+)\)	_6
+\((\d+)\)	_7
+\((\d+)\)	_20
+\((\d+)\)	_10
+\((\d+)\)	_2
+\((\d+)\)	_8
+\((\d+)\)	_9
+\((\d+)\)	_15
+\((\d+)\)	\.	 
+\.	 
+avi	.avi
+HDTV 	
+XviD.+\.avi	.avi
+mp4	.mp4
+yandex	yandex_
+_\w+activity	
+_.+?activity	
+_alt\.png	_2.png
+froyo	
+_apps_	_
+_app_	_
+^google_android_	
+(\w+)_+\1	$1
+licensing	
+main.+?\.png	.png
+client	
+screen	
+honeycomb	
+appstart	
+_android_	_
+_\.png	.png
+gameloft_anmp_	
+_menu	
+_ui_	_
+1\.png	.png
+^	letter_
+\.png	_circle.png
+_alt\.png	.png
+_alt_(\d+)	_$1
+_alt_(\d+)	_alt
+_alt_2	_10
+_alt_3	_11
+_alt_4	_12
+_alt\.png	_9.png
+assets-icons-res-drawable-xxhdpi-	
+res-drawable-xxhdpi-v4-	
+res-drawable-xhdpi-v4-	
+assets-icons-res-drawable-xhdpi-	
+	
+sms	sms_round
+^	astro_
+\.svg	
+_symbol	
+_proposal	
+calendar_	calendar_d_
+(\d)	_$1
+(2)	
+\(2\)	
+\(2\)	_2
+arrow_(\d+)_arrow	arrow_$1_
+_\.png	_2.png
+_\.png	_3.png
+_\.png	_4.png
+^app_	
+asus_zenui_now_ic_	
+- Copy	_2
+~	_
+_	
+^z+_	
+_2_2	_3
+_2_2	_4
+_2_2	_5
+_2_2	_6
+_2_2	_7
+_2_2	_8
+res-drawable-xxxhdpi-v4-	
+^ic_	
+white	
+google_googles	google_cardboard
+3d_glasses	google_goggles
+^zz_	
+_	-
+ic	
+res-drawable-	
+x+hdpi-v4-	
+xxxhdpi-v4-	
+^_	
+-512	
+^	
+^	x_
+~01	
+^_+	
+\.	-
+_24dp	
+- 	
+placescopy	
+^editor_	
+_26x24dp	
+_48dp\.png	.png
+_48dp	
+_ic_	_
+_ic_	
+^social	social_
+^toggle	toggle_
+^places	places_
+^notification	notification_
+^maps	maps_
+^navigation	navigation_
+^image	image_
+^file	file_
+^hardware	hardware_
+^editor	editor_
+^device	device_
+^content	content_
+^material-design-icons_	
+^communications	communications_
+^communications_	communication_s
+^communication	communication_
+^av	av_
+^action	action_
+^alert	alert_
+\.png	-.png
+^	origin-
+x+hdpi_v4_	
+^	constellation_
+^zodiac_	
+res-drawable-.+dpi-v4-	
+res-drawable-.+dpi-	
+res_mipmap_	
+^	stargate_
+stargate_stargate_	stargate_
+by.+	
+^app_+	
+a408	
+a0408	
+^mono_	
+super_mono_	
+hand_stitch_	
+\.png	_hand_stitch.png
+$	.png
+!	
+#	
+\.jpg\.png	.png
+colors_res-	
+drawable-	
+.dpi-	
+^	mdpi-
+\((\d+)\)	
+\.jpg	_2.jpg
+desktop	desktop_
+^winrar_themes_	
+\.theme	_theme
+\.0	.png
+you_tube	youtube
+_copy	
+\.png	_png
+\.	_
+_png	.png
+_hand_stitch	
+^apps?_	
+_64x64_	_
+_\d+_	_
+bonus_icon_	
+_light	
+108	audacity
+181	netflix
+88	quicktime
+207	doggy_ear
+_48x48_	_
+^nouns_	
+seo_seo_	seo_
+_grey\.png	.png
+^icon_	
+lipse_icons_	lipse_
+nouns_	
+windows_(blue_)?theme_	
+file_file_	file_
+_icon_	_
+_alt	
+_alt(_\d+)?	
+cracked	cracked
+cracked_\d	cracked
+^ctype_	
+flat_	
+^icons_	
+ios_style_	
+lipse_	
+^mnml_	
+novum_inceptum_	
+pcde_theme_	
+settings_add_	
+settings_	
+social_media_	
+^style_	
+_black\.png	.png
+_outline	
+^toggle_	
+.+	cracked.png
+^	folder_
+.+	gallery.png
+^	_
+_?com.	
+halcyonapps	
+^.	
+_com?\.halcyonapps\.	
+com\.halcyonapps\.	
+^com\.	
+-	
+_?\d+\.png	.png
+negative_	
+^abc_ic_	
+^abc_	
+_ copy	
+\.9\.png	.png
+\.9	
+_mtrl_\d+	
+_to_on	
+_512	
+^ab_	
+^bg_	
+_mtrl_alpha	
+_png$	.png
+^default_	
+^donut_	
+_\d+dp\.png	.png
+_mtrl_am_alpha	
+_white\.png	.png
+^negative_	
+_android\.png	.png
+_01\.png	.png
+_\d+\.png	.png
+_\d+\.png	
+?\((\d+)\)	
+nova_action	nova
+pref_anim_	
+_01	
+material-design_	material_
+\.png	_material_design.png
+^material_	
+\d+\.png	
+$	,png
+\.png,png	.png
+,png	.png
+\.png	_noun.png
+600\.png	.png
+abc_	
+btn_	
+mtrl	
+alpha	
+_\.	.
+_am	
+_grey\.png	
+~\d+	
+_light\.png	.png
+_dark\.png	.png
+\.png	_percent.png
+^icon1_	
+^icon\d_	
+_copy\.png	.png
+\.png	_ratio.png
+\.png	_page.png
+\.png	_value.png
+file_type_small_	file_type_
+\.png	_bar.png
+content_content_	content_
+file_type_large_	file_type_
+_\d_noun	_noun
+_white_48	
+_white_24	
+\.png	_seconds.png
+_?(\d+)\.png	_$1_danger.png
+_danger\.png	.png
+^	signal_
+^	2048_
+2048_2048_	game_2048_
+^battery_	battery_charge_
+battery_	battery_1_
+battery_	battery_group_
+_percent	
+battery_charge_	battery_
+charge	charging
+battery_	battery_group_4_
+charging_3	charging
+battery_	battery_group_5_
+group_5	group_6
+group_6	group_7
+charging_2	charging
+copy	_copy
+general_	
+ico_	detailed_picture_
+.png	_stars.png
+rating_star	rating
+remote	remote_
+_\d	
+oneplus	one_plus
+^my	my_
+^	novum_
+_material_design	
+_\d\.	.
+_alt_	_
+_alt_?	_?(\d+)\.png	.png
+\d+\.png	.png
+ \(\d+\)	
+\((\d+)\)	
+ 	
+bluegray	
+ic_	
+_	
+ic_	
+_	
+ic_	
+_	
+_	
+^ic	
+(\d+)\.png	$1_.png
+matthewmorrone1@gmail.com	
+_\.png	_percent.png
+1pittpanther	
+_\.png	_seconds.png
+_\.png	_bar.png
+_\.png	_ratio.png
+_\.png	_value.png
+_\.png	_value.png
+_\.png	_number.png
+_\.png	_number.png
+_	
+_	
+constellation	constellation_
+constellation	constellation_
+_24	
+_48	
+~\d+	
+^ic_	
+^com_	
+ 	
+-	
+\d+\.png	.png
+\d+\.png	.png
+\d+\.png	.png
+_alpha	
+quantum_	
+\d+\.png	
+\d+\.png	.png
+_\d?\.png	.png
+_\d+\.png	.png
+_\d+\.png	.png
+\d+\.png	.png
+_\d+\.png	.png
+_ic_	_
+_+	_
+^create	create_
+^com_	
+_ic_	_
+[ -]	_
+_+	_
+_alpha	
+mixpanel_android_	
+quantum_logo_	
+quantum_	
+\d+\.png	.png
+_\.png	.png
+$	.zip
+_noun\.png	.png
+_noun_	_
+\.png	_2.png
+s_white	
+_whiteopaque	
+score	number
+ - Copy	
+^	chinese_
+goemoji_	
+-	_
+asia	china
+hanzi\.	hanzi_
+^zi	chinese_
+closer_hanzi_original_	hanzi_
+^	bsg_flag_
+flag	cyrannus
+ \((\d+)\)	_$1
+\.png	_2.png
+^ic_	
+calendard	calendar_
+calendar_	calendar_desktop_
+^gl_	
+_numbers	
+^	number
+letter	letter__
+\.png	_3.png
+__	_
+ime_number_	t9_
+^	zodiac_
+ \((\d+)\)	
+\.xml	.svg
+^	planet_
+planet_	
+planet_	moon_
+_\((\d+)\)	
+handstitch	_handstitch
+-	_
+_+	_
+ _ 	
+ \((\d+)\)	
+ \((\d+)\)	
+_?\d+\.png	.png
+_?copy\.png	.png
+_copy	
+^gl_	
+_icon\.png	.png
+adding_elements_thumbnail_	
+^act_	
+^action_	
+^actionbar_	
+_whiteopaque	
+^allapps_	
+_black\.png	.png
+^appdrawer_	
+ \((\d+)\)	
+^kk_	
+^lo_	
+^noti_	
+_	
+weathericon	weather
+alt\d*\.png	.png
+_?\d+\.png	.png
+-	_
+\d\ddp	
+_\d+\.png	.png
+_	
+^ic	
+^ic	
+24dp	
+_copy\.png	.png
+_copy\.png	
+$	.png
+_png_	_
+adding_elements_thumbnail_	
+^allapps	
+\d+\.png	.png
+_\.png	_2.png
+_copy\.png	.png
+_+	_
+^appicon_	
+_ic_	_
+_icon?_	_
+_copy_	_
+^btn_	
+\d+_\d+\.png	.png
+_whiteopaque	
+^cat_	category_
+_\d+\.png	.png
+_4_	_
+^cl_	
+ \((\d+)\)	
+^com_	
+_bg\.png	.png
+_+	_
+_\.png	.png
+_\d+_\d+\.png	.png
+doc_com_	
+duapps_ad_offer_	
+^lo_	
+_mainactivity_	_
+mainactivity	
+_icon\.png	.png
+noun	_noun
+_noun	
+novum	novum_
+inceptum	inceptum_
+nova	nova_
+^np_	
+oneplus	oneplus_
+_48dp	
+_24dp	
+photo	photo_
+\((\d+)\)	
+power	power_
+screen_controlcenter_	
+youtube	youtube_
+ 	
+pedia	pedia_
+_alt_?	
+wikipedia	wikipedia_
+^wl_	
+a	appdrawer
+^act_	
+aeroplane	airplane_
+_?4_def_?	
+_handstitch	
+_handstitch	
+android	android_
+_bg_	_
+^ic_	
+_black	
+^add	add_
+_\d+_	_
+apk	apk_
+ \((\d+)\)	
+_white\.png	.png
+_white\.png	.png
+iw_white_	
+iw_	
+keyboard	keyboard_
+ \(1\)	
+ \((\d+)\)	
+^l_	
+launcher	launcher_
+launch	launch_
+laurel	laurel_
+learn	learn_
+play	play_
+play	play_
+lite	_lite
+programmer	programmer_
+-stack	
+-stack	
+\-stack	
+ - 1st	
+ - 01	
+ - 02	_2
+-	_
+ 	_
+^	star_wars_
+\-icon	
+\-icon	
+\-icon	
+-Icon	
+-	_
+^	religion_
+-Icon	
+\-icon	
+-	_
+^	religion_
+\.png	_2.png
+\-0	
+ 	_
+^	skeptic_
+_2	_3
+\.png	_2.png
+_3_2	_1
+_1	
+^	scrabble_
+^	scrabble_
+\.png	_2.png
+ - Copy	_2
+^	stack_
+ - Copy	
+-	_
+\.svg	
+\'	
+_\((\d+)\)	
+_icon	
+_?logo_?	
+_1st	
+^	star_wars_
+ \((\d+)\)	
+\d+\.png	.png
+_\.png	.png
+_+	_
+\d+_\d+\.png	.png
+_\.png	.png
+_+	_
+rubiks	rubik
+ \(1\)	
+ \((\d+)\)	
+ \((\d+)\)	
+_dark	
+_dark	
+_light	
+^gl_	
+foldericon	folder_icon
+fl	fl_
+from	from_
+human	human_
+oneplus	one_plus
+^	mass_effect_
+^	_
+^	_
+bsg	csg
+bsg	dsg
+bsg	esg
+csg	esg
+csg	esg
+ - Copy	
+ - Copy	_2
+_?\wsg	bsg
+cyrannus	cyrannus_flag
+ ?\((\d+)\)	
+xscreen_layers_v2_	layers_
+xscreen_	
+lock	lock_
+_4 \(2\)	
+yahoo_	
+_2	
+_3	
+ \((\d+)\)	
+^	bubble_
+\.png	_2.png
+ss	s
+^	religion_
+_\d+	
+-	_
+-	_
+^	tapet_
+ - Copy	
+ \((\d+)\)	
+ \((\d+)\)	
+\d+	
+_+\d+	
+^	greek_letter_
+-	_
+_+	_
+-	_
+\d	
+^	halo_
+light	light_
+-	_
+-	_
+\.svg	
+\d+px_?	
+,	
+ _ copy	
+_+	_
+[\)\(]	
+_\d\d_\d\d	
+^	portal_
+^	portal_
+ \((\d+)\)	
+_\d	
+vectors_	
+ \((\d+)\)	
+\.png	_3.png
+__	_
+^the_	digimon_
+ \((\d+)\)	
+^	digimon_
+_3	_4
+_4 - Copy	_3
+ - Copy	
+ \((\d+)\)	
+ ?\((\d+)\)	
+ \((\d+)\)	
+ \((\d+)\)	
+^ic_	
+^ic_	
+ \((\d+)\)	
+^com\.	
+ \((\d+)\)	
+ - Copy	
+natchcenter_com_	
+^net_	
+^org_	
+ \((\d+)\)	
+adobe	adobe_
+adobe	adobe_
+__	_
+swiftkeyk	swiftkey_k
+voice	voice_
+wallpaper	wallpaper_
+ - Copy	
+copy	
+list	_list
+ \((\d+)\)	
+ - 	
+x	x_
+com_	
+~	_
+_\d+_\d+	
+ - Copy	
+(?:\w))(\d+)\.png	_$1.png
+\d+\.png	.png
+_\.png	.png
+_+	_
+-	_
+ - Copy	
+ \((\d+)\)	
+(\w+)_character	character_$1
+character_avatar	avatar_character
+^	avatar_
+ \((\d+)\)	
+character	
+__	_logogram_
+ \((\d+)\)	
+ \((\d+)\)	
+^avatar_	
+^	avatar_
+ \((\d+)\)	
+ \((\d+)\)	
+ \((\d+)\)	
+_+	_
+_\.png	.png
+_noun	
+^ic_	
+ - Copy	
+ 	_
+ \((\d+)\)	
+ \((\d+)\)	
+_\((\d+)\)	
+-	_
+ \((\d+)\)	
+\'	
+holo	holo_
+__	_
+disk	disk_
+ \((\d+)\)	
+ \((\d+)\)	
+mixpanel_android_	
+_green	_outline
+_yellow	
+ \((\d+)\)	
+ \((\d+)\)	
+one_plus	oneplus
+allapps	all_apps
+sdcard	sd_card
+brand	ambigram
+playstore	play_store
+ \((\d+)\)	
+action	action_
+action	action_
+appdrawer	app_drawer
+labtools	lab_tools
+appstore	app_store
+appm	app_m
+recentapp	recent_app
+applock	app_lock
+_?4change	_4_change
+funapp	fun_app
+7ault	vault
+ \((\d+)\)	
+^icon_	
+^kk_	
+magic	magic_
+media	media_
+menu	menu_
+topbar	top_bar
+mixpanel_android_	
+movingkeyfree	moving_key_free
+my	my_
+^noti_	
+ \((\d+)\)	
+_+copy	
+ \((\d+)\)	
+dictionary	dictionary_
+ \((\d+)\)	
+_	_b_
+_b_	_d_
+_a_	_e_
+_d_	_f_
+^	keep_
+^keep_	google_
+one_plus	oneplus
+launcher	
+__	_
+ \((\d+)\)	
+1 	google_keep_
+1 	google_keep_
+[\(\)]]	
+[\(\)]	
+^	mass_effect_
+stack	stack_
+ \((\d+)\)	
+^app_	
+^app_	
+^brand_	
+^sys_	
+_alt_?\d*\.png	.png
+_1\.png	
+$	.png
+^appicon_	
+opng	png
+_.+$	
+ \((\d+)\)	
+4_	google_drive_
+ \((\d+)\)	
+ — \d\ddp	
+_\d\ddp	
+-	_
+_by.+\.png	.png
+-	 — 
+ — 	_
+logo	
+icon	
+copy	
+ \((\d+)\)	
+ - [Cc]opy	
+ \((\d+)\)	
+_48	
+^ic — 	
+^ic_	
+ \((\d+)\)	
+_white\.png	.png
+ \((\d+)\)	
+ - Copy	
+91_launcher	launcher — 91
+ — 	_
+ \((\d+)\)	
+ \((\d+)\)	
+ \((\d+)\)	
+ \((\d+)\)	
+ \((\d+)\)	
+ \((\d+)\)	
+ \((\d+)\)	
+ \((\d+)\)	
+_\d+\.png	.png
+ \((\d+)\)	
+ — 	_
+_alpha	
+^ic_	
+_kids_?	
+_kids\.png	.png
+^ic_	google_
+^ic_	google_
+^ic	
+^_	google_
+^	snapchat_
+_1\.png	.png
+^ic_	google_
+^	cvs_
+^	google_indic_input_
+^	google_inbox_
+^google	google_
+_+	_
+^orca_	
+ \((\d+)\)	
+^ic_	
+^fbui_	
+_\d\ddp	
+ — 	
+_\d\dpx	
+_icon\.png	.png
+_icon_\d+\.png	
+_off\.png	.png
+_l\.png	.png
+_white\.png	.png
+_grey\.png	.png
+ \((\d+)\)	
+^quantum_ic_	
+_48	
+_24	
+_192	
+_dark_?\d*\.png	.png
+_dark\.png	.png
+_32\.png	.png
+_logo\.png	.png
+ \((\d+)\)	
+^ic_	
+ \((\d+)\)	
+ \((\d+)\)	
+-	_
+ 	_
+(\w)_uppercase	uppercase_$1
+ 	_
+-	_
+ladybird	ladybug
+^	lowercase_
+^	lowercase_
+^	number_
+^	hand_
+_c\.png	_filled.png
+ \((\d+)\)	
+\.png	_2.png
+ \((\d+)\)	
+ \((\d+)\)	
+ \((\d+)\)	
+^1 	drastic
+\((\d+)\)	
+ 	_
+ \((\d+)\)	
+\.	 — 
+\.	_
+^com_	
+ \((\d+)\)	
+^	google_
+ \((\d+)\)	
+ \((\d+)\)	
+ \((\d+)\)	
+ \((\d+)\)	
+ \((\d+)\)	
+\.png	_.png
+ \((\d+)\)	
+ \((\d+)\)	
+^	docs_
+\.9\.	.
+_grey	
+_quantum	
+_app_	_
+_ic_	_
+_24	
+_48	
+_white	
+_doclist	
+docs_docs	docs
+_72dp	
+600\.png	.png
+_alpha	
+ \((\d+)\)	
+_36	
+ \((\d+)\)	
+ \((\d+)\)	
+ \((\d+)\)	
+^	pokemon_
+^	pokemon_type_
+^	1_
+^	2_
+^	3_
+ \((\d+)\)	
+^	4_
+^	5_
+ \((\d+)\)	
+-\d-\d	
+_types_	_
+ \((\d+)\)	
+^	pokemon_type_
+5_(.+?)_2	6_$1
+^	pokemon_types_7_
+^	pokemon_types_8_
+ \((\d+)\)	
+ \((\d+)\)	
+-	 — 
+ — 	_
+_icon	
+ 	_
+\d+px	
+_512	
+_+	_
+_02	
+_by.+\.png	.png
+_\.png	.png
+\((\d+)\)	
+_+	_
+ 	
+ 	_
+_+	_
+_+	_
+_\.png	.png
+google_	google_keyboard_
+ \((\d+)\)	
+ \((\d+)\)	
+ \((\d+)\)	
+ \((\d+)\)	
+cvs_cvs_	cvs_
+ \((\d+)\)	
+-	_
+ \((\d+)\)	
+$	.png
+(\d) \(1\)	beta_$1
+(\d) \(1\)	beta_$1
+(\d) \(2\)	dev_$1
+^	google_chrome_
+-	_
+ \((\d+)\)	
+\	
+\((\d+)\)	
+androi	android
+^	google_
+\((\d+)\)	
+_+	_
+ \((\d+)\)	
+ \((\d+)\)	
+ \((\d+)\)	
+ \((\d+)\)	
+_f_	_day_
+-	_
+_icon_	_
+_icon\.png	.png
+ \((\d+)\)	
+ \((\d+)\)	
+^	microsoft_
+^	microsoft_
+-	_
+ \((\d+)\)	
+2 \((\d+)\)	pharmacy
+^	cvs_
+_android_?	_
+\.png	_2.png
+^	playing_
+greek_letter_	
+greek_	
+greek_	
+\.png	_serif.png
+_2	
+2000px-Greek_	
+2000px-Greek_	
+greek_	
+greek_	
+\.svg	
+_\(capital_and_small\)	
+_\(capital_and_small\)	
+_\(capital_and_small\)	
+^	overlaid_
+2000px-Greek_	
+-\d-\d	
+\-\d\-\d	
+ — \+sans	
+_\+sans	
+\+sans	
+\.svg	
+^letter_	
+ \((\d+)\)	
+^	_
+\.svg	
+\d+px	
+-	 — 
+  —  	_
+ — 	_
+ 	
+—	_
+ — 	
+ ?— ?	
+^	greek_letter_
+ \((\d+)\)	
+\d	
+_\.	.
+_+	_
+^greek_	
+ \((\d+)\)	
+ \((\d+)\)	
+^	greek_
+^	greek_letter_
+uncial_	greek_uncial_letter_
+ \((\d+)\)	
+ \((\d+)\)	
+ \((\d+)\)	
+destiny	destiny_
+_+	_
+mastery	mastery_
+trophy	_trophy
+banner	_banner
+_+	_
+ \((\d+)\)	
+ \((\d+)\)	
+ \((\d+)\)	
+ \((\d+)\)	
+ \((\d+)\)	
+_\d+\.png	.png
+\.9	
+-	_
+\d*_\d	
+ \((\d+)\)	
+ \((\d+)\)	
+ \((\d+)\)	
+_\d+_\d+	
+ \((\d+)\)	
+ \((\d+)\)	
+ \((\d+)\)	
+ \((\d+)\)	
+ \((\d+)\)	
+ \((\d+)\)	
+^com\.	
+ \((\d+)\)	
+\((\d+)\)	
+^	_
+ \((\d+)\)	
+ \((\d+)\)	
+_\d+	
+\.svg_\d+\.png	.svg
+_\d+\.png	
+png	svg
+ \((\d+)\)	
+png	svg
+\((\d+)\)	
+ +\((\d+)\)	
+png	svg
+_vectorized	
+ \((\d+)\)	
+ \((\d+)\)	
+ \((\d+)\)	
+svg	txt
+txt	svg
+$	.txt
+cog_	cog_gear_settings_
+ \((\d+)\)	
+ \((\d+)\)	
+_vectorized	
+^	_
+^com\.	
+~01	_2
+ \((\d+)\)	
+.+	stuff.png
+ \((\d+)\)	
+ \((\d+)\)	
+wn	w
+and	_and_
+of	_of_
+^	math_
+^w	ancient_
+_vectorized	
+$	.zip
+z_	z_number_
+_vectorized	
+ \((\d+)\)	
+app_drawer_	
+google	google_
+google	google_
+-	_
+_vectorized	
+ \((\d+)\)	
+ \((\d+)\)	
+ \((\d+)\)	
+ \((\d+)\)	
+ \((\d+)\)	
+\(	
+\)	
+^	sunrise_
+ \((\d+)\)	
+_vectorized	
+ \((\d+)\)	
+ \((\d+)\)	
+_vectorized	
+\.svg	
+-	_
+_+	_
+Ugaritic	ugaritic
+ \((\d+)\)	
+_\d+	
+\.	_.
+_vectorized	
+-	_
+_vectorized	
+_vectorized	
+_vectorized	
+\d+x\d+	
+_+	_
+_\.png	
+$	.png
+_vectorized	
+_\.png	.png
+_by.+\.png	.png
+_logo	
+_icon	
+halfingr_deviantart_com_img\d+_deviantart_net_	
+ \((\d+)\)	
+_\((\d+)\)	
+high_res_esv_	
+ \((\d+)\)	
+_vectorized	
+ \((\d+)\)	
+_vectorized	
+ \((\d+)\)	
+_vectorized	
+ \((\d+)\)	
+_vectorized	
+ \((\d+)\)	
+_vectorized	
+_vectorized	
+ \((\d+)\)	
+^ic_	
+_by.+\.png	.png
+^app_	
+^app_	
+^app_	
+^app_ 	
+^app_ 	
+^app_ 	
+^app_ 	
+app_	
+app_	
+^app_ 	
+^app_	
+\((\d+)\)	
+^app_	
+app_	
+^app_	
+com\.	
+ \((\d+)\)	
+_0\d	
+_?\d+\.png	.png
+ \((\d+)\)	
+_vectorized	
+^ic_	
+~	_
+^	destiny_
+\.png	_2.png
+_vectorized	
+_vectorized	
+\((\d+)\)	
+\.svg	_vectorized.svg
+ \((\d+)\)	
+ \((\d+)\)	
+^	creationist_
+_1\.png	.png
+_1\.png	.png
+^	chrome_
+~	
+~	
+^_	
+_vectorized	

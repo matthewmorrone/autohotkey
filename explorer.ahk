@@ -1,22 +1,29 @@
 
 
-#IfWinActive Awesome Duplicate
-
-Numpad0::clickAndReturn(844,269)
-r::clickAndReturn(844,269)
-d::clickAndReturn(452,639)
-f::clickAndReturn(1323,639)
-space::down
-b::up
-
-#IfWinActive
 
 
-#Include batch.ahk
+
+
+
 
 
 
 #IfWinActive ahk_exe explorer.exe
+
+
+^WheelDown::
+Send {Ctrl Up}
+Send {WheelDown}
+Send {Ctrl Down}
+return
+
+
+^WheelUp::
+Send {Ctrl Up}
+Send {WheelUp}
+Send {Ctrl Down}
+return
+
 
 
 ; *$Shift::
@@ -32,6 +39,19 @@ b::up
 send !hsi
 return
 
+#c::
+Clipboard = ; Must be blank for detection to work.
+Send ^c
+ClipWait 2
+if ErrorLevel
+    return
+Sort Clipboard
+coolTip(Clipboard, 2000)
+return
+
+
+^w::
+return
 
 ; mozilla-like search input focus
 ^l::
@@ -57,187 +77,92 @@ else {
 return
 
 ; duplicate (-ish)
-^d::
-Send ^c
-Send ^v
-Send up
-return
+; ^d::
+; Send ^c
+; Send ^v
+; ; Send up
+; Send {F5}
+; return
 
 ; move selection up a directory
 ; !up (alt+up) moves up a directory
 ; backspace::send !{up}
 ^up::
 Send ^x
-Sleep, 20
+Sleep, 200
 ; Send {BS}
 send !{up}
-Sleep, 20
+Sleep, 200
 Send {F5}
-Sleep, 20
+Sleep, 200
 Send ^v
-Sleep, 20
+Sleep, 200
 Send {shift Up}
 return
 
+
+getPath() {
+	gosub selections
+	if (len = 1) {
+		for key, item in sel {
+			path := item.path
+		}
+	}
+	return path
+}
+
+
+^d::
+gosub selections
+#EscapeChar `
+
+for item in sel {
+	from := item.path
+	SplitPath, from, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
+	befor = %OutFileName%
+	after = %OutFileName%
+	after := RegExReplace(after, "(_\d+)?\.png", ".png", out, -1, 1)
+	after := RegExReplace(after, " \((\d+)\)", "", out, -1, 1)
+	FileCopy, %OutDir%\%befor%, %OutDir%\%after%, 0
+	start := 2
+	while ErrorLevel {
+		after := RegExReplace(after, "(_\d+)?\.png", "", out, -1, 1)
+		FileCopy, %OutDir%\%befor%, %OutDir%\%after%_%start%.png, 0
+		start++
+	}
+}
+
+#EscapeChar \
+return
+
+^s::
+gosub selections
+ind := 0
+items := Array()
+#EscapeChar `
+if (len = 2) {
+	for item in sel {
+		from := item.path
+		SplitPath, from, OutFileName, OutPath, OutExtension, OutNameNoExt, OutDrive
+		items[ind] := OutNameNoExt
+		ind++
+	}
+	item1 := items[0]
+	item2 := items[1]
+	sleep 1000
+	FileMove, %OutPath%\%item1%.png, %OutPath%\%item2%__temp__.png
+	sleep 1000
+	FileMove, %OutPath%\%item2%.png, %OutPath%\%item1%.png
+	sleep 1000
+	FileMove, %OutPath%\%item2%__temp__.png, %OutPath%\%item2%.png
+}
+#EscapeChar \
+return
 
 ; ^`::
 ; send !{up}
 ; return
 
-
-; Batch File renaming
-
-^[::
-currentTab = 3
-gosub BatchGUI
-return
-
-^]::
-currentTab = 2
-gosub BatchGUI
-return
-
-BatchGUI:
-Gui, Batch: New
-Gui, Add, Tab2, Choose%currentTab% Left, Affix|Replace|Quick
-Gui, Add, Radio, vPlace, &Prefix
-Gui, Add, Radio,, &Suffix
-Gui, Add, Text,, Affix:
-Gui, Add, Edit, vAffix
-Gui, Tab, 2
-
-hreplace :=
-hwith :=
-Loop, read, C:\\Users\\Matthew\\Documents\\history.dsv
-{
-	if (A_LoopReadLine = "") 
-		continue
-    Loop, parse, A_LoopReadLine, %A_Tab%
-    {
-    	if (A_Index = 1) 
-    		hreplace := A_LoopField "|" hreplace
-    	if (A_Index = 2)
-    		hwith := A_LoopField "|" hwith  
-    }
-}
-StringTrimRight, hreplace, hreplace, 1
-StringTrimRight, hwith, hwith, 1
-
-hreplace := RemoveDuplicates(hreplace, Delimiter="|")
-hwith := RemoveDuplicates(hwith, Delimiter="|")
-
-
-Gui, Add, Text,, Replace:
-Gui, Add, ComboBox, vReplace Simple, %hreplace%
-Gui, Add, Text,, With:
-Gui, Add, ComboBox, vWith Simple, %hwith%
-Gui, Add, Checkbox, vOverwrite, Overwrite?
-Gui, Tab, 3
-Gui, Add, Button, gFlatten, Flatten
-Gui, Add, Button, gUnderscore, Fix Underscores
-Gui, Add, Button, gLowercase, Lower Case
-Gui, Add, Button, gUppercase, Upper Case
-Gui, Add, Button, gGithub, Github
-Gui, Add, Button, gDroid, Droid
-Gui, Tab
-Gui, Add, Button, default xm gGo, OK
-; Gui, -SysMenu +Owner
-Gui, Show,, Batch
-
-
-return
-
-
-
-
-
-
-ButtonGo:
-Go:
-Gui, Submit
-gosub selections
-If (place and affix) {
-	if (place = 1) {
-		prefix := affix
-		gosub prefix
-	}
-	if (place = 2) {
-		suffix := affix
-		gosub suffix
-	}
-}
-If (replace) {
-	FileAppend, %replace%\t%with%\n, C:\\Users\\Matthew\\Documents\\history.dsv
-	if ErrorLevel
-		MsgBox %ErrorLevel%
-	gosub replacewith
-}
-return
-
-Flatten:
-Gui, Submit
-gosub selections
-gosub toflatten
-return
-
-Underscore:
-Gui, Submit
-gosub selections
-gosub tounderscore
-return
-
-Lowercase:
-Gui, Submit
-gosub selections
-gosub tolowercase
-return
-
-Uppercase:
-Gui, Submit
-gosub selections
-gosub touppercase
-return
-
-Github:
-Gui, Submit
-gosub selections
-gosub togithub
-return
-
-Droid:
-Gui, Submit
-gosub selections
-gosub todroid
-return
-
-GuiClose:
-GuiEscape: 
-Gui, Cancel 
-return
-
-
-
-
-
-; ButtonLower:
-; Gui, Submit
-; MsgBox
-; gosub tolowercase
-; Gui, Destroy
-; return
-; ButtonUpper:
-; Gui, Submit
-; gosub touppercase
-; Gui, Destroy
-; return
-
-; ; Activate window under mouse
-; MouseGetPos,,,OutWin,OutCtrl
-; WinActivate, ahk_id %OutWin%
-
-; ; Store current active window, then reactivate it later
-; WinGet, active_id, ID, A
-; WinActivate, ahk_id %active_id%
 
 
 #IfWinActive

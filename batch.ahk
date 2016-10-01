@@ -1,15 +1,195 @@
 
+
+; Batch File renaming
+
+^[::
+currentTab = 3
+gosub BatchGUI
+return
+
+^]::
+currentTab = 2
+gosub BatchGUI
+return
+
+BatchGUI:
+Gui, Batch: New, ,"Batch File Rename"
+Gui, Add, Tab2, Choose%currentTab% Left, Affix|Replace|Quick
+Gui, Add, Radio, vPlace, &Prefix
+Gui, Add, Radio,, &Suffix
+Gui, Add, Text,, Affix:
+Gui, Add, Edit, vAffix
+Gui, Tab, 2
+
+hreplace :=
+hwith :=
+Loop, read, history.dsv
+{
+	if (A_LoopReadLine = "") 
+		continue
+    Loop, parse, A_LoopReadLine, %A_Tab%
+    {
+    	if (A_Index = 1) 
+    		hreplace := A_LoopField "|" hreplace
+    	if (A_Index = 2)
+    		hwith := A_LoopField "|" hwith  
+    }
+}
+StringTrimRight, hreplace, hreplace, 1
+StringTrimRight, hwith, hwith, 1
+
+hreplace := RemoveDuplicates(hreplace, Delimiter="|")
+hwith := RemoveDuplicates(hwith, Delimiter="|")
+
+
+Gui, Add, Text,, Replace:
+Gui, Add, ComboBox, vReplace Simple, %hreplace%
+Gui, Add, Text,, With:
+Gui, Add, ComboBox, vWith Simple, %hwith%
+Gui, Add, Checkbox, vOverwrite, Overwrite?
+;  checked
+Gui, Tab, 3
+Gui, Add, Button, gFlatten, Flatten
+Gui, Add, Button, gUnderscore, Underscores
+Gui, Add, Button, gLowercase, Lower Case
+Gui, Add, Button, gUppercase, Upper Case
+Gui, Add, Button, gSnakecase, snake_case
+Gui, Add, Button, gNormalize, Normalize
+Gui, Add, Button, gGithub, Github
+Gui, Add, Button, gDroid, Droid
+Gui, Tab
+Gui, Add, Button, default xm gGo, OK
+; Gui, -SysMenu +Owner
+Gui, Show,, Batch
+
+
+return
+
+
+
+
+
+
+ButtonGo:
+Go:
+Gui, Submit
+gosub selections
+If (place and affix) {
+	if (place = 1) {
+		prefix := affix
+		gosub prefix
+	}
+	if (place = 2) {
+		suffix := affix
+		gosub suffix
+	}
+}
+If (replace) {
+	FileAppend, %replace%`t%with%`n, history.dsv
+	if ErrorLevel
+		MsgBox %ErrorLevel%
+	gosub replacewith
+}
+return
+
+Flatten:
+Gui, Submit
+gosub selections
+gosub toflatten
+return
+
+Underscore:
+Gui, Submit
+gosub selections
+gosub tounderscore
+return
+
+Lowercase:
+Gui, Submit
+gosub selections
+gosub tolowercase
+return
+
+Uppercase:
+Gui, Submit
+gosub selections
+gosub touppercase
+return
+
+Snakecase:
+Gui, Submit
+gosub selections
+gosub tosnakecase
+return
+
+Normalize:
+Gui, Submit
+gosub selections
+gosub tonormalize
+return
+
+Github:
+Gui, Submit
+gosub selections
+gosub togithub
+return
+
+Droid:
+Gui, Submit
+gosub selections
+gosub todroid
+return
+
+GuiClose:
+GuiEscape: 
+Gui, Cancel 
+return
+
+
+
+
+
+
+
+
+; ButtonLower:
+; Gui, Submit
+; MsgBox
+; gosub tolowercase
+; Gui, Destroy
+; return
+; ButtonUpper:
+; Gui, Submit
+; gosub touppercase
+; Gui, Destroy
+; return
+
+; ; Activate window under mouse
+; MouseGetPos,,,OutWin,OutCtrl
+; WinActivate, ahk_id %OutWin%
+
+; ; Store current active window, then reactivate it later
+; WinGet, active_id, ID, A
+; WinActivate, ahk_id %active_id%
+
+
+
+
 selections:
-len := 0
 sel := GetSelections()
+len := 0
 for item in sel {
 	len++
 }
-if (len = 0) {
-	send ^a
-	sel := GetSelections()
-}
-Sort, sel
+; if (len = 0) {
+; 	send ^a
+; 	sel := GetSelections()
+; 	len := 0
+; 	for item in sel {
+; 		len++
+; 	}
+; }
+Sort, sel, N
 return
 
 
@@ -33,6 +213,47 @@ return
 ; }
 ; #EscapeChar \
 ; return
+
+
+
+replacewith:
+#EscapeChar `
+ind := 0
+for item in sel {
+	from := item.path
+	SplitPath, from, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
+	befor = %OutFileName%
+	after := RegExReplace(befor, replace, with, out, -1, 1)
+	If befor <> %after% 
+	{	
+		if overwrite {
+			FileMove, %OutDir%\%befor%, %OutDir%\%after%, 1
+			;%overwrite%
+		}
+		else {
+			FileMove, %OutDir%\%befor%, %OutDir%\%after%, 0
+			if !ErrorLevel {
+				ind++
+			}
+			else {
+				start := 2
+				while ErrorLevel {
+					; befor := after
+					after := RegExReplace(after, "(_\d+)?\."OutExtension, "", out, -1, 1)
+					; MsgBox %OutDir%\%befor%, %OutDir%\%after%_%start%.png
+					FileMove, %OutDir%\%befor%, %OutDir%\%after%_%start%.png, 0
+					start++
+				}
+				ind++
+			}
+		}
+	}
+}
+coolTip(ind . " replacements made.", 5000)
+#EscapeChar \
+return
+
+
 
 
 
@@ -75,6 +296,33 @@ for item in sel {
 coolTip(ind . " replacements made.", 5000)
 #EscapeChar \
 return
+
+
+
+tosnakecase:
+#EscapeChar `
+ind := 0
+for item in sel {
+	from := item.path
+	SplitPath, from, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
+	befor = %OutFileName%
+	after = %befor%
+	after := RegExReplace(after, "([A-Z])([a-z])", "_$l1$2", out, -1, 1)
+	after := RegExReplace(after, "([a-z])([A-Z])", "$1_$l2", out, -1, 1)
+	after := RegExReplace(after, "^_", "", out, -1, 1)
+	; after := RegExReplace(after, "(\d+)\.png)", "_$1.png", out, -1, 1)
+	after := RegExReplace(after, "_+", "_", out, -1, 1)
+
+	StringLower, after, after
+	FileMove, %OutDir%\%befor%, %OutDir%\%after%, %overwrite%
+	if !ErrorLevel
+		ind++
+}
+coolTip(ind . " replacements made.", 5000)
+#EscapeChar \
+return
+
+
 
 
 
@@ -137,39 +385,46 @@ coolTip(ind . " replacements made.", 5000)
 return
 
 
-
-
-replacewith:
+tonormalize:
 #EscapeChar `
 ind := 0
 for item in sel {
 	from := item.path
 	SplitPath, from, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
 	befor = %OutFileName%
-	after := RegExReplace(befor, replace, with, out, -1, 1)
+	after := RegExReplace(befor, " \((\d+)\)", "", out, -1, 1)
 	If befor <> %after% 
-	{
-		FileMove, %OutDir%\%befor%, %OutDir%\%after%, 0
-		;%overwrite%
-		if !ErrorLevel {
-			ind++
+	{	
+		if overwrite {
+			FileMove, %OutDir%\%befor%, %OutDir%\%after%, 1
+			;%overwrite%
 		}
 		else {
-			start := 2
-			while ErrorLevel {
-				; befor := after
-				after := RegExReplace(after, "(_\d+)?\.png", "", out, -1, 1)
-				; MsgBox %OutDir%\%befor%, %OutDir%\%after%_%start%.png
-				FileMove, %OutDir%\%befor%, %OutDir%\%after%_%start%.png, 0
-				start++
+			FileMove, %OutDir%\%befor%, %OutDir%\%after%, 0
+			if !ErrorLevel {
+				ind++
 			}
-			ind++
+			else {
+				start := 2
+				while ErrorLevel {
+					; befor := after
+					after := RegExReplace(after, "(_\d+)?\.png", "", out, -1, 1)
+					; MsgBox %OutDir%\%befor%, %OutDir%\%after%_%start%.png
+					FileMove, %OutDir%\%befor%, %OutDir%\%after%_%start%.png, 0
+					start++
+				}
+				ind++
+			}
 		}
 	}
 }
-coolTip(ind . " replacements made.", 5000)
+
+MsgBox, , Batch, % ind . " replacements made.", 5
+; coolTip(ind . " replacements made.", 5000)
 #EscapeChar \
 return
+
+
 
 
 
@@ -272,6 +527,22 @@ coolTip(ind . " replacements made.", 5000)
 return
 
 
+; *q::
+; Count++
+; If Count = 1
+; {
+; coolTip("LCtrl Down")
+; Send {Ctrl Down}
+; }
+; Else If Count = 2
+; {
+; coolTip("LCtrl Up")
+; Send {Ctrl Up}
+; Count := 0
+; }
+; Return
+
+
 
 
 todroid:
@@ -282,16 +553,11 @@ for item in sel {
 	SplitPath, from, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
 	befor = %OutFileName%
 	StringLower, after, befor
-	after := RegExReplace(after, "\.png",	"_png", out, -1, 1)
-	after := RegExReplace(after, "\.",		"_",	out, -1, 1)
-	after := RegExReplace(after, "_png",	".png", out, -1, 1)
+	after := RegExReplace(after, "\.",		"_", out, -1, 1)
+	after := RegExReplace(after, "_png$",	".png", out, -1, 1)
 	after := RegExReplace(after, " ",		"_", out, -1, 1)
 	after := RegExReplace(after, "-",		"_", out, -1, 1)
 	after := RegExReplace(after, "~",		"_", out, -1, 1)
-	after := RegExReplace(after, "\(",		"_", out, -1, 1)
-	after := RegExReplace(after, "\)",		"_", out, -1, 1)
-	after := RegExReplace(after, "^_",		"", out, -1, 1)
-	after := RegExReplace(after, "_$",		"", out, -1, 1)
 	after := RegExReplace(after, "_+",		"_", out, -1, 1)
 	If (befor <> after) {
 		FileMove, %OutDir%\%befor%, %OutDir%\%after%, %overwrite%

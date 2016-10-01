@@ -1,16 +1,16 @@
 
 
-*q::
+!q::
 Count++
 If Count = 1
 {
-coolTip("LWin Down")
-Send {Shift Down}
+coolTip("Sticky On")
+Send {LCtrl Down}
 }
 Else If Count = 2
 {
-coolTip("LWin Up")
-Send {Shift Up}
+coolTip("Sticky Off")
+Send {LCtrl Up}
 Count := 0
 }
 Return
@@ -22,11 +22,11 @@ Return
 ;whenever it isn't used to launch a hotkey 
 ;such as the above, add the following hotkey.
 ;
-$Space::
-Send, {Space down} 	; Press down the Space key.
-Sleep 50  			; Keep it down for 'x' milliseconds.
-Send {Space up}  		; Release the Space key.
-return
+; $Space::
+; Send, {Space down} 	; Press down the Space key.
+; Sleep 50  			; Keep it down for 'x' milliseconds.
+; Send {Space up}  	; Release the Space key.
+; return
 ;
 ;The $ prefix is needed to prevent a warning dialog 
 ;about an infinite loop (since the hotkey "sends itself"). 

@@ -32,7 +32,7 @@ return
 ::stat]::git status -s{enter}
 ::diff]::git diff{enter}
 ::add]::git add --all{enter}
-::comm]::git commit -m ""{left 1}
+::comm]::git commit -m "autocommit"{enter}
 ::commit]::git commit -m ""{left 1}
 ::pull]::git pull{enter}
 ; ::merge]::git merge{enter}
@@ -73,15 +73,15 @@ return
 	Send, git config --global user.name %name%{enter}git config --global user.email %email%{enter}git config --global push.default simple{enter}
 return
 ::push]::
-	email := username("e")
-	password := password(0)
+	; email := username("e")
+	; password := password(0)
 	Send git push{enter}
-	KeyWait, ], D
-	Send {bs}
-	Send %email%{enter}
-	KeyWait, ], D
-	Send {bs}
-	Send %password%{enter}
+	; KeyWait, ], D
+	; Send {bs}
+	; Send %email%{enter}
+	; KeyWait, ], D
+	; Send {bs}
+	; Send %password%{enter}
 Return
 
 #Hotstring C0 ?0 *0

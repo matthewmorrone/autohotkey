@@ -1,6 +1,5 @@
 
 
-
 #IfWinActive ahk_exe civilizationbe_dx9.exe
 #IfWinActive ahk_exe civilizationbe_dx11.exe
 #IfWinActive ahk_exe CivilizationV.exe
@@ -21,6 +20,17 @@ Return
 #IfWinActive ahk_exe CivilizationV.exe
 #IfWinActive ahk_exe CivilizationV_DX11.exe
 
+; $w::
+; While GetKeyState("w", "P")
+; {
+; 	Send, w
+; 	Sleep, 10
+; }
+; Return
+; If it's not fast enough, try SetBatchLines, -1 or remove sleep
+
+
+
 ^Space::clickAndReturn(840, 1020)
 
 3::clickAndReturn(55, 852)
@@ -39,7 +49,9 @@ v::p
 	Send {click 1500, 830}
 	Send, Tab UP
 return
-Tab::
+
+; Tab::
+RShift::
 	clickAndReturn(1500, 830)
 return
 
@@ -66,6 +78,7 @@ v::p
 	Send, Tab UP
 return
 Tab::
+RShift::
 	clickAndReturn(1625, 1000)
 return
 

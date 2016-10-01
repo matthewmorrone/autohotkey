@@ -49,6 +49,16 @@ Array_Len(Arr) {
 	Return Round(Arr._MaxIndex())
 }
 
+Array_Closest(Arr, Num) {
+	curr := arr[0], out := 0
+	for key,val in arr {
+		if (Abs(num - val) < Abs(num - curr)) {
+			out = %key%
+			curr = %val%
+		}
+	}
+	return %out%
+}
 
 Array_Test() {
 	Temp := Array()
