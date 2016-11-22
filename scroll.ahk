@@ -9,14 +9,8 @@
 ; 		SendMessage, 0x114, 1, 0, %FocusedControl%, A  ; 0x114 is WM_HSCROLL ; 1 vs. 0 causes SB_LINEDOWN vs. UP
 ; return
 
-; ; turn off zoom scroll
-; ^WheelDown::Return
-; ^WheelUp::Return
+; turn off zoom scroll
+^WheelDown::Return
+^WheelUp::Return
 
-
-
-#IfWinActive ahk_exe explorer.exe
-
-
-#IfWinActive
 

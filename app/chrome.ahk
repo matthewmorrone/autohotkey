@@ -1,6 +1,6 @@
 #IfWinActive Chrome
 
-F4::clickAndReturn(1668, 995)
+F4::clickAndReturn(1910, 1141)
 
 ; RButton::click right
 ; RButton & WheelDown::Send {Browser_Back}

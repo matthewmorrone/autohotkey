@@ -1307,3 +1307,19 @@ _1\.png	.png
 ~	
 ^_	
 _vectorized	
+phone-list	categories
+phone-detail	category
+AppChecker	app_checker
+\.	_
+_png	.png
+_	
+^	fauna_
+emoji_	
+^	animal_
+^	flora_
+/	
+.txt	
+\.txt	
+ 	_
+Android Wear	
+$	.zip

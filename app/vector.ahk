@@ -1,10 +1,4 @@
 
-min(num*){
-	min := 1
-	Loop % num.MaxIndex()
-		min := (num[A_Index] < num[min]) ? A_Index : min
-	return min
-}
 
 
 ; ~Tab::
@@ -13,17 +7,21 @@ min(num*){
 ; Send {click}
 ; return
 #IfWinActive Vector Magic
-~Tab::
-WinActivate, Vector Magic
+XButton1:
+Tab::
+; WinActivate, Vector Magic
 ww := (WindowW()/10*9)
 Send {click %ww%, 127}
 return
+XButton2:
 Space::
 RShift::
 ww := (WindowW()/20*19)
-Send {click %ww%, 974}
+Send {click 1868, 1134}
+sleep 200
+Send {click 1868, 1134}
 ww := (WindowW() - 300)
-Send {click %ww%, 542}
+Send {click %ww%, 537}
 Send ^a
 Send ^c
 width := clipboard
@@ -32,22 +30,26 @@ Send ^a
 Send ^c
 height := clipboard
 ww := (WindowW() - 300)
-if (width > height) {
-	Send {click %ww%, 542}
-}
 if (width < height) {
-	Send {click %ww%, 562}	
+	Send {click %ww%, 537}
+}
+if (width > height) {
+	Send {click %ww%, 562}
 }
 ; Send %A_Tab%
 Send ^a
 Send {backspace}
 Send 500
-Send !{Esc}
-WinActivate, Vector Magic
+Send {click %ww%, 537}
+Send {click %ww%, 562}
+
+; Send !{Esc}
+; WinActivate, Vector Magic
 
 
-ww := (WindowW() - 100)
-Send {click %ww%, 616}
+; ww := (WindowW() - 100)
+; Send {click %ww%, 616}
+Send {click 1858, 625}
 return
 #IfWinActive
 

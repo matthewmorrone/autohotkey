@@ -1,17 +1,4 @@
-
-
-
-
-
-
-
-
-
-
-
 #IfWinActive Awesome Duplicate
-
-
 
 Numpad0::clickAndReturn(844,231)
 r::
@@ -46,7 +33,6 @@ return
 space::down
 b::up
 
-
 clicker := false
 ^Insert::
 	clicker := !clicker
@@ -69,6 +55,5 @@ if (clicker = true) {
 	Send {LButton}
 }
 return
-
 
 #IfWinActive

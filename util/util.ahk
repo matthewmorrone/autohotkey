@@ -1,3 +1,6 @@
+#Include util/array.ahk
+#Include util/range.ahk
+
 
 WindowW() {
 	WinGetPos,,, WindowWidth
@@ -9,6 +12,12 @@ WindowH() {
 }
 
 
+min(num*){
+	min := 1
+	Loop % num.MaxIndex()
+		min := (num[A_Index] < num[min]) ? A_Index : min
+	return min
+}
 
 
 RemoveDuplicates(String, Delimiter="`n") {
@@ -50,12 +59,12 @@ splashOn(a:="is this thing on?", b:=1000) {
 }
 
 ; a little bit of visual help
-~*^z::coolTip("undo!")
-~*^y::coolTip("redo!")
-~*+^z::coolTip("redo!")
-~*^x::coolTip("cut!")
-~*^c::coolTip("copied!")
-~*^v::coolTip("pasted!")
+; ~*^z::coolTip("undo!")
+; ~*^y::coolTip("redo!")
+; ~*+^z::coolTip("redo!")
+; ~*^x::coolTip("cut!")
+; ~*^c::coolTip("copied!")
+; ~*^v::coolTip("pasted!")
 
 ActivatorEnd(message, active:=true, timeout:=3) {
 	if %active% {
