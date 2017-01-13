@@ -51,6 +51,16 @@ coolTip(a:="is this thing on?", b:=1000) {
 	ToolTip
 }
 
+crayTip(a:="is this thing on?", b:=10) {
+	TrayTip, Autohotkey, %a%, %b%
+	if (b < 10) {
+		Sleep b
+		TrayTip		
+	}
+}
+
+
+
 ; splashtext wrapper
 splashOn(a:="is this thing on?", b:=1000) {
 	SplashTextOn,,,%a%,

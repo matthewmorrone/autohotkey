@@ -11,6 +11,11 @@
 ; #IfWinActive, ahk_class CabinetWClass
 #IfWinActive ahk_exe explorer.exe
 
+
+
+#Include batch.ahk
+
+
 Backspace::
 	ControlGet renamestatus,Visible,,Edit1,A
 	ControlGetFocus focussed, A
@@ -101,18 +106,23 @@ return
 ; move selection up a directory
 ; !up (alt+up) moves up a directory
 ; backspace::send !{up}
-^up::
+^*up::
 Send ^x
-Sleep, 200
-; Send {BS}
-send !{up}
-Sleep, 200
-Send {F5}
-Sleep, 200
+SendInput {Alt Down}{Up}{Alt Up}
 Send ^v
-Sleep, 200
-Send {shift Up}
+; Send ^x
+; ; Sleep, 200
+; ; Send {BS}
+; send !{up}
+; Sleep, 200
+; Send {F5}
+; Sleep, 200
+; Send ^v
+; Sleep, 200
+; Send {shift Up}
 return
+
+
 
 
 getPath() {

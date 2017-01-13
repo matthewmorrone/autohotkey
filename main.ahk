@@ -64,6 +64,30 @@ CapsLock::Enter
 #d:: Send {Right}
 
 
+
+
+
+; ^+l::
+; ClipboardCache := Clipboard
+; Send ^c
+; msgbox %clipboard%
+; StringLower, Clipboard, Clipboard
+; Send ^v
+; Clipboard := ClipboardCache
+; return
+
+; ^+u::
+; ClipboardCache := Clipboard
+; Send ^c
+; msgbox %clipboard%
+; StringUpper, Clipboard, Clipboard
+; Send ^v
+; Clipboard := ClipboardCache
+; return
+
+
+
+
 ; ^k::
 ; Clipboard := RegExReplace(Clipboard, "([A-Z])", "_$l1")
 ; Clipboard := RegExReplace(Clipboard, "^_", "")
@@ -90,6 +114,11 @@ Return
 Click 2
 return
 
+
+MButton::
+Send, {Ctrl Down}{Click}{Ctrl up}
+return
+
 ; to see a key/mouse trace
 F8::
 #persistent
@@ -100,7 +129,33 @@ KeyHistory
 return
 
 
-return
+
+
+
+; nudge:
+; WinMove, X, Y
+; WinMove, WinTitle, WinText, X, Y [, Width, Height, ExcludeTitle, ExcludeText]
+
+
+; return
+
+; ^+n::
+; Goto, nudge
+; ; https://autohotkey.com/docs/commands/WinMove.htm
+; return
+
+
+
+
+
+
+; #o::  ; Win+O hotkey that turns off the monitor.
+; Sleep 1000  ; Give user a chance to release keys (in case their release would wake up the monitor again).
+; ; Turn Monitor Off:
+; SendMessage, 0x112, 0xF170, 2,, Program Manager  ; 0x112 is WM_SYSCOMMAND, 0xF170 is SC_MONITORPOWER.
+; ; Note for the above: Use -1 in place of 2 to turn the monitor on.
+; ; Use 1 in place of 2 to activate the monitor's low-power mode.
+; return
 
 
 

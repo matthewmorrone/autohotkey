@@ -12,12 +12,17 @@ SetTitleMatchMode 2 			; A window's title can contain WinTitle anywhere inside i
 ; #Include admin.ahk
 
 Menu, tray, icon, ico/psi_white.ico, , 1
++F1::
 F1::
 Suspend
 
-Send {ctrl up}#{Space}
-; Left Alt + Left Shift + PrintScreen: Toggle High Contrast on and off. High Contrast must be enabled.
 
+; PostMessage, 0x50, 0, 0x4090409 ; switch to English
+; PostMessage, 0x50, 0, 0x4070407 ; switch to German
+
+Send {ctrl up}#{Space}
+
+; Left Alt + Left Shift + PrintScreen: Toggle High Contrast on and off. High Contrast must be enabled.
 ; Send {alt}{shift}{printscreen}
 ; SendInput !+{PrintScreen}
 

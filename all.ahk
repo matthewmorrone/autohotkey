@@ -5,7 +5,6 @@
 #Include hotstrings.ahk
 #Include main.ahk
 #Include window.ahk
-#Include batch.ahk
 #Include explorer.ahk
 #Include *i scroll.ahk
 #Include *i app/vector.ahk
@@ -15,7 +14,7 @@
 
 ; #Include *i dev/printscreen.ahk
 ; #Include *i dev/stickykeys.ahk
-; #Include *i dev/gimp.ahk
+#Include *i dev/gimp.ahk
 
 #Include autosave.ahk
 

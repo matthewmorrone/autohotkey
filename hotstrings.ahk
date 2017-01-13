@@ -17,20 +17,66 @@
 ::-|-::{U+0CA0}_{U+0CA0}
 
 
-
 ::`"::{U+0308}
-::`'`'`'::"
+^'::
+send {"}
+return
+
+
+
+; ::`'`'`'`'`'::"
+; #`'::""
+; :?*:''::"{Space}
+
+
 
 #IfWinActive Sublime
 
 ; for js
 ::,+::{+}' '{+}
 
+
 ::fff::ffffff
+
 ; ::000::000000
 
-::vlog::var log = console.log.bind(console); {enter}
-::clog::console.log();{left 2}
+; ::vlog::var log = console.log.bind(console); {enter}
+; ::clog::console.log();{left 2}
+; ::clog::
+; Clipboard =
+; Send {up}
+; Send ^c
+; ClipWait
+; StringReplace, Clipboard, Clipboard, `r`n,, All
+; Clipboard := Trim(Clipboard)
+; msgbox %clipboard%
+
+; if Clipboard =
+; {
+;     Send {up}
+;     Send ^c
+;     ClipWait
+;     StringReplace, Clipboard, Clipboard, `r`n,, All
+; 		Clipboard := Trim(Clipboard)
+;     msgbox %clipboard%
+; }
+; Send {down 2}
+; Send ^v
+; Send {home}
+; Send console.log("
+; Send {end}
+; Send ",%A_Space%
+; Send ^v
+; Send );
+; return
+
+
+
+
+
+
+
+
 
 ::cclear::console.clear();{enter}
 ::cgroup::console.groupCollapsed(){enter 2}console.groupEnd(){up}{tab}
