@@ -1,22 +1,34 @@
-
+; #EscapeChar \
 #Include _prelude.ahk
+; runasadmin()
+#Include util.ahk
+#Include *i array.ahk
+#Include *i range.ahk
 
-#Include util/util.ahk
-#Include hotstrings.ahk
+#Include *i hotstrings/passwords.ahk
+#Include *i hotstrings.ahk
+
+
+
 #Include main.ahk
-#Include window.ahk
-#Include explorer.ahk
-#Include *i scroll.ahk
-#Include *i app/vector.ahk
-#Include *i app/civ.ahk
-#Include *i app/dup-photo.ahk
-#Include *i app/chrome.ahk
+#Include dev/stickykeys.ahk
+#Include dev/gimp.ahk
 
-; #Include *i dev/printscreen.ahk
-; #Include *i dev/stickykeys.ahk
-#Include *i dev/gimp.ahk
+#Include window.ahk
+#Include scroll.ahk
+#Include batch.ahk
+#Include explorer.ahk
+#Include *i vector.ahk
+#Include *i bru.ahk
+#Include *i civ.ahk
+#Include *i dup-photo.ahk
+#Include *i chrome.ahk
+#Include *i dev/printscreen.ahk
+
 
 #Include autosave.ahk
 
+RunAs  ; Reset to normal behavior.
+; #EscapeChar `
 
 

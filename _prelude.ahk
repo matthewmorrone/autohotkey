@@ -1,4 +1,4 @@
-; #escapechar \    					; Change it to be backslash instead of the default of accent (`).
+; #EscapeChar \    					; Change it to be backslash instead of the default of accent (`).
 #InstallKeybdHook				; this MUST be called at the start of your script
 #Persistent
 ; #NoEnv  						; Recommended for performance and compatibility with future AutoHotkey releases.
@@ -7,24 +7,35 @@ SetWorkingDir %A_ScriptDir%  	; Ensures a consistent starting directory.
 #HotkeyInterval 500 		  	; This is  the default value (milliseconds).
 #MaxHotkeysPerInterval 200
 #WinActivateForce
-SetTitleMatchMode 2 			; A window's title can contain WinTitle anywhere inside it to be a match.
+SetTitleMatchMode 2 			; A window's title can contain WinTitle anywhere inside it to be a match. 
 
-; #Include admin.ahk
+
+
+RunAsAdmin() {
+	Loop, %0% {
+		param := %A_Index%
+		params .= A_Space . param
+	}
+	ShellExecute := A_IsUnicode ? "shell32\ShellExecute":"shell32\ShellExecuteA"
+	if not A_IsAdmin {
+		If A_IsCompiled {
+			DllCall(ShellExecute, uint, 0, str, "RunAs", str, A_ScriptFullPath, str, params , str, A_WorkingDir, int, 1)
+		}
+		Else {
+			DllCall(ShellExecute, uint, 0, str, "RunAs", str, A_AhkPath, str, """" . A_ScriptFullPath . """" . A_Space . params, str, A_WorkingDir, int, 1)
+		}
+		ExitApp
+	}
+}
+
+
+
+
+
 
 Menu, tray, icon, ico/psi_white.ico, , 1
-+F1::
-F1::
+^F1::
 Suspend
-
-
-; PostMessage, 0x50, 0, 0x4090409 ; switch to English
-; PostMessage, 0x50, 0, 0x4070407 ; switch to German
-
-Send {ctrl up}#{Space}
-
-; Left Alt + Left Shift + PrintScreen: Toggle High Contrast on and off. High Contrast must be enabled.
-; Send {alt}{shift}{printscreen}
-; SendInput !+{PrintScreen}
 
 Send {LControl Up}
 Send {RControl Up}

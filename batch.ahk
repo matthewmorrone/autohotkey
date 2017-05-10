@@ -3,8 +3,8 @@
 ; Batch File renaming
 
 ^[::
-; currentTab = 3
-gosub Flatten
+currentTab = 3
+gosub BatchGUI
 return
 
 ^]::
@@ -25,14 +25,14 @@ hreplace :=
 hwith :=
 Loop, read, history.dsv
 {
-	if (A_LoopReadLine = "")
+	if (A_LoopReadLine = "") 
 		continue
     Loop, parse, A_LoopReadLine, %A_Tab%
     {
-    	if (A_Index = 1)
+    	if (A_Index = 1) 
     		hreplace := A_LoopField "|" hreplace
     	if (A_Index = 2)
-    		hwith := A_LoopField "|" hwith
+    		hwith := A_LoopField "|" hwith  
     }
 }
 StringTrimRight, hreplace, hreplace, 1
@@ -141,8 +141,8 @@ gosub todroid
 return
 
 GuiClose:
-GuiEscape:
-Gui, Cancel
+GuiEscape: 
+Gui, Cancel 
 return
 
 
@@ -197,7 +197,7 @@ return
 
 
 ; recursive:
-; ; #escapechar `
+; #EscapeChar `
 ; ; gosub selections
 ; FileDelete, %A_WorkingDir%\out.txt
 ; for item in sel {
@@ -211,21 +211,21 @@ return
 ; 		FileAppend, %A_LoopFileFullPath%`n, %A_WorkingDir%\out.txt
 ; 	}
 ; }
-; ; #escapechar \
+; #EscapeChar \
 ; return
 
 
 
 replacewith:
-; #escapechar `
+#EscapeChar `
 ind := 0
 for item in sel {
 	from := item.path
 	SplitPath, from, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
 	befor = %OutFileName%
 	after := RegExReplace(befor, replace, with, out, -1, 1)
-	If befor <> %after%
-	{
+	If befor <> %after% 
+	{	
 		if overwrite {
 			FileMove, %OutDir%\%befor%, %OutDir%\%after%, 1
 			;%overwrite%
@@ -250,7 +250,7 @@ for item in sel {
 	}
 }
 coolTip(ind . " replacements made.", 5000)
-; #escapechar \
+#EscapeChar \
 return
 
 
@@ -260,7 +260,7 @@ return
 
 
 decopify:
-; #escapechar `
+#EscapeChar `
 ind := 0
 for item in sel {
 	from := item.path
@@ -272,12 +272,12 @@ for item in sel {
 		ind++
 }
 coolTip(ind . " replacements made.", 5000)
-; #escapechar \
+#EscapeChar \
 return
 
 
 tounderscore:
-; #escapechar `
+#EscapeChar `
 ind := 0
 for item in sel {
 	from := item.path
@@ -294,13 +294,13 @@ for item in sel {
 		ind++
 }
 coolTip(ind . " replacements made.", 5000)
-; #escapechar \
+#EscapeChar \
 return
 
 
 
 tosnakecase:
-; #escapechar `
+#EscapeChar `
 ind := 0
 for item in sel {
 	from := item.path
@@ -319,7 +319,7 @@ for item in sel {
 		ind++
 }
 coolTip(ind . " replacements made.", 5000)
-; #escapechar \
+#EscapeChar \
 return
 
 
@@ -327,7 +327,7 @@ return
 
 
 increment:
-; #escapechar `
+#EscapeChar `
 with :=
 ind := 0
 for item in sel {
@@ -342,14 +342,14 @@ for item in sel {
 		ind++
 }
 coolTip(ind . " replacements made.", 5000)
-; #escapechar \
+#EscapeChar \
 return
 
 
 
 
 tolowercase:
-; #escapechar `
+#EscapeChar `
 ind := 0
 for item in sel {
 	from := item.path
@@ -361,14 +361,14 @@ for item in sel {
 		ind++
 }
 coolTip(ind . " replacements made.", 5000)
-; #escapechar \
+#EscapeChar \
 return
 
 
 
 
 touppercase:
-; #escapechar `
+#EscapeChar `
 ; gosub selections
 ind := 0
 for item in sel {
@@ -381,20 +381,20 @@ for item in sel {
 		ind++
 }
 coolTip(ind . " replacements made.", 5000)
-; #escapechar \
+#EscapeChar \
 return
 
 
 tonormalize:
-; #escapechar `
+#EscapeChar `
 ind := 0
 for item in sel {
 	from := item.path
 	SplitPath, from, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
 	befor = %OutFileName%
 	after := RegExReplace(befor, " \((\d+)\)", "", out, -1, 1)
-	If befor <> %after%
-	{
+	If befor <> %after% 
+	{	
 		if overwrite {
 			FileMove, %OutDir%\%befor%, %OutDir%\%after%, 1
 			;%overwrite%
@@ -421,7 +421,7 @@ for item in sel {
 
 MsgBox, , Batch, % ind . " replacements made.", 5
 ; coolTip(ind . " replacements made.", 5000)
-; #escapechar \
+#EscapeChar \
 return
 
 
@@ -430,7 +430,7 @@ return
 
 
 toflatten:
-; #escapechar `
+#EscapeChar `
 ind := 0
 for item in sel {
 	from := item.path
@@ -439,7 +439,7 @@ for item in sel {
 	dir := output[Array_Len(output)-1]
 	befor = %OutFileName%
 	after = %dir%_%OutFileName%
-	If befor <> %after%
+	If befor <> %after% 
 	{
 		FileMove, %OutDir%\%befor%, %OutDir%\%after%, %overwrite%
 		if !ErrorLevel
@@ -447,7 +447,7 @@ for item in sel {
 	}
 }
 coolTip(ind . " replacements made.", 5000)
-; #escapechar \
+#EscapeChar \
 return
 
 
@@ -455,7 +455,7 @@ return
 
 
 prefix:
-; #escapechar `
+#EscapeChar `
 ind := 0
 for item in sel {
 	from := item.path
@@ -467,14 +467,14 @@ for item in sel {
 		ind++
 }
 coolTip(ind . " replacements made.", 5000)
-; #escapechar \
+#EscapeChar \
 return
 
 
 
 
 suffix:
-; #escapechar `
+#EscapeChar `
 ind := 0
 for item in sel {
 	from := item.path
@@ -486,7 +486,7 @@ for item in sel {
 		ind++
 }
 coolTip(ind . " replacements made.", 5000)
-; #escapechar \
+#EscapeChar \
 return
 
 
@@ -546,7 +546,7 @@ return
 
 
 todroid:
-; #escapechar `
+#EscapeChar `
 ind := 0
 for item in sel {
 	from := item.path
@@ -566,5 +566,5 @@ for item in sel {
 	}
 }
 coolTip(ind . " replacements made.", 5000)
-; #escapechar \
+#EscapeChar \
 return
