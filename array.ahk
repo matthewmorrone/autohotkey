@@ -9,7 +9,7 @@ Array() {
 }
 
 Array_Join(Arr,Sep="\n") {
-	Loop, % Arr.Len() {
+	Loop, % Arr.Length() {
 		Str .= Arr[A_Index] . Sep
 	}
 	Return SubStr(Str,1,StrLen(Str) - StrLen(Sep))

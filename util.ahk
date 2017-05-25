@@ -117,20 +117,20 @@ GetSelection(hwnd="") {
 	sel := window.Document.SelectedItems
 	for item in sel {
 		; path := item.path
-		ToReturn .= item.path "\n"
+		ToReturn .= item.path "`n"
 	}
-	return Trim(ToReturn,"\n")
+	return Trim(ToReturn,"`n")
 }
 ToString(array, depth:=6, indent:="") {
 	result := ""
 	if (IsObject(array)) {
 		for key, value in array {
-			result .= "\t" . indent . key
+			result .= A_Tab . indent . key
 			if (IsObject(value) && depth > 1) {
-				result .= "\n" . toString(value, depth - 1, indent . "\t")
+				result .= "`n" . toString(value, depth - 1, indent . A_Tab)
 			}
 			else {
-				result .= "\t= [" . value . "]\n"
+				result .= A_Tab . "= [" . value . "]`n"
 			}
 		}
 	}
@@ -171,7 +171,7 @@ StrPad(p_str, p_padstr=" ", p_padnum=1) {
 		char := Asc(p_padstr)
 		VarSetCapacity(p_padstr, p_padnum << 1, 0)
 		p_padstr .= Chr(char) Chr(char)
-		While 1 << A_Index < p_padnum 
+		While 1 << A_Index < p_padnum
 		{
 			p_padstr .= p_padstr
 		}
