@@ -4,10 +4,10 @@ SetTitleMatchMode, 2
 
 While, 1
 {
- ; WinWaitActive, Rename ahk_class #32770
- WinWait, ahk_class OperationStatusWindow
- WinActivate
- send {space}
+	; WinWaitActive, Rename ahk_class #32770
+	WinWait, ahk_class OperationStatusWindow
+	WinActivate
+	send {space}
 }
 
 

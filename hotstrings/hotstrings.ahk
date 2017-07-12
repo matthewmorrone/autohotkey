@@ -1,11 +1,10 @@
 #Hotstring C ? *
 
 
-
+#Include *i passwords.ahk
 ::afaik::as far as I know
 ::brb::be right back
 ::btw::by the way
-; ::---::{Asc 0151} ; em dash
 ::_::{Asc 0151} ; em dash
 
 ::m@1::matthewmorrone1

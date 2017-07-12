@@ -25,14 +25,14 @@ hreplace :=
 hwith :=
 Loop, read, history.dsv
 {
-	if (A_LoopReadLine = "") 
+	if (A_LoopReadLine = "")
 		continue
     Loop, parse, A_LoopReadLine, %A_Tab%
     {
-    	if (A_Index = 1) 
+    	if (A_Index = 1)
     		hreplace := A_LoopField "|" hreplace
     	if (A_Index = 2)
-    		hwith := A_LoopField "|" hwith  
+    		hwith := A_LoopField "|" hwith
     }
 }
 StringTrimRight, hreplace, hreplace, 1
@@ -49,14 +49,15 @@ Gui, Add, ComboBox, vWith Simple, %hwith%
 Gui, Add, Checkbox, vOverwrite, Overwrite?
 ;  checked
 Gui, Tab, 3
-Gui, Add, Button, gFlatten, Flatten
-Gui, Add, Button, gUnderscore, Underscores
-Gui, Add, Button, gLowercase, Lower Case
-Gui, Add, Button, gUppercase, Upper Case
+; Gui, Add, Button, gFlatten, Flatten
+; Gui, Add, Button, gUnderscore, _underscores_
+Gui, Add, Button, gLowercase, lowercase
+Gui, Add, Button, gTitlecase, Title Case
+Gui, Add, Button, gUppercase, UPPER CASE
 Gui, Add, Button, gSnakecase, snake_case
-Gui, Add, Button, gNormalize, Normalize
-Gui, Add, Button, gGithub, Github
-Gui, Add, Button, gDroid, Droid
+; Gui, Add, Button, gNormalize, Normalize
+; Gui, Add, Button, gGithub, Github
+; Gui, Add, Button, gDroid, Droid
 Gui, Tab
 Gui, Add, Button, default xm gGo, OK
 ; Gui, -SysMenu +Owner
@@ -110,6 +111,12 @@ gosub selections
 gosub tolowercase
 return
 
+Titlecase:
+Gui, Submit
+gosub selections
+gosub totitlecase
+return
+
 Uppercase:
 Gui, Submit
 gosub selections
@@ -134,43 +141,12 @@ gosub selections
 gosub togithub
 return
 
-Droid:
-Gui, Submit
-gosub selections
-gosub todroid
-return
-
 GuiClose:
-GuiEscape: 
-Gui, Cancel 
+GuiEscape:
+Gui, Cancel
 return
 
 
-
-
-
-
-
-
-; ButtonLower:
-; Gui, Submit
-; MsgBox
-; gosub tolowercase
-; Gui, Destroy
-; return
-; ButtonUpper:
-; Gui, Submit
-; gosub touppercase
-; Gui, Destroy
-; return
-
-; ; Activate window under mouse
-; MouseGetPos,,,OutWin,OutCtrl
-; WinActivate, ahk_id %OutWin%
-
-; ; Store current active window, then reactivate it later
-; WinGet, active_id, ID, A
-; WinActivate, ahk_id %active_id%
 
 
 
@@ -181,40 +157,8 @@ len := 0
 for item in sel {
 	len++
 }
-; if (len = 0) {
-; 	send ^a
-; 	sel := GetSelections()
-; 	len := 0
-; 	for item in sel {
-; 		len++
-; 	}
-; }
 Sort, sel, N
 return
-
-
-
-
-
-; recursive:
-; #EscapeChar `
-; ; gosub selections
-; FileDelete, %A_WorkingDir%\out.txt
-; for item in sel {
-; 	from := item.path
-; 	if A_LoopFileAttrib contains H,R,S {
-; 	    continue
-; 	}
-; 	SplitPath, from, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
-; 	SetWorkingDir, %OutDir%
-; 	Loop, *.*, 0, 1 {
-; 		FileAppend, %A_LoopFileFullPath%`n, %A_WorkingDir%\out.txt
-; 	}
-; }
-; #EscapeChar \
-; return
-
-
 
 replacewith:
 #EscapeChar `
@@ -224,8 +168,8 @@ for item in sel {
 	SplitPath, from, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
 	befor = %OutFileName%
 	after := RegExReplace(befor, replace, with, out, -1, 1)
-	If befor <> %after% 
-	{	
+	If befor <> %after%
+	{
 		if overwrite {
 			FileMove, %OutDir%\%befor%, %OutDir%\%after%, 1
 			;%overwrite%
@@ -252,11 +196,6 @@ for item in sel {
 coolTip(ind . " replacements made.", 5000)
 #EscapeChar \
 return
-
-
-
-
-
 
 
 decopify:
@@ -298,7 +237,6 @@ coolTip(ind . " replacements made.", 5000)
 return
 
 
-
 tosnakecase:
 #EscapeChar `
 ind := 0
@@ -323,9 +261,6 @@ coolTip(ind . " replacements made.", 5000)
 return
 
 
-
-
-
 increment:
 #EscapeChar `
 with :=
@@ -346,8 +281,6 @@ coolTip(ind . " replacements made.", 5000)
 return
 
 
-
-
 tolowercase:
 #EscapeChar `
 ind := 0
@@ -365,6 +298,22 @@ coolTip(ind . " replacements made.", 5000)
 return
 
 
+totitlecase:
+#EscapeChar `
+; gosub selections
+ind := 0
+for item in sel {
+	from := item.path
+	SplitPath, from, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
+	befor = %OutFileName%
+	StringUpper, after, befor, T
+	FileMove, %OutDir%\%befor%, %OutDir%\%after%, %overwrite%
+	if !ErrorLevel
+		ind++
+}
+coolTip(ind . " replacements made.", 5000)
+#EscapeChar \
+return
 
 
 touppercase:
@@ -393,8 +342,8 @@ for item in sel {
 	SplitPath, from, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
 	befor = %OutFileName%
 	after := RegExReplace(befor, " \((\d+)\)", "", out, -1, 1)
-	If befor <> %after% 
-	{	
+	If befor <> %after%
+	{
 		if overwrite {
 			FileMove, %OutDir%\%befor%, %OutDir%\%after%, 1
 			;%overwrite%
@@ -425,10 +374,6 @@ MsgBox, , Batch, % ind . " replacements made.", 5
 return
 
 
-
-
-
-
 toflatten:
 #EscapeChar `
 ind := 0
@@ -439,7 +384,7 @@ for item in sel {
 	dir := output[Array_Len(output)-1]
 	befor = %OutFileName%
 	after = %dir%_%OutFileName%
-	If befor <> %after% 
+	If befor <> %after%
 	{
 		FileMove, %OutDir%\%befor%, %OutDir%\%after%, %overwrite%
 		if !ErrorLevel
@@ -449,9 +394,6 @@ for item in sel {
 coolTip(ind . " replacements made.", 5000)
 #EscapeChar \
 return
-
-
-
 
 
 prefix:
@@ -471,8 +413,6 @@ coolTip(ind . " replacements made.", 5000)
 return
 
 
-
-
 suffix:
 #EscapeChar `
 ind := 0
@@ -488,8 +428,6 @@ for item in sel {
 coolTip(ind . " replacements made.", 5000)
 #EscapeChar \
 return
-
-
 
 
 ; remove -master and/or -gh-pages affix from folders and zip files
@@ -527,44 +465,6 @@ coolTip(ind . " replacements made.", 5000)
 return
 
 
-; *q::
-; Count++
-; If Count = 1
-; {
-; coolTip("LCtrl Down")
-; Send {Ctrl Down}
-; }
-; Else If Count = 2
-; {
-; coolTip("LCtrl Up")
-; Send {Ctrl Up}
-; Count := 0
-; }
-; Return
 
 
 
-
-todroid:
-#EscapeChar `
-ind := 0
-for item in sel {
-	from := item.path
-	SplitPath, from, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
-	befor = %OutFileName%
-	StringLower, after, befor
-	after := RegExReplace(after, "\.",		"_", out, -1, 1)
-	after := RegExReplace(after, "_png$",	".png", out, -1, 1)
-	after := RegExReplace(after, " ",		"_", out, -1, 1)
-	after := RegExReplace(after, "-",		"_", out, -1, 1)
-	after := RegExReplace(after, "~",		"_", out, -1, 1)
-	after := RegExReplace(after, "_+",		"_", out, -1, 1)
-	If (befor <> after) {
-		FileMove, %OutDir%\%befor%, %OutDir%\%after%, %overwrite%
-		if !ErrorLevel
-			ind++
-	}
-}
-coolTip(ind . " replacements made.", 5000)
-#EscapeChar \
-return

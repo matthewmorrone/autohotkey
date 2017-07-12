@@ -1,5 +1,5 @@
 
-^+SPACE::WinSet, Alwaysontop, , A
+^+Space::WinSet, Alwaysontop, , A
 
 ; to see what's behind the current window
 #Space::WinSet, Transparent, 50, A

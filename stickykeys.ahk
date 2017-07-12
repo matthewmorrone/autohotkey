@@ -1,4 +1,20 @@
 
+; *q::
+; Count++
+; If Count = 1
+; {
+; coolTip("LCtrl Down")
+; Send {Ctrl Down}
+; }
+; Else If Count = 2
+; {
+; coolTip("LCtrl Up")
+; Send {Ctrl Up}
+; Count := 0
+; }
+; Return
+
+
 
 !q::
 Count++
@@ -18,8 +34,8 @@ Return
 
 
 
-;Now, to make Space bar send a real "Space" keystroke 
-;whenever it isn't used to launch a hotkey 
+;Now, to make Space bar send a real "Space" keystroke
+;whenever it isn't used to launch a hotkey
 ;such as the above, add the following hotkey.
 ;
 ; $Space::
@@ -28,9 +44,9 @@ Return
 ; Send {Space up}  	; Release the Space key.
 ; return
 ;
-;The $ prefix is needed to prevent a warning dialog 
-;about an infinite loop (since the hotkey "sends itself"). 
-;In addition, the above action occurs at the time the key 
+;The $ prefix is needed to prevent a warning dialog
+;about an infinite loop (since the hotkey "sends itself").
+;In addition, the above action occurs at the time the key
 ;is released.
 ; StickyLCtrl := 0
 ; StickyLAlt := 0

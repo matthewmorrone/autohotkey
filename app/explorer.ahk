@@ -10,7 +10,6 @@
 
 #IfWinActive ahk_exe explorer.exe
 
-
 ^WheelDown::
 Send {Ctrl Up}
 Send {WheelDown}
@@ -63,18 +62,17 @@ return
 ^+n::send ^n
 
 ; to make renaming files a little less annoying
-~Tab::
-~F2::
-sel := GetSelection()
-Send {Right}
-ext := isFile(sel)
-if (ext = false) {
+; ~F2::
+; sel := GetSelection()
+; Send {Right}
+; ext := isFile(sel)
+; if (ext = false) {
 
-}
-else {
-	Send {Left}
-}
-return
+; }
+; else {
+; 	Send {Left}
+; }
+; return
 
 ; duplicate (-ish)
 ; ^d::
@@ -100,22 +98,9 @@ Sleep, 200
 Send {shift Up}
 return
 
-
-getPath() {
-	gosub selections
-	if (len = 1) {
-		for key, item in sel {
-			path := item.path
-		}
-	}
-	return path
-}
-
-
 ^d::
 gosub selections
 #EscapeChar `
-
 for item in sel {
 	from := item.path
 	SplitPath, from, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
@@ -131,7 +116,6 @@ for item in sel {
 		start++
 	}
 }
-
 #EscapeChar \
 return
 
@@ -158,11 +142,6 @@ if (len = 2) {
 }
 #EscapeChar \
 return
-
-; ^`::
-; send !{up}
-; return
-
 
 
 #IfWinActive

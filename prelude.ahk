@@ -7,9 +7,7 @@ SetWorkingDir %A_ScriptDir%  	; Ensures a consistent starting directory.
 #HotkeyInterval 500 		  	; This is  the default value (milliseconds).
 #MaxHotkeysPerInterval 200
 #WinActivateForce
-SetTitleMatchMode 2 			; A window's title can contain WinTitle anywhere inside it to be a match. 
-
-
+SetTitleMatchMode 2 			; A window's title can contain WinTitle anywhere inside it to be a match.
 
 RunAsAdmin() {
 	Loop, %0% {
@@ -28,13 +26,8 @@ RunAsAdmin() {
 	}
 }
 
-
-
-
-
-
 Menu, tray, icon, ico/psi_white.ico, , 1
-^F1::
+F1::
 Suspend
 
 Send {LControl Up}
@@ -44,8 +37,7 @@ Send {Tab Up}
 Send {CapsLock Up}
 Send {Enter Up}
 
-
-IF A_ISSUSPENDED = 1
+if A_ISSUSPENDED = 1
 Menu, tray, icon, ico/psi_red.ico, , 1
 else if A_ISSUSPENDED = 0
 Menu, tray, icon, ico/psi_white.ico, , 1

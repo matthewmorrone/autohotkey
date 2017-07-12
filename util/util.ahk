@@ -50,12 +50,12 @@ splashOn(a:="is this thing on?", b:=1000) {
 }
 
 ; a little bit of visual help
-~*^z::coolTip("undo!")
-~*^y::coolTip("redo!")
-~*+^z::coolTip("redo!")
-~*^x::coolTip("cut!")
-~*^c::coolTip("copied!")
-~*^v::coolTip("pasted!")
+; ~*^z::coolTip("undo!")
+; ~*^y::coolTip("redo!")
+; ~*+^z::coolTip("redo!")
+; ~*^x::coolTip("cut!")
+; ~*^c::coolTip("copied!")
+; ~*^v::coolTip("pasted!")
 
 ActivatorEnd(message, active:=true, timeout:=3) {
 	if %active% {
@@ -70,8 +70,11 @@ ActivatorEnd(message, active:=true, timeout:=3) {
 	}
 }
 
-ClipCursor(Confine = True, x1 = 0, y1 = 0, x2 = 1, y2 = 1, d = false) {
-	VarSetCapacity(R, 16, 0), NumPut(x1, &R+0), NumPut(y1, &R+4), NumPut(x2, &R+8), NumPut(y2, &R+12)
+
+ClipCursor(Confine=True, x1=0, y1=0, x2=1, y2=1, d=false) {
+	VarSetCapacity(R, 16, 0)
+	NumPut(x1, &R+0), NumPut(y1, &R+4)
+	NumPut(x2, &R+8), NumPut(y2, &R+12)
 	Return Confine ? DllCall("ClipCursor", UInt, &R) : DllCall("ClipCursor")
 }
 
@@ -138,6 +141,15 @@ ToString(array, depth:=6, indent:="") {
 		result := array
 	}
 	return result
+}
+GetPath() {
+	gosub selections
+	if (len = 1) {
+		for key, item in sel {
+			path := item.path
+		}
+	}
+	return path
 }
 IsFolder(path) {
 	SplitPath, path, , , out
