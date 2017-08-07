@@ -1,5 +1,5 @@
 ; #EscapeChar \
-#Include prelude.ahk
+#Include _prelude.ahk
 ; runasadmin()
 #Include util/util.ahk
 #Include util/array.ahk
@@ -20,7 +20,7 @@
 #Include app/dup-photo.ahk
 #Include app/chrome.ahk
 
-#Include autosave.ahk
+; #Include autosave.ahk
 
 RunAs  ; Reset to normal behavior.
 ; #EscapeChar `

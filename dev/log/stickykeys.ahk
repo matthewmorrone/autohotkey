@@ -16,18 +16,18 @@
 
 
 
-!q::
+!space::
 Count++
 If Count = 1
 {
-coolTip("Sticky On")
-Send {LCtrl Down}
+	coolTip("Sticky On")
+	Send {LCtrl Down}
 }
 Else If Count = 2
 {
-coolTip("Sticky Off")
-Send {LCtrl Up}
-Count := 0
+	coolTip("Sticky Off")
+	Send {LCtrl Up}
+	Count := 0
 }
 Return
 

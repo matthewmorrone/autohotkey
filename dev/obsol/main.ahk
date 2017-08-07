@@ -72,8 +72,12 @@ Click 2
 return
 
 MButton::
-Send, {Ctrl Down}{Click}{Ctrl up}
-Return
+MouseClick, L
+MouseClick, R
+return
+; MButton::
+; Send, {Ctrl Down}{Click}{Ctrl up}
+; Return
 
 
 

@@ -7,26 +7,20 @@ WindowH() {
 	WinGetPos,,,, WindowHeight
 	return %WindowHeight%
 }
-
-
-
-
 RemoveDuplicates(String, Delimiter="`n") {
 	oUniques := []
 	Loop, parse, String, % Delimiter
 	{
 		For k,v in oUniques
 		{
-			if (v = A_LoopField)		; duplicate
+			if (v = A_LoopField)
 				continue 2
 		}
-		; unique
 		NewString .= Delimiter A_LoopField
 		oUniques.Insert(A_LoopField)
 	}
 	return LTrim(NewString, Delimiter)
 }
-
 debug(a:="") {
 	MsgBox, 4,, %a% Would you like to continue?, 5
 	IfMsgBox, No
@@ -34,19 +28,27 @@ debug(a:="") {
 	IfMsgBox, Timeout
 		Return
 }
-
-; tooltip wrapper
 coolTip(a:="is this thing on?", b:=1000) {
 	ToolTip %a%
 	Sleep b
 	ToolTip
 }
-
-; splashtext wrapper
 splashOn(a:="is this thing on?", b:=1000) {
 	SplashTextOn,,,%a%,
 	Sleep b
 	SplashTextOff
+}
+snake_case(str) {
+	str := RegExReplace(str, "([A-Z])([a-z])", "_$l1$2", out, -1, 1)
+	str := RegExReplace(str, "([a-z])([A-Z])", "$1_$l2", out, -1, 1)
+	str := RegExReplace(str, "^_", "", out, -1, 1)
+	str := RegExReplace(str, "_+", "_", out, -1, 1)
+	StringLower, str, str
+	return str
+}
+TitleCase(str) {
+	StringUpper, str, str, T
+	return str
 }
 
 ; a little bit of visual help
@@ -69,19 +71,15 @@ ActivatorEnd(message, active:=true, timeout:=3) {
 		return
 	}
 }
-
-
 ClipCursor(Confine=True, x1=0, y1=0, x2=1, y2=1, d=false) {
 	VarSetCapacity(R, 16, 0)
 	NumPut(x1, &R+0), NumPut(y1, &R+4)
 	NumPut(x2, &R+8), NumPut(y2, &R+12)
 	Return Confine ? DllCall("ClipCursor", UInt, &R) : DllCall("ClipCursor")
 }
-
 ClickAnd(x, y) {
 	MouseGetPos, xpos, ypos
 	Send {click %x%, %y%}
-	; return [xpos, ypos]
 }
 ClickAndRepeat(x, y, n) {
 	MouseGetPos, xpos, ypos
@@ -90,19 +88,15 @@ ClickAndRepeat(x, y, n) {
 	}
 	MouseMove, %xpos%, %ypos%
 }
-
-
 ClickAndReturn(x, y) {
 	MouseGetPos, xpos, ypos
 	Send {click %x%, %y%}
 	MouseMove, %xpos%, %ypos%
 }
-
-; MoveClickWait(x, y, z:=500) {
-; 	Send {click %x%, %y%}
-; 	Sleep, %z%
-; }
-
+MoveClickWait(x, y, z:=500) {
+	Send {click %x%, %y%}
+	Sleep, %z%
+}
 GetSelections(hwnd="") {
 	hwnd := hwnd ? hwnd : WinExist("A")
 	WinGetClass class, ahk_id %hwnd%
@@ -119,7 +113,6 @@ GetSelection(hwnd="") {
 			if (window.hwnd==hwnd)
 	sel := window.Document.SelectedItems
 	for item in sel {
-		; path := item.path
 		ToReturn .= item.path "`n"
 	}
 	return Trim(ToReturn,"`n")
@@ -142,6 +135,16 @@ ToString(array, depth:=6, indent:="") {
 	}
 	return result
 }
+
+selections:
+	sel := GetSelections()
+	len := 0
+	for item in sel {
+		len++
+	}
+	Sort, sel, N
+return
+
 GetPath() {
 	gosub selections
 	if (len = 1) {
@@ -164,13 +167,13 @@ IsFile(path) {
 		return out
 	}
 }
-FilePrepend(fileIN, string) {
-	IfNotExist, %fileIN%
+FilePrepend(filein, string) {
+	IfNotExist, %filein%
 		return false
-	input := FileOpen(fileIN, 0)
+	input := FileOpen(filein, 0)
 	text := input.Read()
 	input.Close()
-	output := FileOpen(fileIN, 5)
+	output := FileOpen(filein, 5)
 	output.WriteLine(string)
 	output.Write(text)
 	output.Close()

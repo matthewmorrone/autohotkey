@@ -40,14 +40,12 @@ ww := (WindowW() - 100)
 Send {click %ww%, 620}
 return
 
-
-
 Capslock::
 Send {click 1546, 492}
 Send ^a
 Send ^c
 WordArray := StrSplit(Clipboard, "_")
-var := WordArray[WordArray.length()]
+var := WordArray[WordArray.length()]z
 if var is integer
 	next := WordArray[WordArray.length()]+1
 if var is integer
@@ -59,12 +57,15 @@ if var is not integer
 Clipboard := Array_Join(WordArray, "_")
 Send ^v
 BlockInput, on
+; SetMouseDelay, 20
 Send {click 1513, 974}
 WinActivate, Vector Magic
 Send {click 1513, 974}
 Send {click 1419, 433}
 Send {click 1419, 473}
+; SetMouseDelay, 10
 BlockInput, off
 return
+
 #IfWinActive
 

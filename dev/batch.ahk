@@ -151,14 +151,7 @@ return
 
 
 
-selections:
-sel := GetSelections()
-len := 0
-for item in sel {
-	len++
-}
-Sort, sel, N
-return
+
 
 replacewith:
 #EscapeChar `
