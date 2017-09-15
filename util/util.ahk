@@ -71,7 +71,54 @@ ActivatorEnd(message, active:=true, timeout:=3) {
 		return
 	}
 }
-ClipCursor(Confine=True, x1=0, y1=0, x2=1, y2=1, d=false) {
+
+GetMonitor(hwnd := 0) {
+	; If no hwnd is provided, use the Active Window
+	if (hwnd) {
+		WinGetPos, winX, winY, winW, winH, ahk_id %hwnd%
+	}
+	else {
+		WinGetActiveStats, winTitle, winW, winH, winX, winY
+	}
+
+	SysGet, numDisplays, MonitorCount
+	SysGet, idxPrimary, MonitorPrimary
+
+	Loop %numDisplays% {
+		SysGet, mon, MonitorWorkArea, %a_index%
+		; Left may be skewed on Monitors past 1
+		if (a_index > 1) {
+			monLeft -= 10
+		}
+		; Right overlaps Left on Monitors past 1
+		else if (numDisplays > 1) {
+			monRight -= 10
+		}
+		; Tracked based on X. Cannot properly sense on Windows "between" monitors
+		if (winX >= monLeft && winX < monRight) {
+			return %a_index%
+		}
+	}
+	; Return Primary Monitor if can't sense
+	return idxPrimary
+}
+GetMonitorMouseIsIn(Monitor = 0)
+{
+	if(Monitor)
+	{
+		SysGet, Cord, 79
+		MouseGetPos, x, k
+	}
+	else
+	{
+		SysGet, Cord, 78
+		MouseGetPos, k, x
+	}
+
+	return (k > Cord//2) ? 2 : 1
+}
+
+ClipCursor(Confine=True, x1=0, y1=0, x2=1, y2=1) {
 	VarSetCapacity(R, 16, 0)
 	NumPut(x1, &R+0), NumPut(y1, &R+4)
 	NumPut(x2, &R+8), NumPut(y2, &R+12)

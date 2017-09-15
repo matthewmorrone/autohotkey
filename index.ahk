@@ -58,10 +58,22 @@ MouseClick, L
 MouseClick, R
 return
 
+#x::
+CoordMode, Mouse, Screen
+SysGet, monitor, Monitor, %activemonitor%
+Loop
+{
+	Sleep, 100
+	MouseGetPos, x, y
+	If (x > A_ScreenWidth-100 and x < A_ScreenWidth) {
+		MouseMove, A_ScreenWidth+50, %y%, 0
+	}
+}
+return
+
+
+
 #IfWinActive
-
-
-
 
 
 
@@ -332,10 +344,18 @@ return
 
 #IfWinActive Set Image Canvas Size
 ~Space::
+Send {^+c}
+Send 384
+Send {tab 2}
+Send 384
 Send {tab 5}
 Send {space}
 Send {tab}
 Send {down}
+Send {tab 3}
+Send {enter}
+
+
 return
 #IfWinActive
 
