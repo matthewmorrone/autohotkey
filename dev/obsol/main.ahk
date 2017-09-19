@@ -7,20 +7,7 @@
 *$RAlt::RCtrl
 *$RCtrl::RAlt
 
-#+x::
-Send {click}
-Send ^x
-return
 
-#+c::
-Send {click}
-Send ^c
-return
-
-#+v::
-Send {click}
-Send ^v
-return
 
 +Space::_
 +Backspace::Delete
@@ -51,14 +38,7 @@ $+#`:: SendRaw, `~
 ; return
 
 
-; because esc doesn't always seem to work like i think it should
-^Esc::
-WinGetActiveTitle, Title
-WinClose %Title%
-return
-!+Esc::
-Send {^+Esc}
-return
+
 
 
 #f::

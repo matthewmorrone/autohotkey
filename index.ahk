@@ -35,17 +35,73 @@ Menu, tray, icon, %iconn%, , 1
 #Include util/array.ahk
 #Include util/range.ahk
 
+
+
+
 *$LAlt::LCtrl
 *$LCtrl::LAlt
 *$RAlt::RCtrl
 *$RCtrl::RAlt
 CapsLock::Enter
-+Space::_
++Space::Send {-}
+; +^Space::Send {_}
 +Backspace::Delete
+
+#IfWinNotActive ahk_exe stellaris.exe
+
 $`::Send {Backspace}
 $+`::Send {Delete}
 $#`::SendRaw, ``
 $+#`:: SendRaw, `~
+
+#IfWinNotActive
+
+
+
+#IfWinActive ahk_exe stellaris.exe
+
+MButton::
+MouseClick, L
+MouseClick, R
+return
+
+#x::
+CoordMode, Mouse, Screen
+SysGet, monitor, Monitor, %activemonitor%
+Loop
+{
+	Sleep, 100
+	MouseGetPos, x, y
+	If (x > A_ScreenWidth-100 and x < A_ScreenWidth) {
+		MouseMove, A_ScreenWidth+50, %y%, 0
+	}
+}
+return
+
+
+
+#IfWinActive
+
+
+
+#+x::
+Send {click}
+Send ^x
+return
+
+#+c::
+Send {click}
+Send {click}
+Send ^c
+return
+
+#+v::
+Send {click}
+Send ^+v
+return
+
+
+
 #1:: Send {Home}
 #2:: Send {End}
 #3:: Send {PgUp}
@@ -53,25 +109,42 @@ $+#`:: SendRaw, `~
 
 
 
-
+; because esc doesn't always seem to work like i think it should
+^Esc::
+WinGetActiveTitle, Title
+WinClose %Title%
+return
+!+Esc::
+Send {^+Esc}
+return
 
 
 
 #Hotstring C ? *
 
-; ::i::{U+0131}
+::-::_
+::_::{Asc 0151} ; em dash
 ::....::{U+2026}
 ::-|-::{U+0CA0}_{U+0CA0}
 ::,+::{+}" "{+}
 ::clog::console.log(){left 1}
 ::vlog::var log = console.log.bind(console); {enter}
-:b0:echo:: ."{`\}{n}"; {left 7}
 ::pr(::print_r(); {left 3}
 ::pre(::echo "<pre>"; echo "</pre>"; {left 15}{enter 2}{up}print_r(); {left 3}
 
+; :b0:echo:: ."{`\}{n}"; {left 7}
+::echo::
+send echo ."\n";{left 6}
+; Input, Key, L1 B
+keywait, backspace, D T3
+if (ErrorLevel = 0) {
+	send {space}{delete 6}
+}
+return
 
 #Hotstring C0 ?0 *0
 
+#Include hot.ahk
 
 
 
@@ -208,11 +281,11 @@ if (len = 2) {
 	}
 	item1 := items[0]
 	item2 := items[1]
-	sleep 1000
+	sleep 500
 	FileMove, %OutPath%\%item1%.png, %OutPath%\%item2%__temp__.png
-	sleep 1000
+	sleep 500
 	FileMove, %OutPath%\%item2%.png, %OutPath%\%item1%.png
-	sleep 1000
+	sleep 500
 	FileMove, %OutPath%\%item2%__temp__.png, %OutPath%\%item2%.png
 }
 return
@@ -225,7 +298,8 @@ return
 
 
 
-#IfWinActive Vector Magic
+#IfWinActive ahk_exe vmde.exe
+; #IfWinActive Vector Magic
 
 ~Tab::
 WinActivate, Vector Magic
@@ -296,13 +370,20 @@ return
 
 #IfWinActive Set Image Canvas Size
 ~Space::
+Send {^+c}
+Send 384
+Send {tab 2}
+Send 384
 Send {tab 5}
 Send {space}
 Send {tab}
 Send {down}
+Send {tab 3}
+Send {enter}
+
+
 return
 #IfWinActive
-
 
 
 
