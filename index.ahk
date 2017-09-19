@@ -9,6 +9,13 @@ SetTitleMatchMode 		2
 SetCapsLockState 		AlwaysOff
 
 
+
+IF NOT A_IsAdmin ; Runs script as Admin.
+{
+	Run *RunAs "%A_ScriptFullPath%"
+	ExitApp
+}
+
 iconn := "ico/psi-fff.ico"
 icoff := "ico/psi-f00.ico"
 
@@ -16,10 +23,10 @@ Menu, tray, icon, %iconn%, , 1
 F1::
 Suspend
 if 		(A_ISSUSPENDED = 1) {
-	Menu, tray, icon, %iconn%, , 1
+	Menu, tray, icon, %icoff%, , 1
 }
 else if (A_ISSUSPENDED = 0) {
-	Menu, tray, icon, %icoff%, , 1
+	Menu, tray, icon, %iconn%, , 1
 }
 return
 Menu, tray, icon, %iconn%, , 1
@@ -68,12 +75,6 @@ $+#`:: SendRaw, `~
 
 
 
-
-
-
-
-
-
 F8::
 #persistent
 #InstallKeybdHook
@@ -110,6 +111,31 @@ insert::WinSet, Alwaysontop, , A
 #Space::WinSet, Transparent, 50, A
 #Space UP::WinSet, Transparent, OFF, A
 return
+
+
+
+#IfWinActive ahk_exe stellaris.exe
+
+MButton::
+Send, {LButton}
+Send, {RButton}
+Return
+; MButton::MButton ; restore the original RButton function
+
+
+tog := false
+Space::
+If 		(tog) {
+	send {NumpadAdd 2}
+}
+Else {
+	send {NumpadSub 2}
+}
+tog := !tog
+return
+
+#IfWinActive
+
 
 
 
