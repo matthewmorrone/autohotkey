@@ -43,44 +43,15 @@ Menu, tray, icon, %iconn%, , 1
 *$RAlt::RCtrl
 *$RCtrl::RAlt
 CapsLock::Enter
-+Space::Send {-}
+; +Space::Send {-}
 ; +^Space::Send {_}
 +Backspace::Delete
 
-#IfWinNotActive ahk_exe stellaris.exe
 
 $`::Send {Backspace}
 $+`::Send {Delete}
 $#`::SendRaw, ``
 $+#`:: SendRaw, `~
-
-#IfWinNotActive
-
-
-
-#IfWinActive ahk_exe stellaris.exe
-
-MButton::
-MouseClick, L
-MouseClick, R
-return
-
-#x::
-CoordMode, Mouse, Screen
-SysGet, monitor, Monitor, %activemonitor%
-Loop
-{
-	Sleep, 100
-	MouseGetPos, x, y
-	If (x > A_ScreenWidth-100 and x < A_ScreenWidth) {
-		MouseMove, A_ScreenWidth+50, %y%, 0
-	}
-}
-return
-
-
-
-#IfWinActive
 
 
 
@@ -122,8 +93,8 @@ return
 
 #Hotstring C ? *
 
-::-::_
-::_::{Asc 0151} ; em dash
+; ::-::_
+; ::_::{Asc 0151} ; em dash
 ::....::{U+2026}
 ::-|-::{U+0CA0}_{U+0CA0}
 ::,+::{+}" "{+}
@@ -187,27 +158,36 @@ return
 
 
 
-#IfWinActive ahk_exe stellaris.exe
-
-MButton::
-Send, {LButton}
-Send, {RButton}
-Return
-; MButton::MButton ; restore the original RButton function
 
 
-tog := false
-Space::
-If 		(tog) {
-	send {NumpadAdd 2}
+
+
+
+#IfWinActive Interskill
+
+Left::
+if (isWindowFullScreen(WinExist("Interskill"))) {
+  Send {click 1510, 875}
 }
-Else {
-	send {NumpadSub 2}
+else {
+  Send {click 1525, 841}
 }
-tog := !tog
+return
+
+Right::
+if (isWindowFullScreen(WinExist("Interskill"))) {
+  Send {click 1560, 875}
+}
+else {
+  Send {click 1575, 841}
+}
 return
 
 #IfWinActive
+
+
+
+
 
 
 
@@ -292,111 +272,6 @@ return
 
 
 #IfWinActive
-
-
-
-
-
-
-#IfWinActive ahk_exe vmde.exe
-; #IfWinActive Vector Magic
-
-~Tab::
-WinActivate, Vector Magic
-Send {click 1398, 434}
-Send {click 1419, 473}
-return
-
-Space::
-RShift::
-ww := (WindowW()/20*19)
-Send {click %ww%, 974}
-Send {click %ww%, 974}
-ww := (WindowW() - 300)
-Send {click %ww%, 542}
-Send ^a
-Send ^c
-width := Clipboard
-Send {click %ww%, 562}
-Send ^a
-Send ^c
-height := Clipboard
-ww := (WindowW() - 300)
-if (width < height) {
-	Send {click %ww%, 542}
-}
-if (width > height) {
-	Send {click %ww%, 562}
-}
-Send ^a
-Send {backspace}
-Send 512
-Send !{Esc}
-WinActivate, Vector Magic
-ww := (WindowW() - 100)
-Send {click %ww%, 620}
-return
-
-Capslock::
-Send {click 1546, 492}
-Send ^a
-Send ^c
-WordArray := StrSplit(Clipboard, "_")
-var := WordArray[WordArray.length()]z
-if var is integer
-	next := WordArray[WordArray.length()]+1
-if var is integer
-	WordArray.Pop()
-if var is integer
-	WordArray.Push(next)
-if var is not integer
-	WordArray.Push(2)
-Clipboard := Array_Join(WordArray, "_")
-Send ^v
-BlockInput, on
-; SetMouseDelay, 20
-Send {click 1513, 974}
-WinActivate, Vector Magic
-Send {click 1513, 974}
-Send {click 1419, 433}
-Send {click 1419, 473}
-; SetMouseDelay, 10
-BlockInput, off
-return
-
-#IfWinActive
-
-
-
-#IfWinActive Set Image Canvas Size
-~Space::
-Send {^+c}
-Send 384
-Send {tab 2}
-Send 384
-Send {tab 5}
-Send {space}
-Send {tab}
-Send {down}
-Send {tab 3}
-Send {enter}
-
-
-return
-#IfWinActive
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
