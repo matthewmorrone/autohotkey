@@ -1,4 +1,18 @@
-#Hotstring C ? * O
+#Hotstring C ? *
+
+::....::{U+2026}
+::-|-::{U+0CA0}_{U+0CA0}
+::,+::{+}" "{+}
+::clog::console.log(){left 1}
+::pr(::print_r(); {left 3}
+::pre(::echo "<pre>"; echo "</pre>"; {left 15}{enter 2}{up}print_r(); {left 3}
+::echo(::
+send echo ."\n";{left 6}
+keywait, backspace, D T3
+if (ErrorLevel = 0) {
+	send {space}{delete 6}
+}
+return
 
 ::a^;::{U+00E1} 			; á
 ::A^;::{U+00C1} 			; Á
