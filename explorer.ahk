@@ -13,7 +13,7 @@ Send {Ctrl Down}
 return
 
 ^+a::
-send !hsi
+send !e{up}{enter}
 return
 
 ^w::

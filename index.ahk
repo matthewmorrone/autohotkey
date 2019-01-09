@@ -62,11 +62,6 @@ return
 ; Send {LCtrl up}
 ; return
 
-
-; insert::WinSet, Alwaysontop, , A
-
-
-
 +del::
 Send ^x
 Clipboard := RegExReplace(Clipboard, "(\r\n)(\r\n)+$", "`r`n")
@@ -82,10 +77,6 @@ ins::Send ^v
 +ins::
 Send ^c
 Clipboard := StrReplace(Clipboard, "`n")
-; Clipboard :=  StrReplace(Clipboard, "\n")
-;                          ; Replace(Clipboard, "\n*+$", "")
-; Clipboard := RegExReplace(Clipboard, "\n*+$", "")
-; Clipboard := RegExReplace(Clipboard, "(\r\n)*$", "")
 return
 #IfWinActive
 
@@ -114,10 +105,12 @@ return
 #3:: Send {PgUp}
 #4:: Send {PgDn}
 
-MButton & Up::Send {Home}
-MButton & Down::Send {End}
-MButton & Left::Send {PgUp}
-MButton & Right::Send {PgDn}
+; MButton & Up::Send {Home}
+; MButton & Down::Send {End}
+; MButton & Left::Send {PgUp}
+; MButton & Right::Send {PgDn}
+
+mbutton::lctrl
 
 ^Esc::
 WinGetActiveTitle, Title
@@ -137,13 +130,16 @@ KeyHistory
 #KeyHistory 500
 return
 
+#s::
 #+s::
 ~PrintScreen::
 Run, C:\\Windows\\System32\\SnippingTool.exe, %A_WorkingDir%, max
-WinActivate, Snipping Tool
-WinSet, Topmost, On, Snipping Tool
+; WinSet, Topmost, On, Snipping Tool
 WinSet, Top
-Send, !f {enter}
+WinActivate, Snipping Tool
+Sleep, 500
+Send, !f 
+Send, {enter}
 return
 
 #Space::WinSet, Transparent, 50, A

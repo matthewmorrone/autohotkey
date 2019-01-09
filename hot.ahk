@@ -24,8 +24,8 @@ return
 ::Ao;::{U+00C5} 			; Å
 ::ae;::{asc 0230}			; æ
 ::Ae;::{asc 0198}			; Æ
-::ash;::{asc 0230}			; æ
-::Ash;::{asc 0198}			; Æ
+; ::ash;::{asc 0230}			; æ
+; ::Ash;::{asc 0198}			; Æ
 ::e^;::{asc 0233}			; é
 ::E^;::{asc 0201}			; É
 ::c^;::{asc 0231}			; ç
@@ -167,13 +167,6 @@ return
 ::Xi;::{U+039E}				; Ξ
 ::zeta;::{U+03B6}			; ζ
 ::Zeta;::{U+0396}			; Ζ
-::+o::{U+030A} 				; ring
-::+~::{U+0303} 				; tilde
-::+..::{U+0308}				; umlaut
-::+^::{U+0302}				; circumflex
-::+``::{U+0300}				; grave
-::+'::{U+0301}				; acute
-::+,::{U+0327}				; cedilla
 ::1/2;::{U+00BD}			; ½
 ::1/3;::{U+2153} 			; ⅓
 ::1/5;::{U+2155} 			; ⅕
@@ -275,7 +268,7 @@ return
 ::left;::{U+2190}			; ←
 ::larr;::{U+2190}			; ←
 ::up;::{U+2191}				; ↑
-::uarr;::{U+2191}				; ↑
+::uarr;::{U+2191}			; ↑
 ::right;::{U+2192}			; →
 ::rarr;::{U+2192}			; →
 ::down;::{U+2193}			; ↓
@@ -332,5 +325,121 @@ return
 ::inkpen;::{U+2711} 		; ✑	
 ::inkpen2;::{U+2712} 		; ✒	
 
+
+::ndash;::{U+2013}
+::mdash;::{U+2014}
+::nspace;::{U+2002}
+::mspace;::{U+2003}
+
+
+; en space: UTF8 U+2002 (8194) and HTML &ensp;. Example: " "
+; en dash: UTF8 U+2013 (8211) and HTML &ndash;. Example: "–"
+
+
+; ::+o::{U+030A} 				; ring
+; ::+~::{U+0303} 				; tilde
+; ::+..::{U+0308}				; umlaut
+; ::+^::{U+0302}				; circumflex
+; ::+``::{U+0300}				; grave
+; ::+'::{U+0301}				; acute
+; ::+,::{U+0327}				; cedilla
+
+
+
+::ring;::{U+030A} 			; 
+::tilde;::{U+0303} 			; 
+::umlaut;::{U+0308}			; 
+::circumflex;::{U+0302}		; 
+::grave;::{U+0300}			; 
+::acute;::{U+0301}			; 
+::cedilla;::{U+0327}		;
+
+; :: ::Send {U+0301} ;	́	acute above
+; :: ::Send {U+0317} ;	̗	acute below
+; :: ::Send {U+0341} ;	́	acute tone mark
+; :: ::Send {U+034C} ;	͌	almost equal to above
+; :: ::Send {U+0306} ;	̆	breve above
+; :: ::Send {U+032E} ;	̮	breve below
+; :: ::Send {U+0346} ;	͆	bridge above
+; :: ::Send {U+032A} ;	̪	bridge below
+; :: ::Send {U+0310} ;	̐	candrabindu
+; :: ::Send {U+030C} ;	̌	caron above
+; :: ::Send {U+032C} ;	̬	caron below
+; :: ::Send {U+0327} ;	̧	cedilla
+; :: ::Send {U+0302} ;	̂	circumflex above
+; :: ::Send {U+032D} ;	̭	circumflex below
+; :: ::Send {U+0315} ;	̕	comma above right
+; :: ::Send {U+0313} ;	̓	comma above
+; :: ::Send {U+0326} ;	̦	comma below
+; :: ::Send {U+0324} ;	̤	diaeresis below
+; :: ::Send {U+0308} ;	̈	diaeresis
+; :: ::Send {U+0307} ;	̇	dot above
+; :: ::Send {U+0323} ;	̣	dot below
+; :: ::Send {U+030B} ;	̋	double acute
+; :: ::Send {U+030F} ;	̏	double grave
+; :: ::Send {U+0333} ;	̳	double low line
+; :: ::Send {U+033F} ;	̿	double overline
+; :: ::Send {U+030E} ;	̎	double vertical line above
+; :: ::Send {U+0348} ;	͈	double vertical line below
+; :: ::Send {U+031E} ;	̞	down tack below
+; :: ::Send {U+0347} ;	͇	equals sign below
+; :: ::Send {U+0352} ;	͒	fermata
+; :: ::Send {U+034F} ;	͏	grapheme joiner
+; :: ::Send {U+0300} ;	̀	grave above
+; :: ::Send {U+0316} ;	̖	grave below
+; :: ::Send {U+0340} ;	̀	grave tone mark
+; :: ::Send {U+0344} ;	̈́	greek dialytika tonos
+; :: ::Send {U+0343} ;	̓	greek koronis
+; :: ::Send {U+0342} ;	͂	greek perispomeni
+; :: ::Send {U+0345} ;	ͅ	greek ypogegrammeni
+; :: ::Send {U+034B} ;	͋	homothetic above
+; :: ::Send {U+0309} ;	̉	hook above
+; :: ::Send {U+031B} ;	̛	horn
+; :: ::Send {U+0311} ;	̑	inverted breve
+; :: ::Send {U+032F} ;	̯	inverted breve below
+; :: ::Send {U+033A} ;	̺	inverted bridge below
+; :: ::Send {U+032B} ;	̫	inverted double arch below
+; :: ::Send {U+031A} ;	̚	left angle above
+; :: ::Send {U+0349} ;	͉	left angle below
+; :: ::Send {U+0354} ;	͔	left arrowhead below
+; :: ::Send {U+0351} ;	͑	left half ring above
+; :: ::Send {U+031C} ;	̜	left half ring below
+; :: ::Send {U+034D} ;	͍	left right arrow below
+; :: ::Send {U+0318} ;	̘	left tack below
+; :: ::Send {U+0338} ;	̸	long solidus overlay
+; :: ::Send {U+0336} ;	̶	long stroke overlay
+; :: ::Send {U+0305} ;	̅	overline
+; :: ::Send {U+0332} ;	̲	low line
+; :: ::Send {U+0304} ;	̄	macron above
+; :: ::Send {U+0331} ;	̱	macron below
+; :: ::Send {U+0320} ;	̠	minus sign below
+; :: ::Send {U+034A} ;	͊	not tilde above
+; :: ::Send {U+0328} ;	̨	ogonek
+; :: ::Send {U+0321} ;	̡	palatalized hook below
+; :: ::Send {U+031F} ;	̟	plus sign below
+; :: ::Send {U+0322} ;	̢	retroflex hook below
+; :: ::Send {U+0314} ;	̔	reversed comma above
+; :: ::Send {U+0350} ;	͐	right arrowhead above
+; :: ::Send {U+0339} ;	̹	right half ring below
+; :: ::Send {U+0319} ;	̙	right tack below
+; :: ::Send {U+030A} ;	̊	ring above
+; :: ::Send {U+0325} ;	̥	ring below
+; :: ::Send {U+033C} ;	̼	seagull below
+; :: ::Send {U+0337} ;	̷	short solidus overlay
+; :: ::Send {U+0335} ;	̵	short stroke overlay
+; :: ::Send {U+033B} ;	̻	square below
+; :: ::Send {U+0303} ;	̃	tilde above
+; :: ::Send {U+0330} ;	̰	tilde below
+; :: ::Send {U+0334} ;	̴	tilde overlay
+; :: ::Send {U+0312} ;	̒	turned comma above
+; :: ::Send {U+031D} ;	̝	up tack below
+; :: ::Send {U+034E} ;	͎	upwards arrow below
+; :: ::Send {U+030D} ;	̍	vertical line above
+; :: ::Send {U+0329} ;	̩	vertical line below
+; :: ::Send {U+033E} ;	̾	vertical tilde
+; :: ::Send {U+033D} ;	̽	x above
+; :: ::Send {U+0353} ;	͓	x below
+
 #Hotstring C0 ?0 *0 O0
+#Include html-entities.ahk
 #Include unicode.ahk
