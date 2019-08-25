@@ -1,4 +1,15 @@
+isWindowFullScreen(WinID) {
+	If (!WinID) {
+		return
+	}
 
+	WinGet, style, Style, ahk_id %WinID%
+	; 0x800000 is WS_BORDER.
+	; 0x20000000 is WS_MINIMIZE.
+	; no border and not minimized
+	retVal := (style & 0x20800000) ? 0 : 1
+	Return, retVal
+}
 WindowW() {
 	WinGetPos,,, WindowWidth
 	return %WindowWidth%
@@ -11,10 +22,10 @@ RemoveDuplicates(String, Delimiter="`n") {
 	oUniques := []
 	Loop, parse, String, % Delimiter
 	{
-		For k,v in oUniques
-		{
-			if (v = A_LoopField)
+		For k,v in oUniques {
+			if (v = A_LoopField) {
 				continue 2
+			}
 		}
 		NewString .= Delimiter A_LoopField
 		oUniques.Insert(A_LoopField)
@@ -24,9 +35,13 @@ RemoveDuplicates(String, Delimiter="`n") {
 debug(a:="") {
 	MsgBox, 4,, %a% Would you like to continue?, 5
 	IfMsgBox, No
+	{
 		Return
+	}
 	IfMsgBox, Timeout
+	{
 		Return
+	}
 }
 coolTip(a:="is this thing on?", b:=1000) {
 	ToolTip %a%
@@ -60,21 +75,21 @@ TitleCase(str) {
 ; ~*^v::coolTip("pasted!")
 
 ActivatorEnd(message, active:=true, timeout:=3) {
-	if %active% {
+	If %active% {
 		WinWaitActive, %message%, , %timeout%
 	}
 	else {
 		WinWait, %message%, , %timeout%
 		WinActivate
 	}
-	if ErrorLevel {
+	If ErrorLevel {
 		return
 	}
 }
 
 GetMonitor(hwnd := 0) {
 	; If no hwnd is provided, use the Active Window
-	if (hwnd) {
+	If (hwnd) {
 		WinGetPos, winX, winY, winW, winH, ahk_id %hwnd%
 	}
 	else {
@@ -87,30 +102,27 @@ GetMonitor(hwnd := 0) {
 	Loop %numDisplays% {
 		SysGet, mon, MonitorWorkArea, %a_index%
 		; Left may be skewed on Monitors past 1
-		if (a_index > 1) {
+		If (a_index > 1) {
 			monLeft -= 10
 		}
 		; Right overlaps Left on Monitors past 1
-		else if (numDisplays > 1) {
+		else If (numDisplays > 1) {
 			monRight -= 10
 		}
 		; Tracked based on X. Cannot properly sense on Windows "between" monitors
-		if (winX >= monLeft && winX < monRight) {
+		If (winX >= monLeft && winX < monRight) {
 			return %a_index%
 		}
 	}
-	; Return Primary Monitor if can't sense
+	; Return Primary Monitor If can't sense
 	return idxPrimary
 }
-GetMonitorMouseIsIn(Monitor = 0)
-{
-	if(Monitor)
-	{
+GetMonitorMouseIsIn(Monitor = 0) {
+	If (Monitor) {
 		SysGet, Cord, 79
 		MouseGetPos, x, k
 	}
-	else
-	{
+	else {
 		SysGet, Cord, 78
 		MouseGetPos, k, x
 	}
@@ -137,8 +149,10 @@ ClickAndRepeat(x, y, n) {
 }
 ClickAndReturn(x, y) {
 	MouseGetPos, xpos, ypos
+	; MouseClick, , %xpos%, %ypos%, , %speed%
 	Send {click %x%, %y%}
 	MouseMove, %xpos%, %ypos%
+	; , %speed%
 }
 MoveClickWait(x, y, z:=500) {
 	Send {click %x%, %y%}
@@ -147,17 +161,17 @@ MoveClickWait(x, y, z:=500) {
 GetSelections(hwnd="") {
 	hwnd := hwnd ? hwnd : WinExist("A")
 	WinGetClass class, ahk_id %hwnd%
-	if (class = "CabinetWClass" or class = "ExploreWClass" or class="Progman")
+	If (class = "CabinetWClass" or class = "ExploreWClass" or class="Progman")
 		for window in ComObjCreate("Shell.Application").Windows
-			if (window.hwnd==hwnd)
+			If (window.hwnd==hwnd)
 	return window.Document.SelectedItems
 }
 GetSelection(hwnd="") {
 	hwnd := hwnd ? hwnd : WinExist("A")
 	WinGetClass class, ahk_id %hwnd%
-	if (class = "CabinetWClass" or class = "ExploreWClass" or class="Progman")
+	If (class = "CabinetWClass" or class = "ExploreWClass" or class="Progman")
 		for window in ComObjCreate("Shell.Application").Windows
-			if (window.hwnd==hwnd)
+			If (window.hwnd==hwnd)
 	sel := window.Document.SelectedItems
 	for item in sel {
 		ToReturn .= item.path "`n"
@@ -166,10 +180,10 @@ GetSelection(hwnd="") {
 }
 ToString(array, depth:=6, indent:="") {
 	result := ""
-	if (IsObject(array)) {
+	If (IsObject(array)) {
 		for key, value in array {
 			result .= A_Tab . indent . key
-			if (IsObject(value) && depth > 1) {
+			If (IsObject(value) && depth > 1) {
 				result .= "`n" . toString(value, depth - 1, indent . A_Tab)
 			}
 			else {
@@ -194,7 +208,7 @@ return
 
 GetPath() {
 	gosub selections
-	if (len = 1) {
+	If (len = 1) {
 		for key, item in sel {
 			path := item.path
 		}
@@ -207,7 +221,7 @@ IsFolder(path) {
 }
 IsFile(path) {
 	SplitPath, path, , , out
-	if (out = "") {
+	If (out = "") {
 		return false
 	}
 	else {

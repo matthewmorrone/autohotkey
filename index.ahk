@@ -6,10 +6,11 @@ SetWorkingDir 			%A_ScriptDir%
 ; #MaxHotkeysPerInterval 	200
 #WinActivateForce
 SetTitleMatchMode 		2
-SetCapsLockState 		AlwaysOff
+; SetCapsLockState 		AlwaysOff
 
-IF NOT A_IsAdmin ; Runs script as Admin.
-{
+
+
+If Not A_IsAdmin {
 	Run *RunAs "%A_ScriptFullPath%"
 	ExitApp
 }
@@ -35,13 +36,53 @@ Menu, tray, icon, %iconn%, , 1
 
 XButton1::Shift
 XButton2::Space
+; #Include drag.ahk
+; #Include font.ahk
+
+
+
+; *$LShift::LCtrl
+; *$LAlt::LShift
+; *$LCtrl::LAlt
+
 
 *$LAlt::LCtrl
 *$LCtrl::LAlt
 *$RAlt::RCtrl
 *$RCtrl::RAlt
+^CapsLock::CapsLock
 CapsLock::Enter
 +Backspace::Delete
+CapsLock up::
+Send {Enter up}
+return
+ 
+; LAlt::Enter
+; LCtrl::LAlt
+; +CapsLock::Enter
+; CapsLock::Ctrl
+; CapsLock up::
+; Send {LCtrl up}
+; return
+
++del::
+Send ^x
+Clipboard := RegExReplace(Clipboard, "(\r\n)(\r\n)+$", "`r`n")
+return
++ins::
+Send ^c
+Clipboard := RegExReplace(Clipboard, "(\r\n)(\r\n)+$", "`r`n")
+return
+ins::Send ^v
+
+
+#IfWinActive, ahk_exe sublime.exe
++ins::
+Send ^c
+Clipboard := StrReplace(Clipboard, "`n")
+return
+#IfWinActive
+
 $`::Send {Backspace}
 $+`::Send {Delete}
 $#`::SendRaw, ``
@@ -51,13 +92,32 @@ $+#`:: SendRaw, `~
 #a::Send {left}
 #s::Send {down}
 #d::Send {right}
+^+c::
+send ^c
+StringUpper, Clipboard, Clipboard
+Send ^v
+return
+
+!d::
+Send +{right}
+Send ^x
+Send {left}
+Send ^v
+return
+
+#Include hot.ahk
 
 #1:: Send {Home}
 #2:: Send {End}
 #3:: Send {PgUp}
 #4:: Send {PgDn}
 
+; MButton & Up::Send {Home}
+; MButton & Down::Send {End}
+; MButton & Left::Send {PgUp}
+; MButton & Right::Send {PgDn}
 
+mbutton::lctrl
 
 ^e::
 SetFormat Integer, D
@@ -90,10 +150,21 @@ Send, ^v
 return
 
 
-F7::
-Run, "C:\Program Files (x86)\AutoHotkey\AU3_Spy.exe", %A_WorkingDir%, max
+
+; because esc doesn't always seem to work like i think it should
+^Esc::
+WinGetActiveTitle, Title
+WinClose %Title%
+return
+!+Esc::
+Send {^+Esc}
 return
 
+; F6::Edit
+F7::
+; Run "C:\Program Files\AutoHotkey\WindowSpy.ahk"
+Run, "C:\Program Files (x86)\AutoHotkey\AU3_Spy.exe", %A_WorkingDir%, max
+return
 F8::
 #persistent
 #InstallKeybdHook
@@ -106,14 +177,7 @@ PrintScreen::
 Run, C:\\Windows\\System32\\SnippingTool.exe, %A_WorkingDir%, max
 return
 
-; because esc doesn't always seem to work like i think it should
-^Esc::
-WinGetActiveTitle, Title
-WinClose %Title%
-return
-!+Esc::
-Send {^+Esc}
-return
+
 
 #IfWinActive ahk_exe explorer.exe
 
@@ -142,11 +206,12 @@ return
 
 #IfWinActive
 
-#IfWinActive ahk_exe chrome.exe
+
+#IfWinActive, ahk_exe chrome.exe
 ^w::return
 ^q::send ^w
-
 #IfWinActive
+
 
 #Include hot.ahk
 #Include unicode.ahk
@@ -165,6 +230,36 @@ return
 
 
 #IfWinActive, ahk
+#s::
+#+s::
+~PrintScreen::
+Run, C:\\Windows\\System32\\SnippingTool.exe, %A_WorkingDir%, max
+; WinSet, Topmost, On, Snipping Tool
+WinSet, Top
+WinActivate, Snipping Tool
+Sleep, 500
+Send, !f 
+Send, {enter}
+return
+
+#Space::WinSet, Transparent, 50, A
+#Space UP::WinSet, Transparent, OFF, A
+return
+
+; WheelDown::PgDn
+; WheelUp::PgUp
+
+
+#Include interskill.ahk
+
+; 1::send {XButton1}
+; 2::send {XButton2}
+
+; #Include explorer.ahk
+
+^+1::Send {U+00AC} ;&not;
+
+#IfWinActive, .ahk
 SetTitleMatchMode, 2
 $~^s::
 txt := % "Reloading " . A_ScriptName

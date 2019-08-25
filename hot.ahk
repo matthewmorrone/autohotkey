@@ -1,495 +1,445 @@
 #Hotstring C ? *
 
-::...;::{U+2026}			; 
-::|||::{U+0CA0}_{U+0CA0}			; 
-::,+::{+}" "{+}			; 
-::clog::console.log(){left 1}			; 
-::vlog::var log = console.log.bind(console); {enter}			; 
-::pr(::print_r(); {left 5}{right 2}			; 
-::pre(::echo "<pre>"; echo "</pre>"; {left 15}{enter 2}{up}print_r(); {left 3}			; 
-; :b0:echo:: ."{`\}{n}"; {left 7}			; 
-::echo::
-send echo ."\n";{left 6}			; 
-; Input, Key, L1 B
+::....::{U+2026}
+::-|-::{U+0CA0}_{U+0CA0}
+::,+::{+}" "{+}
+::clog::console.log(){left 1}
+::pr(::print_r(); {left 3}
+::pre(::echo "<pre>"; echo "</pre>"; {left 15}{enter 2}{up}print_r(); {left 3}
+::echo(::
+send echo ."\n";{left 6}
 keywait, backspace, D T3
 if (ErrorLevel = 0) {
-	send {space}{delete 6}			; 
-}			; 
+	send {space}{delete 6}
+}
 return
 
-#Hotstring C0 ?0 *0
-
-#Hotstring C ? * O
-
-::!?;::{U+203D} 			; ‽
-::<<;::{U+00AB} 			; «
-::>>;::{U+00BB} 			; »
-::?!;::{U+203D} 			; ‽
-::^2;::{U+00B2} 			; ²
-::^3;::{U+00B3} 			; ³
-::Aacute;::{U+00C1}			; Á (193)
-::aacute;::{U+00E1}			; á (225)
-::Acirc;::{U+00C2}			; Â (194)
-::acirc;::{U+00E2}			; â (226)
-::acute;::{U+00B4}			; ´ (180)
-::AElig;::{U+00C6}			; Æ (198)
-::aelig;::{U+00E6}			; æ (230)
-::Agrave;::{U+00C0}			; À (192)
-::agrave;::{U+00E0}			; à (224)
-::airplane;::{U+2708}		; ✈
-::all;::{U+2200}			; ∀
-::Alpha;::{U+0391}			; Α (913)
-::alpha;::{U+03B1}			; α (945)
-::amp;::{U+0026}			; & (38)
-::and;::{U+2227}			; ∧ (8743)
-::ang;::{U+2220}			; ∠ (8736)
-::ankh;::{U+2625}			; ☥
-::any;::{U+2203}			; ∃
-::apos;::{U+0027}			; ' (39)
-::aquarius;::{U+2651}		; ♑
-::aries;::{U+2648}			; ♈
-::Aring;::{U+00C5}			; Å (197)
-::aring;::{U+00E5}			; å (229)
-::ascend;::{U+260A}			; ☊
-::Ash;::{U+00C6}			; Æ (198)
-::ash;::{U+00E6}			; æ (230)
-::asymp;::{U+2248}			; ≈ (8776)
-::Atilde;::{U+00C3}			; Ã (195)
-::atilde;::{U+00E3}			; ã (227)
-::Auml;::{U+00C4}			; Ä (196)
-::auml;::{U+00E4}			; ä (228)
-::baro;::{U+00F8} 			; ø
-::bdquo;::{U+201E}			; „ (8222)
-::Beta;::{U+0392}			; Β (914)
-::beta;::{U+03B2}			; β (946)
-::biohazard;::{U+2623}		; ☣
-::brvbar;::{U+00A6}			; ¦ (166)
-::bull;::{U+2022}			; • (8226)
-::cancer;::{U+264B}			; ♋
-::cap;::{U+2229}			; ∩ (8745)
-::capricorn;::{U+2649}		; ♉
-::Ccedil;::{U+00C7}			; Ç (199)
-::ccedil;::{U+00E7}			; ç (231)
-::cedil;::{U+00B8}			; ¸ (184)
-::cent;::{U+00A2}			; ¢ (162)
-::cents;::{U+20B5} 			; ₵
-::check;::{U+2713}			; ✓
-::Check;::{U+2714}			; ✔
-::Chi;::{U+03A7}			; Χ (935)
-::chi;::{U+03C7}			; χ (967)
-::chirho;::{U+2627}			; ☧
-::circ;::{U+02C6}			; ˆ (710)
-::circle;::{U+25CB} 		; ○
-::Circle;::{U+25CF} 		; ●
-::circles;::{U+25CE} 		; ◎
-::click;::{U+0298} 			; ʘ
-::clover;::{U+2620}			; ☠
-::clubs;::{U+2663}			; ♣ (9827)
-::cong;::{U+2245}			; ≅ (8773)
-::copy;::{U+00A9}			; © (169)
-::cp;::{U+00A9}				; © (169)
-::cord;::{U+2706}			; ✆
-::crarr;::{U+21B5}			; ↵ (8629)
-::cross;::{U+271D}			; ✝
-::cubed;::{U+00B3} 			; ³
-::cup;::{U+222A}			; ∪ (8746)
-::curren;::{U+00A4}			; ¤ (164)
-::dagaz;::{U+16DE} 			; ᛞ
-::dagger2;::{U+2021} 		; ‡
-::dagger;::{U+2020}			; † (8224)
-::Dagger;::{U+2021}			; ‡ (8225)
-::darkl;::{U+026B} 			; ɫ
-::darr;::{U+2193}			; ↓ (8595)
-::dArr;::{U+21D3}			; ⇓ (8659)
-::db;::{U+0238} 			; ȸ
-::deg;::{U+00B0}			; ° (176)
-::degree;::{U+00B0}			; ° (176)
-::degrees;::{U+00B0}		; ° (176)
-::Delta;::{U+0394}			; Δ (916)
-::delta;::{U+03B4}			; δ (948)
-::descend;::{U+260B}		; ☋
-::dharma;::{U+2638}			; ☸
-::diamond;::{U+25C6}		; ◆
-::diams;::{U+2666}			; ♦ (9830)
-::diesis;::{U+2021}			; ‡
-::Digamma;::{U+03DC}		; Ϝ
-::digamma;::{U+03DD}		; ϝ
-::div;::{U+00F7}			; ÷ (247)
-::divide;::{U+00F7}			; ÷ (247)
-::dj;::{U+02A4}				; ʤ
-; ::dot;::{U+00B7}			; ·
-::dot;::{U+2022}			; •
-::dotted;::{U+25CC}			; ◌
-::down;::{U+2193}			; ↓
-::dz;::{U+02A3}				; ʣ
-::Eacute;::{U+00C9}			; É (201)
-::eacute;::{U+00E9}			; é (233)
-::earth;::{U+2641}			; ♁
-::Ecirc;::{U+00CA}			; Ê (202)
-::ecirc;::{U+00EA}			; ê (234)
-::ef;::{U+0444}				; ф
-::Egrave;::{U+00C8}			; È (200)
-::egrave;::{U+00E8}			; è (232)
-::eighth;::{U+215B}			; ⅛
-::empty;::{U+2205}			; ∅ (8709)
-::emsp;::{U+2003}			;   (8195)
-::Eng;::{U+014A}			; Ŋ
-::eng;::{U+014B}			; ŋ
-::ensp;::{U+2002}			;   (8194)
-::Epsilon;::{U+0395}		; Ε (917)
-::epsilon;::{U+03B5}		; ε (949)
-::equiv;::{U+2261}			; ≡ (8801)
-::Esh;::{U+01A9}			; Ʃ
-::esh;::{U+0283}			; ʃ
-::eszett;::{U+00DF}			; ß (223)
-::Eszett;::{U+1E9E}			; ẞ (223)
-::et;::{U+204A}				; ⁊
-::Eth;::{asc 0208}			; Ð
-::eth;::{asc 0240}			; ð
-::Eth;::{U+00D0}			; Ð (208)
-::eth;::{U+00F0}			; ð (240)
-::Ethel;::{U+0152}			; Œ
-::ethel;::{U+0153}			; œ
-::Euml;::{U+00CB}			; Ë (203)
-::euml;::{U+00EB}			; ë (235)
-::euro;::{U+20AC}			; € (8364)
-::every;::{U+2200}			; ∀
-::exist;::{U+2203}			; ∃ (8707)
-::Ezh;::{U+01B7}			; Ʒ
-::ezh;::{U+0292}			; ʒ
-::female;::{U+2640}			; ♀
-::fifth;::{U+2155}			; ⅕
-::fl;::{U+026C}				; ɬ
-::flat;::{U+266D}			; ♭
-::fnof;::{U+0192}			; ƒ (402)
-::forall;::{U+2200}			; ∀ (8704)
-::frac12;::{U+00BD}			; ½ (189)
-::frac14;::{U+00BC}			; ¼ (188)
-::frac34;::{U+00BE}			; ¾ (190)
-::frasl;::{U+2044}			; ⁄ (8260)
-::Gamma;::{U+0393}			; Γ (915)
-::gamma;::{U+03B3}			; γ (947)
-::ge;::{U+2265}				; ≥ (8805)
-::gemini;::{U+264A}			; ♊
-::Gemini;::{U+2653}			; ♓
-::glot;::{U+0294}			; ʔ
-::gt;::{U+003E}				; > (62)
-::harr;::{U+2194}			; ↔ (8596)
-::hArr;::{U+21D4}			; ⇔ (8660)
-::hbar;::{U+210F}			; ℏ
-::He;::{U+0126}				; Ħ
-::he;::{U+0127}				; ħ
-::hearts;::{U+2665}			; ♥ (9829)
-::...;::{U+2026}			; … (8230)
-::ellip;::{U+2026}			; … (8230)
-::hellip;::{U+2026}			; … (8230)
-::home;::{U+2302}			; ⌂
-::hv;::{U+0195}				; ƕ
-::Hv;::{U+01F6}				; Ƕ
-::Iacute;::{U+00CD}			; Í (205)
-::iacute;::{U+00ED}			; í (237)
-::Icirc;::{U+00CE}			; Î (206)
-::icirc;::{U+00EE}			; î (238)
-::Ieta;::{U+0397}			; Η (919)
-::ieta;::{U+03B7}			; η (951)
-::iexcl;::{U+00A1}			; ¡ (161)
-::iff;::{U+2194}			; ↔
-::Igrave;::{U+00CC}			; Ì (204)
-::igrave;::{U+00EC}			; ì (236)
-::Ij;::{U+0132}				; Ĳ
-::ij;::{U+0133}				; ĳ
-::image;::{U+2111}			; ℑ (8465)
-::infin;::{U+221E}			; ∞ (8734)
-::infinity;::{U+221E}		; ∞ (8734)
-::ing;::{U+16DD}			; ᛝ
-::int;::{U+222B}			; ∫ (8747)
-::interrobang;::{U+203D}	; ‽
-::Iota;::{U+0399}			; Ι (921)
-::iota;::{U+03B9}			; ι (953)
-::iquest;::{U+00BF}			; ¿ (191)
-::isin;::{U+2208}			; ∈ (8712)
-::islam;::{U+262A}			; ☪
-::Iuml;::{U+00CF}			; Ï (207)
-::iuml;::{U+00EF}			; ï (239)
-::jupiter;::{U+2643}		; ♃
-::Kappa;::{U+039A}			; Κ (922)
-::kappa;::{U+03BA}			; κ (954)
-::Koppa;::{U+03D8}			; Ϙ (954)
-::koppa;::{U+03D9}			; ϙ (922)
-::Lambda;::{U+039B}			; Λ (923)
-::lambda;::{U+03BB}			; λ (955)
-::lang;::{U+2329}			; 〈 (9001)
-::laquo;::{U+00AB}			; « (171)
-::larr;::{U+2190}			; ← (8592)
-::lArr;::{U+21D0}			; ⇐ (8656)
-::lceil;::{U+2308}			; ⌈ (8968)
-::ldquo;::{U+201C}			; “ (8220)
-::lessequal;::{U+2264}		; ≤		; ≤ (8804)
-::left;::{U+2190}			; ←
-::leo;::{U+264C}			; ♌
-::lfloor;::{U+230A}			; ⌊ (8970)
-::libra;::{U+264E}			; ♎
-::lowast;::{U+2217}			; ∗ (8727)
-::loz;::{U+25CA}			; ◊ (9674)
-::lrm;::{U+200E}			;   (8206)
-::lsaquo;::{U+2039}			; ‹ (8249)
-::lsquo;::{U+2018}			; ‘ (8216)
-::lt;::{U+003C}				; < (60)
-::macr;::{U+00AF}			; ¯ (175)
-::mail;::{U+2709}			; ✉
-::male;::{U+2642}			; ♂
-::maltese;::{U+2720}		; ✠
-::mannaz;::{U+16D7}			; ᛗ
-::mars;::{U+2642}			; ♂
-::mdash;::{U+2014}			; — (8212)
-::mercury;::{U+263F}		; ☿
-::micro;::{U+00B5}			; µ (181)
-::middot;::{U+00B7}			; · (183)
-::minus;::{U+2212}			; − (8722)
-::moon;::{U+263D}			; ☽
-::Mu;::{U+039C}				; Μ (924)
-::mu;::{U+03BC}				; μ (956)
-::mult;::{U+00D7}			; ×
-::multiply;::{U+00D7}		; ×
-::multiply2;::{U+2715}		; ✕
-::multiply3;::{U+2716}		; ✖
-::nabla;::{U+2207}			; ∇ (8711)
-::natural;::{U+266E}		; ♮
-::nbsp;::{U+00A0}			;   (160)
-::ndash;::{U+2013}			; – (8211)
-::notequal;::{U+2260}		; ≠ (8800)
-::neptune;::{U+2646}		; ♆
-::Ng;::{U+014A}				; Ŋ
-::ng;::{U+014B}				; ŋ
-::ni;::{U+220B}				; ∋ (8715)
-::ninth;::{U+2151}			; ⅑
-::nix;::{U+2717}			; ✗
-::Nix;::{U+2718}			; ✘
+::a^;::{U+00E1} 			; á
+::A^;::{U+00C1} 			; Á
+::^a;::{asc 0224}			; à
+::^A;::{asc 0192}			; À
+::a:;::{U+00E4} 			; ä
+::A:;::{U+00C4} 			; Ä
+::ao;::{U+00E5} 			; å
+::Ao;::{U+00C5} 			; Å
+::ae;::{asc 0230}			; æ
+::Ae;::{asc 0198}			; Æ
+; ::ash;::{asc 0230}			; æ
+; ::Ash;::{asc 0198}			; Æ
+::e^;::{asc 0233}			; é
+::E^;::{asc 0201}			; É
+::c^;::{asc 0231}			; ç
+::C^;::{asc 0199}			; Ç
+::^e;::{asc 0232}			; è
+::^E;::{asc 0200}			; È
+::e:;::{U+00EB} 			; ë
+::E:;::{U+00CB} 			; Ë
+::i:;::{U+00EF} 			; ï
+::I:;::{U+00CF} 			; Ï
+::n^;::{asc 0241}			; ñ
+::N^;::{asc 0209}			; Ñ
 ::Nj;::{asc 0209}			; Ñ
 ::nj;::{asc 0241}			; ñ
-::no;::{U+2116}				; №
-::not;::{U+00AC}			; ¬ (172)
-::notin;::{U+2209}			; ∉ (8713)
-::nsub;::{U+2284}			; ⊄ (8836)
-::Ntilde;::{U+00D1}			; Ñ (209)
-::ntilde;::{U+00F1}			; ñ (241)
-::Nu;::{U+039D}				; Ν (925)
-::nu;::{U+03BD}				; ν (957)
-::Oacute;::{U+00D3}			; Ó (211)
-::oacute;::{U+00F3}			; ó (243)
-::obelisk;::{U+2020}		; †
-::obelus;::{U+2020}			; †
-::Ocirc;::{U+00D4}			; Ô (212)
-::ocirc;::{U+00F4}			; ô (244)
-::octostar;::{U+2738}		; ✸
-::OElig;::{U+0152}			; Œ (338)
-::oelig;::{U+0153}			; œ (339)
-::Ograve;::{U+00D2}			; Ò (210)
-::ograve;::{U+00F2}			; ò (242)
-::oline;::{U+203E}			; ‾ (8254)
-::Omega;::{U+03A9}			; Ω (937)
-::omega;::{U+03C9}			; ω (969)
-::Omicron;::{U+039F}		; Ο (927)
-::omicron;::{U+03BF}		; ο (959)
-::oplus;::{U+2295}			; ⊕ (8853)
-::or;::{U+2228}				; ∨ (8744)
-::or;::{U+2228}				; ∨
-::ordf;::{U+00AA}			; ª (170)
-::ordm;::{U+00BA}			; º (186)
-::Oslash;::{U+00D8}			; Ø (216)
-::oslash;::{U+00F8}			; ø (248)
-::othalan;::{U+16DF}		; ᛟ
-::Otilde;::{U+00D5}			; Õ (213)
-::otilde;::{U+00F5}			; õ (245)
-::otimes;::{U+2297}			; ⊗ (8855)
-::Ou;::{U+0222}				; Ȣ
-::ou;::{U+0223}				; ȣ
-::Ouml;::{U+00D6}			; Ö (214)
-::ouml;::{U+00F6}			; ö (246)
-::para;::{U+00B6}			; ¶ (182)
-::part;::{U+2202}			; ∂ (8706)
-::peace;::{U+262E}			; ☮
-::pen;::{U+2711}			; ✑
-::pencil;::{U+270F}			; ✏
-::permil;::{U+2030}			; ‰ (8240)
-::perp;::{U+22A5}			; ⊥ (8869)
-::Phi;::{U+03A6}			; Φ (934)
-::phi;::{U+03C6}			; φ (966)
-::phone;::{U+260E}			; ☎
-::Pi;::{U+03A0}				; Π (928)
-::pi;::{U+03C0}				; π (960
-::pisces;::{U+2652}			; ♒
-::piv;::{U+03D6}			; ϖ (982)
-::Piwr;::{U+0553}			; Փ
-::piwr;::{U+0583}			; փ
-::planck;::{U+210F}			; ℏ
-::plusminus;::{U+00B1}		; ± (177)
-::plusmn;::{U+00B1}			; ± (177)
-::pluto;::{U+2647}			; ♇
-::pound;::{U+00A3}			; £ (163)
-::pounds;::{U+00A3}			; £ (163)
-::prime;::{U+2032}			; ′ (8242)
-::Prime;::{U+2033}			; ″ (8243)
-::prod;::{U+220F}			; ∏ (8719)
-::prop;::{U+221D}			; ∝ (8733)
-::Psi;::{U+03A8}			; Ψ (936)
-::psi;::{U+03C8}			; ψ (968)
-::Qoppa;::{U+03D8}			; Ϙ (954)
-::qoppa;::{U+03D9}			; ϙ (922)
-::qp;::{U+0239}				; ȹ
-::quot;::{U+0022}			; " (34)
-::radic;::{U+221A}			; √ (8730)
-::radioactive;::{U+2622}	; ☢
-::ram;::{U+0264}			; ɤ
-::rang;::{U+232A}			; 〉 (9002)
-::raquo;::{U+00BB}			; » (187)
-::rarr;::{U+2192}			; → (8594)
-::rArr;::{U+21D2}			; ⇒ (8658)
-::rceil;::{U+2309}			; ⌉ (8969)
-::rdquo;::{U+201D}			; ” (8221)
-::real;::{U+211C}			; ℜ (8476)
-::reg;::{U+00AE}			; ® (174)
-::register;::{U+00AE}		; ® (174)
-::rfloor;::{U+230B}			; ⌋ (8971)
-::Rho;::{U+03A1}			; Ρ (929)
-::rho;::{U+03C1}			; ρ (961)
-::rhombus;::{U+25C7}		; ◇
-::right;::{U+2192}			; →
-::rlm;::{U+200F}			;   (8207)
-::root;::{U+221A}			; √
-::rsaquo;::{U+203A}			; › (8250)
-::rsquo;::{U+2019}			; ’ (8217)
-::sagitarrius;::{U+2650}	; ♐
-::saturn;::{U+2644}			; ♄
-::sbquo;::{U+201A}			; ‚ (8218)
-::Scaron;::{U+0160}			; Š (352)
-::scaron;::{U+0161}			; š (353)
-::Schwa;::{U+018F}			; Ə
-::schwa;::{U+01DD}			; ǝ
-::schwar;::{U+025A}			; ɚ
-::scorpio;::{U+264F}		; ♏
-::sdot;::{U+22C5}			; ⋅ (8901)
-::sect;::{U+00A7}			; § (167)
-::section;::{U+00A7}		; § (167)
-::seta;::{U+00DF}			; ß
-::seventh;::{U+2150}		; ⅐
-::Sha;::{U+0428}			; Ш
-::sha;::{U+0448}			; ш
-::sharp;::{U+266F}			; ♯
-::shekel;::{U+20AA}			; ₪
-::shy;::{U+00AD}			;   (173)
-::Sigma;::{U+03A3}			; Σ (931)
-::sigmA;::{U+03C2}			; ς (962)
-::sigma;::{U+03C3}			; σ (963)
-::sigmaf;::{U+03C2}			; ς (962)
-::sim;::{U+223C}			; ∼ (8764)
-::sixth;::{U+2159}			; ⅙
-::snowflake;::{U+2745}		; ❅
-::some;::{U+2203}			; ∃ (8707)
-::sowilo;::{U+16CA}			; ᛊ
-::spades;::{U+2660}			; ♠ (9824)
-::sparkle;::{U+2747}		; ❇
-::square;::{U+25A0}			; ■
-::square;::{U+25A1}			; □
-::stan;::{U+16E5} 			; ᛥ
-::star;::{U+2605}			; ★
-::sub;::{U+2282}			; ⊂ (8834)
-::sube;::{U+2286}			; ⊆ (8838)
-::sum;::{U+2211}			; ∑ (8721)
-::sun;::{U+2600}			; ☀
-::sub0;::{U+2080}			; ₀
-::sub1;::{U+2081}			; ₁
-::sub2;::{U+2082}			; ₂
-::sub3;::{U+2083}			; ₃
-::sup0;::{U+2070}			; ⁰
-::sup1;::{U+00B9}			; ¹ (185)
-::sup2;::{U+00B2}			; ² (178)
-::sup3;::{U+00B3}			; ³ (179)
-; U+207x		xⁱ			x⁴	x⁵₅	x⁶	x⁷	x⁸	x⁹				x⁽	x⁾	xⁿ
-; U+208x					x₄	x₅	x₆	x₇	x₈	x₉				x₍	x₎	
-; U+209x	xₐ	xₑ	xₒ	xₓ	xₔ	xₕ	xₖ	xₗ	xₘ	xₙ	xₚ	xₛ	xₜ			
-::sub+;::{U+208A}			; ⁺
-::sup+;::{U+207A}			; ⁺
-::sub-;::{U+208B}			; ₋
-::sup-;::{U+207B}			; ₊
-::sub=;::{U+208C}			; ₌
-::sup=;::{U+207C}			; ⁼
-::sup;::{U+2283}			; ⊃ (8835)
-::supe;::{U+2287}			; ⊇ (8839)
-::eszett;::{U+00DF}			; ß (223)
-::Eszett;::{U+1E9E}			; ẞ (223)
-::tapedrive;::{U+2707}		; ✇
-::Tau;::{U+03A4}			; Τ (932)
-::tau;::{U+03C4}			; τ (964)
-::tenth;::{U+2152} 			; ⅒
-::there4;::{U+2234}			; ∴ (8756)
-::therefore;::{U+2234} 		; ∴ (8756)
-::Theta;::{U+0398}			; Θ (920)
-::theta;::{U+03B8}			; θ (952)
-::thetasym;::{U+03D1}		; ϑ (977)
-::thinsp;::{U+2009}			;   (8201)
-::third;::{U+2153} 			; ⅓
-::Thorn;::{U+00DE}			; Þ (222)
-::thorn;::{U+00FE}			; þ (254)
-::tilde;::{U+02DC}			; ˜ (732)
-::times;::{U+00D7}			; × (215)
-::tm;::{U+2122}				; ™ (8482)
-::trade;::{U+2122}			; ™ (8482)
-::trademark;::{U+2122} 		; ™ (8482)
-::triangle;::{U+25B2} 		; ▲
-::triangle;::{U+25B3} 		; △
-::ts;::{U+02A6}				; ʦ
-::tz;::{U+02A7}				; ʧ
-::tt;::{U+2020}				; †
-::Tt;::{U+2021}				; ‡
-::turnedf;::{U+2132} 		; Ⅎ
-::tvimadur;::{U+16EF} 		; ᛯ
-::Uacute;::{U+00DA}			; Ú (218)
-::uacute;::{U+00FA}			; ú (250)
-::uarr;::{U+2191}			; ↑ (8593)
-::uArr;::{U+21D1}			; ⇑ (8657)
-::Ucirc;::{U+00DB}			; Û (219)
-::ucirc;::{U+00FB}			; û (251)
-::Ugrave;::{U+00D9}			; Ù (217)
-::ugrave;::{U+00F9}			; ù (249)
-::uml;::{U+00A8}			; ¨ (168)
-::up;::{U+2191}				; ↑
-::updown;::{U+2195} 		; ↕
-::upsih;::{U+03D2}			; ϒ (978)
-::Upsilon;::{U+03A5}		; Υ (933)
-::upsilon;::{U+03C5}		; υ (965)
-::uranus;::{U+2645}			; ♅
-::Uuml;::{U+00DC}			; Ü (220)
-::uuml;::{U+00FC}			; ü (252)
-::venus;::{U+2640}			; ♀
-::virgo;::{U+264D}			; ♍
-::weierp;::{U+2118}			; ℘ (8472)
+; ::n~;::{asc 0241}			; ñ
+; ::N~;::{asc 0209}			; Ñ
+::ng;::{U+014B}				; ŋ
+::Ng;::{U+014A}				; Ŋ
+::eng;::{U+014B}			; ŋ
+::Eng;::{U+014A}			; Ŋ
+::o:;::{U+00F6} 			; ö
+::O:;::{U+00D6} 			; Ö
+::oe;::{U+0153}				; œ
+::Oe;::{U+0152}				; Œ
+::^u;::{asc 0249}			; ù
+::^U;::{asc 0217}			; Ù
+::u^;::{U+00FA} 			; ú
+::U^;::{U+00DA} 			; Ú
+::u:;::{U+00FC} 			; ü
+::U:;::{U+00DC} 			; Ü
+::eth;::{asc 0240}			; ð
+::Eth;::{asc 0208}			; Ð
+::oeth;::{U+0153}			; œ
+::Oeth;::{U+0152}			; Œ
+::thorn;::{asc 0254}		; Þ
+::Thorn;::{asc 0222}		; þ
 ::wynn;::{U+01BF}			; ƿ
 ::Wynn;::{U+01F7}			; Ƿ
-::Xi;::{U+039E}				; Ξ (926)
-::xi;::{U+03BE}				; ξ (958)
-::Yacute;::{U+00DD}			; Ý (221)
-::yacute;::{U+00FD}			; ý (253)
-::yen;::{U+00A5}			; ¥ (165)
-::yinyang;::{U+262F}		; ☯
 ::yog;::{U+1D79}			; ᵹ
 ::Yog;::{U+A77D}			; Ᵹ
-::Yogh;::{U+021C}			; Ȝ
 ::yogh;::{U+021D}			; ȝ
-::yu;::{U+042E} 			; Ю
-::yuml;::{U+00FF}			; ÿ (255)
-::Yuml;::{U+0178}			; Ÿ (376)
-::yus;::{U+0466} 			; Ѧ
-::Zeta;::{U+0396}			; Ζ (918)
-::zeta;::{U+03B6}			; ζ (950)
+::Yogh;::{U+021C}			; Ȝ
+::dj;::{U+02A4}				; ʤ
+::dz;::{U+02A3}				; ʣ
+::ts;::{U+02A6}				; ʦ
+::tt;::{U+2020}				; †
+::Tt;::{U+2021}				; ‡
+::esh;::{U+0283}			; ʃ
+::Esh;::{U+01A9}			; Ʃ
+::ezh;::{U+0292}			; ʒ
+::Ezh;::{U+01B7}			; Ʒ
+::schwa;::{U+01DD}			; ǝ
+::Schwa;::{U+018F}			; Ə
+::schwar;::{U+025A} 		; ɚ
+::glot;::{U+0294}			; ʔ
+::i;::{U+0131}				; ı
+::I;::{U+0130}				; İ
+::ss;::{U+1e9e} 			; ẞ
+::sha;::{U+0448} 			; ш
+::Sha;::{U+0428} 			; Ш
 ::Zhe;::{U+0416} 			; Ж
 ::zhe;::{U+0436} 			; ж
-::zwj;::{U+200D}			;   (8205)
-::zwnj;::{U+200C}			;   (8204)
+::yu;::{U+042e} 			; Ю
+::yus;::{U+0466} 			; Ѧ
+::ef;::{U+0444} 			; ф
+::fl;::{U+026c} 			; ɬ
+::ram;::{U+0264} 			; ɤ
+::darkl;::{U+026b} 			; ɫ
+::click;::{U+0298} 			; ʘ
+::hv;::{U+0195} 			; ƕ
+::Hv;::{U+01f6} 			; Ƕ
+::ou;::{U+0223} 			; ȣ
+::Ou;::{U+0222} 			; Ȣ
+::db;::{U+0238} 			; ȸ
+::qp;::{U+0239} 			; ȹ
+::an;::{U+0105} 			; ą
+::An;::{U+0104} 			; Ą
+::en;::{U+0119} 			; ę
+::En;::{U+0118} 			; Ę
+::othala;::{U+16df} 		; ᛟ
+::dagaz;::{U+16de} 			; ᛞ
+::ingg;::{U+16dd} 			; ᛝ
+::tvimadur;::{U+16ef} 		; ᛯ
+::mannaz;::{U+16d7} 		; ᛗ
+::stann;::{U+16e5} 			; ᛥ
+::sowilo;::{U+16ca} 		; ᛊ
+::piwr;::{U+0583} 			; փ
+::Piwr;::{U+0553} 			; Փ
+::ij;::{U+0133} 			; ĳ
+::Ij;::{U+0132} 			; Ĳ
+::he;::{U+0127} 			; ħ
+::He;::{U+0126} 			; Ħ
+::alpha;::{U+03B1}			; α
+::Alpha;::{U+0391}			; Α
+::beta;::{U+03B2}			; β
+::Beta;::{U+0392}			; Β
+::chi;::{U+03C7}			; χ
+::Chi;::{U+03A7}			; Χ
+::delta;::{U+03B4}			; δ
+::Delta;::{U+0394}			; Δ
+::epsilon;::{U+03B5}		; ε
+::Epsilon;::{U+0395}		; Ε
+::gamma;::{U+03B3}			; γ
+::Gamma;::{U+0393}			; Γ
+::eta;::{U+03B7}			; η
+::Eta;::{U+0397}			; Η
+::iota;::{U+03B9}			; ι
+::Iota;::{U+0399}			; Ι
+::kappa;::{U+03BA}			; κ
+::Kappa;::{U+039A}			; Κ
+::lambda;::{U+03BB}			; λ
+::Lambda;::{U+039B}			; Λ
+::mu;::{U+03BC}				; μ
+::Mu;::{U+039C}				; Μ
+::nu;::{U+03BD}				; ν
+::Nu;::{U+039D}				; Ν
+::omega;::{U+03C9}			; ω
+::Omega;::{U+03A9}			; Ω
+::omicron;::{U+03BF}		; ο
+::Omicron;::{U+039F}		; Ο
+::phi;::{U+03C6}			; φ
+::Phi;::{U+03A6}			; Φ
+::pi;::{U+03C0}				; π
+::Pi;::{U+03A0}				; Π
+::psi;::{U+03C8}			; ψ
+::Psi;::{U+03A8}			; Ψ
+::rho;::{U+03C1}			; ρ
+::Rho;::{U+03A1}			; Ρ
+::sigma;::{U+03C3}			; σ
+::sigmA;::{U+03C2}			; ς
+::Sigma;::{U+03A3}			; Σ
+::tau;::{U+03C4}			; τ
+::Tau;::{U+03A4}			; Τ
+::theta;::{U+03B8}			; θ
+::Theta;::{U+0398}			; Θ
+::upsilon;::{U+03C5}		; υ
+::Upsilon;::{U+03A5}		; Υ
+::xi;::{U+03BE}				; ξ
+::Xi;::{U+039E}				; Ξ
+::zeta;::{U+03B6}			; ζ
+::Zeta;::{U+0396}			; Ζ
+::1/2;::{U+00BD}			; ½
+::1/3;::{U+2153} 			; ⅓
+::1/5;::{U+2155} 			; ⅕
+::1/6;::{U+2159} 			; ⅙
+::1/8;::{U+215b} 			; ⅛
+::2/3;::{U+2154} 			; ⅔
+::2/5;::{U+2156} 			; ⅖
+::3/5;::{U+2157} 			; ⅗
+::4/5;::{U+2158} 			; ⅘
+::5/6;::{U+215a} 			; ⅚
+::3/8;::{U+215c} 			; ⅜
+::5/8;::{U+215d} 			; ⅝
+::7/8;::{U+215e} 			; ⅞
+::^2;::{U+00b2} 			; ²
+::^3;::{U+00b2} 			; ²
+::cubed;::{U+00b3} 			; ³
+::et;::{U+204A}				; ⁊
+::?!;::{U+203d} 			; ‽
+::!?;::{U+203d} 			; ‽
+::interobang;::{U+203d} 	; ‽
+::?;::{asc 168}				; ¿
+::!;::{asc 173}				; ¡
+::+-;::{U+00B1} 			; ±
+::->;::{U+2192}				; →
+::<-;::{U+2192}				; ←
+::?!;::{asc 173}			; ¡
+::?=;::{U+2248}				; ≈
+:://;::{U+00F7}				; ÷
+::=<;::{asc 243}			; ≤
+::=>;::{asc 242}			; ≥
+::!=;::{U+2260}				; ≠
+::all;::{U+2200}			; ∀
+::and;::{U+2227}			; ∧
+::or;::{U+2228}				; ∨
+::some;::{U+2203} 			; ∃
+::any;::{U+2203}			; ∃
+::hbar;::{U+210F}			; ℏ
+::planck;::{U+210F}			; ℏ
+::inter;::{U+2229} 			; ∩
+::union;::{U+222a} 			; ∪
+::therefore;::{U+2235} 		; ∵
+::thus;::{U+2235} 			; ∵
+::||;::{U+2016} 			; ‖
+::__;::{U+2017} 			; ‗
+::Dp;::{U+20af} 			; ₯
+::_T;::{U+20b8} 			; ₸
+::tm;::{U+2122} 			; ™
+::trademark;::{U+2122} 		; ™
+::dot;::{U+00b7} 			; ·
+::copy;::{U+00a9} 			; ©
+::reg;::{U+00ae} 			; ®
+::register;::{U+00ae} 		; ®
+::yen;::{U+00a5} 			; ¥
+::seta;::{U+00df} 			; ß
+::not;::{U+00ac} 			; ¬
+::mult;::{U+00d7} 			; ×
+::times;::{U+00d7} 			; ×
+::multiply;::{U+00d7} 		; ×
+::div;::{U+00f7} 			; ÷
+::divide;::{U+00f7} 		; ÷
+::baro;::{U+00f8} 			; ø
+::every;::{U+2200} 			; ∀
+::root;::{U+221a} 			; √
+::infinity;::{U+221e} 		; ∞
+::cent;::{U+00a2} 			; ¢
+::Cent;::{U+20b5} 			; ₵
+::pound;::{U+00a3} 			; £
+::pounds;::{U+00a3} 		; £
+::iff;::{U+2194} 			; ↔
+::home;::{U+2302} 			; ⌂
+::triangle;::{U+25b2} 		; ▲
+::square;::{U+25a0} 		; ■
+::diamond;::{U+25c6} 		; ◆
+::circle;::{U+25cf} 		; ●
+::plusminus;::{U+00b1} 		; ±
+::degree;::{U+00b0} 		; °
+::degrees;::{U+00b0} 		; °
+::section;::{U+00a7} 		; §
+::<<;::{U+00ab} 			; «
+::>>;::{U+00bb} 			; »
+::shekel;::{U+20aa} 		; ₪
+::no;::{U+2116} 			; №
+::number;::{U+2116} 		; №
+::ankh;::{U+2625}			; ☥
+::sun;::{U+2600}			; ☀
+; ::sun;::{U+263c}			; ☼
+::moon;::{U+263d}			; ☽
+; ::moon;::{U+263e} 		; ☾
+::phone;::{U+260E}			; ☎
+; ::phone;::{U+260F} 		; ☏
+::star;::{U+2605}			; ★
+; ::star;::{U+2606}			; ☆
+::chiro;::{U+2627}			; ☧
+::islam;::{U+262a}			; ☪
+::ascend;::{U+260a}			; ☊
+::descend;::{U+260b}		; ☋
+::peace;::{U+262e}			; ☮
+::yinyangg;::{U+262f}		; ☯
+::left;::{U+2190}			; ←
+::larr;::{U+2190}			; ←
+::up;::{U+2191}				; ↑
+::uarr;::{U+2191}			; ↑
+::right;::{U+2192}			; →
+::rarr;::{U+2192}			; →
+::down;::{U+2193}			; ↓
+::darr;::{U+2193}			; ↓
+::dharma;::{U+2638}			; ☸
+::radioactive;::{U+2622}	; ☢
+::clover;::{U+2620}			; ☠
+::biohazard;::{U+2623}		; ☣
+::mercury;::{U+263F}		; ☿
+::venus;::{U+2640}			; ♀
+::female;::{U+2640}			; ♀
+::earth;::{U+2641}			; ♁
+::mars;::{U+2642}			; ♂
+::male;::{U+2642}			; ♂
+::jupiter;::{U+2643}		; ♃
+::saturn;::{U+2644}			; ♄
+::uranus;::{U+2645}			; ♅
+::neptune;::{U+2646}		; ♆
+::pluto;::{U+2647}			; ♇
+::aries;::{U+2648}			; ♈
+::taurus;::{U+2649}			; ♉
+; ::gemini;::{U+264A}		; ♊
+::twins;::{U+264A}			; ♊
+::cancer;::{U+264B}			; ♋
+::leo;::{U+264C}			; ♌
+::virgo;::{U+264D}			; ♍
+::libra;::{U+264E}			; ♎
+::scorpio;::{U+264F}		; ♏
+::sagitarius;::{U+2650}		; ♐
+::capricorn;::{U+2651}		; ♑
+::aquarius;::{U+2652}		; ♒
+::pisces;::{U+2653}			; ♓
+::sharp;::{U+266f}			; ♯
+::natural;::{U+266e}		; ♮
+::flat;::{U+266d}			; ♭
+::maltese;::{U+2720}		; ✠
+::tapedrive;::{U+2707}		; ✇
+::check;::{U+2713}			; ✓
+::Check;::{U+2714}			; ✔
+::nix;::{U+2717}			; ✗
+::Nix;::{U+2718}			; ✘
+::NiX;::{U+2715}			; ✕
+::NIX;::{U+2716}			; ✖
+::cros;::{U+271d}			; ✝
+::snowflake;::{U+2745}		; ❅
+::sparkle;::{U+2747}		; ❇
+::octostr;::{U+2738}		; ✸
+::airplane;::{U+2708}		; ✈
+::mail;::{U+2709}			; ✉
+::cord;::{U+2706}			; ✆
+::pencil;::{U+270e}			; ✏
+; ::pencil;::{U+270f}		; ✏
+::pencil2;::{U+2710}		; ✐
+::inkpen;::{U+2711} 		; ✑	
+::inkpen2;::{U+2712} 		; ✒	
 
+
+::ndash;::{U+2013}
+::mdash;::{U+2014}
+::nspace;::{U+2002}
+::mspace;::{U+2003}
+
+
+; en space: UTF8 U+2002 (8194) and HTML &ensp;. Example: " "
+; en dash: UTF8 U+2013 (8211) and HTML &ndash;. Example: "–"
+
+
+; ::+o::{U+030A} 				; ring
+; ::+~::{U+0303} 				; tilde
+; ::+..::{U+0308}				; umlaut
+; ::+^::{U+0302}				; circumflex
+; ::+``::{U+0300}				; grave
+; ::+'::{U+0301}				; acute
+; ::+,::{U+0327}				; cedilla
+
+
+
+::ring;::{U+030A} 			; 
+::tilde;::{U+0303} 			; 
+::umlaut;::{U+0308}			; 
+::circumflex;::{U+0302}		; 
+::grave;::{U+0300}			; 
+::acute;::{U+0301}			; 
+::cedilla;::{U+0327}		;
+
+; :: ::Send {U+0301} ;	́	acute above
+; :: ::Send {U+0317} ;	̗	acute below
+; :: ::Send {U+0341} ;	́	acute tone mark
+; :: ::Send {U+034C} ;	͌	almost equal to above
+; :: ::Send {U+0306} ;	̆	breve above
+; :: ::Send {U+032E} ;	̮	breve below
+; :: ::Send {U+0346} ;	͆	bridge above
+; :: ::Send {U+032A} ;	̪	bridge below
+; :: ::Send {U+0310} ;	̐	candrabindu
+; :: ::Send {U+030C} ;	̌	caron above
+; :: ::Send {U+032C} ;	̬	caron below
+; :: ::Send {U+0327} ;	̧	cedilla
+; :: ::Send {U+0302} ;	̂	circumflex above
+; :: ::Send {U+032D} ;	̭	circumflex below
+; :: ::Send {U+0315} ;	̕	comma above right
+; :: ::Send {U+0313} ;	̓	comma above
+; :: ::Send {U+0326} ;	̦	comma below
+; :: ::Send {U+0324} ;	̤	diaeresis below
+; :: ::Send {U+0308} ;	̈	diaeresis
+; :: ::Send {U+0307} ;	̇	dot above
+; :: ::Send {U+0323} ;	̣	dot below
+; :: ::Send {U+030B} ;	̋	double acute
+; :: ::Send {U+030F} ;	̏	double grave
+; :: ::Send {U+0333} ;	̳	double low line
+; :: ::Send {U+033F} ;	̿	double overline
+; :: ::Send {U+030E} ;	̎	double vertical line above
+; :: ::Send {U+0348} ;	͈	double vertical line below
+; :: ::Send {U+031E} ;	̞	down tack below
+; :: ::Send {U+0347} ;	͇	equals sign below
+; :: ::Send {U+0352} ;	͒	fermata
+; :: ::Send {U+034F} ;	͏	grapheme joiner
+; :: ::Send {U+0300} ;	̀	grave above
+; :: ::Send {U+0316} ;	̖	grave below
+; :: ::Send {U+0340} ;	̀	grave tone mark
+; :: ::Send {U+0344} ;	̈́	greek dialytika tonos
+; :: ::Send {U+0343} ;	̓	greek koronis
+; :: ::Send {U+0342} ;	͂	greek perispomeni
+; :: ::Send {U+0345} ;	ͅ	greek ypogegrammeni
+; :: ::Send {U+034B} ;	͋	homothetic above
+; :: ::Send {U+0309} ;	̉	hook above
+; :: ::Send {U+031B} ;	̛	horn
+; :: ::Send {U+0311} ;	̑	inverted breve
+; :: ::Send {U+032F} ;	̯	inverted breve below
+; :: ::Send {U+033A} ;	̺	inverted bridge below
+; :: ::Send {U+032B} ;	̫	inverted double arch below
+; :: ::Send {U+031A} ;	̚	left angle above
+; :: ::Send {U+0349} ;	͉	left angle below
+; :: ::Send {U+0354} ;	͔	left arrowhead below
+; :: ::Send {U+0351} ;	͑	left half ring above
+; :: ::Send {U+031C} ;	̜	left half ring below
+; :: ::Send {U+034D} ;	͍	left right arrow below
+; :: ::Send {U+0318} ;	̘	left tack below
+; :: ::Send {U+0338} ;	̸	long solidus overlay
+; :: ::Send {U+0336} ;	̶	long stroke overlay
+; :: ::Send {U+0305} ;	̅	overline
+; :: ::Send {U+0332} ;	̲	low line
+; :: ::Send {U+0304} ;	̄	macron above
+; :: ::Send {U+0331} ;	̱	macron below
+; :: ::Send {U+0320} ;	̠	minus sign below
+; :: ::Send {U+034A} ;	͊	not tilde above
+; :: ::Send {U+0328} ;	̨	ogonek
+; :: ::Send {U+0321} ;	̡	palatalized hook below
+; :: ::Send {U+031F} ;	̟	plus sign below
+; :: ::Send {U+0322} ;	̢	retroflex hook below
+; :: ::Send {U+0314} ;	̔	reversed comma above
+; :: ::Send {U+0350} ;	͐	right arrowhead above
+; :: ::Send {U+0339} ;	̹	right half ring below
+; :: ::Send {U+0319} ;	̙	right tack below
+; :: ::Send {U+030A} ;	̊	ring above
+; :: ::Send {U+0325} ;	̥	ring below
+; :: ::Send {U+033C} ;	̼	seagull below
+; :: ::Send {U+0337} ;	̷	short solidus overlay
+; :: ::Send {U+0335} ;	̵	short stroke overlay
+; :: ::Send {U+033B} ;	̻	square below
+; :: ::Send {U+0303} ;	̃	tilde above
+; :: ::Send {U+0330} ;	̰	tilde below
+; :: ::Send {U+0334} ;	̴	tilde overlay
+; :: ::Send {U+0312} ;	̒	turned comma above
+; :: ::Send {U+031D} ;	̝	up tack below
+; :: ::Send {U+034E} ;	͎	upwards arrow below
+; :: ::Send {U+030D} ;	̍	vertical line above
+; :: ::Send {U+0329} ;	̩	vertical line below
+; :: ::Send {U+033E} ;	̾	vertical tilde
+; :: ::Send {U+033D} ;	̽	x above
+; :: ::Send {U+0353} ;	͓	x below
 
 #Hotstring C0 ?0 *0 O0
-
-
-
-
+#Include html-entities.ahk
+#Include unicode.ahk
