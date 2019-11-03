@@ -4,6 +4,7 @@
 ::-|-::{U+0CA0}_{U+0CA0}
 ::,+::{+}" "{+}
 ::clog::console.log(){left 1}
+::println::System.out.println();{left 2}
 ::pr(::print_r(); {left 3}
 ::pre(::echo "<pre>"; echo "</pre>"; {left 15}{enter 2}{up}print_r(); {left 3}
 ::echo(::
@@ -14,6 +15,9 @@ if (ErrorLevel = 0) {
 }
 return
 
+
+; ZERO WIDTH SPACE U+200B &#8203;
+::zwsp;::{U+200B}
 ::a^;::{U+00E1} 			; á
 ::A^;::{U+00C1} 			; Á
 ::^a;::{asc 0224}			; à
@@ -273,8 +277,8 @@ return
 ::rarr;::{U+2192}			; →
 ::down;::{U+2193}			; ↓
 ::darr;::{U+2193}			; ↓
-::dharma;::{U+2638}			; ☸
 ::radioactive;::{U+2622}	; ☢
+::dharma;::{U+2638}			; ☸
 ::clover;::{U+2620}			; ☠
 ::biohazard;::{U+2623}		; ☣
 ::mercury;::{U+263F}		; ☿

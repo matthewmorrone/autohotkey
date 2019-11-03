@@ -62,6 +62,28 @@ return
 ; Send {LCtrl up}
 ; return
 
+decimal_octal(n) {
+  i = 1
+  octal = 0
+  while (n > 0)
+  {
+    rem := mod(n, 8)
+    n /= 8
+    octal += rem * i
+    i *= 10
+  }
+  return, octal
+}
+
+; ^e::
+; Send ^c
+; Clipboard := Format("{1:d}", "0x"+Clipboard) ;"0x"+
+; Send ^v
+; return
+
+
+
+
 +del::
 Send ^x
 Clipboard := RegExReplace(Clipboard, "(\r\n)(\r\n)+$", "`r`n")
@@ -70,7 +92,7 @@ return
 Send ^c
 Clipboard := RegExReplace(Clipboard, "(\r\n)(\r\n)+$", "`r`n")
 return
-ins::Send ^v
+; ins::Send ^v
 
 
 #IfWinActive, ahk_exe sublime.exe
@@ -110,7 +132,7 @@ return
 ; MButton & Left::Send {PgUp}
 ; MButton & Right::Send {PgDn}
 
-mbutton::lctrl
+MButton::LCtrl
 
 ^Esc::
 WinGetActiveTitle, Title
@@ -121,9 +143,9 @@ Send {^+Esc}
 return
 
 ; F6::Edit
-F7::run "C:\Program Files\AutoHotkey\WindowSpy.ahk"
+F7::Run "C:\Program Files\AutoHotkey\WindowSpy.ahk"
 F8::
-#persistent
+#Persistent
 #InstallKeybdHook
 #InstallMouseHook
 KeyHistory
@@ -145,6 +167,8 @@ return
 #Space::WinSet, Transparent, 50, A
 #Space UP::WinSet, Transparent, OFF, A
 return
+
+^Space::WinSet, AlwaysOnTop, Toggle, A
 
 ; WheelDown::PgDn
 ; WheelUp::PgUp
