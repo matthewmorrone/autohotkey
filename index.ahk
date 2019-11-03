@@ -2,8 +2,8 @@
 #Persistent
 SetWorkingDir 			%A_ScriptDir%
 #SingleInstance 		force
-#HotkeyInterval 		500
-#MaxHotkeysPerInterval 	200
+; #HotkeyInterval 		500
+; #MaxHotkeysPerInterval 	200
 #WinActivateForce
 SetTitleMatchMode 		2
 ; SetCapsLockState 		AlwaysOff
@@ -34,6 +34,8 @@ Menu, tray, icon, %iconn%, , 1
 #Include util/array.ahk
 #Include util/range.ahk
 
+XButton1::Shift
+XButton2::Space
 ; #Include drag.ahk
 ; #Include font.ahk
 
@@ -50,6 +52,7 @@ Menu, tray, icon, %iconn%, , 1
 *$RCtrl::RAlt
 ^CapsLock::CapsLock
 CapsLock::Enter
++Backspace::Delete
 CapsLock up::
 Send {Enter up}
 return
@@ -107,6 +110,10 @@ $+`::Send {Delete}
 $#`::SendRaw, ``
 $+#`:: SendRaw, `~
 
+#w::Send {up}
+#a::Send {left}
+#s::Send {down}
+#d::Send {right}
 ^+c::
 send ^c
 StringUpper, Clipboard, Clipboard
@@ -134,6 +141,39 @@ return
 
 MButton::LCtrl
 
+^e::
+SetFormat Integer, D
+Send, ^c
+n := clipboard
+n := n + 0
+clipboard := n
+Send, ^v
+SetFormat Integer, D
+
+; SetFormat Integer, D
+; X:= 0x11 17 17
+; SetFormat Integer, H
+return
+
+#x::
+Send, ^c
+StringLower, clipboard, clipboard
+Send, ^v
+return
+#c::
+Send, ^c
+StringUpper, clipboard, clipboard
+Send, ^v
+return
+#v::
+Send, ^c
+StringUpper, clipboard, clipboard, T
+Send, ^v
+return
+
+
+
+; because esc doesn't always seem to work like i think it should
 ^Esc::
 WinGetActiveTitle, Title
 WinClose %Title%
@@ -143,7 +183,10 @@ Send {^+Esc}
 return
 
 ; F6::Edit
-F7::Run "C:\Program Files\AutoHotkey\WindowSpy.ahk"
+F7::
+; Run "C:\Program Files\AutoHotkey\WindowSpy.ahk"
+Run, "C:\Program Files (x86)\AutoHotkey\AU3_Spy.exe", %A_WorkingDir%, max
+return
 F8::
 #Persistent
 #InstallKeybdHook
@@ -152,6 +195,63 @@ KeyHistory
 #KeyHistory 500
 return
 
+PrintScreen::
+Run, C:\\Windows\\System32\\SnippingTool.exe, %A_WorkingDir%, max
+return
+
+
+
+#IfWinActive ahk_exe explorer.exe
+
+^WheelDown::
+Send {Ctrl Up}
+Send {WheelDown}
+Send {Ctrl Down}
+return
+
+^WheelUp::
+Send {Ctrl Up}
+Send {WheelUp}
+Send {Ctrl Down}
+return
+
+^+a::
+send !hsi
+return
+
+^w::
+return
+
+; new folder
+^n::send ^+n
+^+n::send ^n
+
+#IfWinActive
+
+
+#IfWinActive, ahk_exe chrome.exe
+^w::return
+^q::send ^w
+#IfWinActive
+
+
+#Include hot.ahk
+#Include unicode.ahk
+
+; #Include util/save.ahk
+; ScriptName := A_ScriptName
+; If WinActive(A_ScriptName) 
+; {
+; 	SetTitleMatchMode, 2
+; 	$~^s::
+; 	txt := % "Reloading " . A_ScriptName
+; 	splashOn(txt, 1000)
+; 	Reload
+; 	Return
+; }
+
+
+#IfWinActive, ahk
 #s::
 #+s::
 ~PrintScreen::
@@ -173,18 +273,13 @@ return
 ; WheelDown::PgDn
 ; WheelUp::PgUp
 
-#IfWinActive, ahk_exe chrome.exe
-^w::return
-^q::send ^w
-#IfWinActive
-
 
 #Include interskill.ahk
 
 ; 1::send {XButton1}
 ; 2::send {XButton2}
 
-#Include explorer.ahk
+; #Include explorer.ahk
 
 ^+1::Send {U+00AC} ;&not;
 
@@ -195,7 +290,6 @@ txt := % "Reloading " . A_ScriptName
 splashOn(txt, 1000)
 Reload
 Return
-
 #IfWinActive
 
 ; in case of
