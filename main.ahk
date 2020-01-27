@@ -144,6 +144,7 @@ NumpadEnter & NumpadPgUp::Send 9
 NumpadEnter & NumpadDel::Send {Backspace}
 
 
+
 #include mirror.ahk
 
 #include hot.ahk
@@ -151,9 +152,37 @@ NumpadEnter & NumpadDel::Send {Backspace}
 
 
 #IfWinActive, ahk_exe explorer.exe
+^w::return
 ^n::Send ^+n
 ^+n::Send ^n
 ^+a::Send !hsi
+; ^+a::send !e{up}{enter}
+
+^WheelDown::
+Send {Ctrl Up}
+Send {WheelDown}
+Send {Ctrl Down}
+return
+
+^WheelUp::
+Send {Ctrl Up}
+Send {WheelUp}
+Send {Ctrl Down}
+return
+
+^up::
+Send ^x
+Sleep, 200
+send !{up}
+Sleep, 200
+Send {F5}
+Sleep, 200
+Send ^v
+Sleep, 200
+Send {shift Up}
+return
+
+
 #IfWinActive
 #IfWinActive, ahk_exe chrome.exe
 ^w::Return
