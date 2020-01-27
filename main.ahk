@@ -39,14 +39,42 @@ CapsLock::Enter
 
 MButton::Ins
 
+XButton1::^v
+XButton2::^c
+
+#1::Send {Home}
+#+1::Send ^{Home}
+#2::Send {End}
+#+2::Send ^{End}
+#3::Send {PgUp}
+#+3::Send ^{PgUp}
+#4::Send {PgDn}
+#+4::Send ^{PgDn}
+
+#w::Send {up}
+#s::Send {down}
+#a::Send {left}
+#d::Send {right}
+
+#Up::WinMaximize, A
+#Down::WinMinimize, A
+
+
 
 ^F6::WinSet, AlwaysOnTop, Toggle, A
 ^F7::Run, "C:\Program Files\AutoHotkey\AU3_Spy.exe"
 ^F8::KeyHistory
 
+!d::
+Send +{right}
+Send ^x
+Send {left}
+Send ^v
+return
 
-
-
+#Space::WinSet, Transparent, 50, A
+#Space UP::WinSet, Transparent, OFF, A
+return
 
 ^Esc::
 WinGetActiveTitle, title
@@ -96,26 +124,6 @@ txt:=% "Restarting " . ProcessName
 splashOn(txt)
 Run, %ppath%
 return
-
-XButton1::^v
-XButton2::^c
-
-#1::Send {Home}
-#+1::Send ^{Home}
-#2::Send {End}
-#+2::Send ^{End}
-#3::Send {PgUp}
-#+3::Send ^{PgUp}
-#4::Send {PgDn}
-#+4::Send ^{PgDn}
-
-#w::Send {up}
-#s::Send {down}
-#a::Send {left}
-#d::Send {right}
-
-#Up::WinMaximize, A
-#Down::WinMinimize, A
 
 
 
