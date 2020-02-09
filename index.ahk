@@ -10,15 +10,15 @@ SetTitleMatchMode 2
 AutoTrim, Off
 #KeyHistory 16
 
-Menu, Tray, Icon, img/alpha.ico, , 1
+Menu, Tray, Icon, ico/psi-fff.ico, , 1
 ScrollLock::
 Suspend, Toggle
 if A_IsSuspended {
-    Menu, Tray, Icon , img/beta.ico
+    Menu, Tray, Icon , ico/psi-f00.ico
     Send, {LCtrl up}
 }
 else {
-    Menu, Tray, Icon , img/alpha.ico
+    Menu, Tray, Icon , ico/psi-fff.ico
     Send, {LCtrl up}
 }
 return
