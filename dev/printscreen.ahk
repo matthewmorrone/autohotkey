@@ -40,3 +40,7 @@ Send, {enter}
 ; }
 return
 
+
+PrintScreen::
+Run, C:\\Windows\\System32\\SnippingTool.exe, %A_WorkingDir%, max
+return

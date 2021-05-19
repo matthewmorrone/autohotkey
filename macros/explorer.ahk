@@ -1,7 +1,32 @@
 
 
 
+#IfWinActive ahk_exe explorer.exe
 
+^WheelDown::
+Send {Ctrl Up}
+Send {WheelDown}
+Send {Ctrl Down}
+return
+
+^WheelUp::
+Send {Ctrl Up}
+Send {WheelUp}
+Send {Ctrl Down}
+return
+
+^+a::
+send !hsi
+return
+
+^w::
+return
+
+; new folder
+^n::send ^+n
+^+n::send ^n
+
+#IfWinActive
 
 
 

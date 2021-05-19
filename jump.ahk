@@ -1,5 +1,58 @@
+; MButton::
+; goto Jump2
+; return
 
-MButton::
+Jump2:
+CoordMode, Mouse, Screen
+MouseGetPos, Mx, My
+SysGet, Mon1, Monitor, 1
+SysGet, Mon2, Monitor, 2
+
+Mon1Width  := Mon1Right - Mon1Left
+Mon1Height := Mon1Bottom - Mon1Top
+
+Mon2Width  := Mon2Right - Mon2Left
+Mon2Height := Mon2Bottom - Mon2Top
+
+if (Mx > Mon1Left and Mx < Mon1Right) {
+    Mid := 1
+}
+if (Mx > Mon2Left and Mx < Mon2Right) {
+    Mid := 2
+}
+
+if (Mid = 1) {
+    Offset1x := Mx - Mon1Left
+    Offset1y := My - Mon1Top
+    OffsetRx := Offset1x / Mon1Width
+    OffsetRy := Offset1y / Mon1Height
+
+    Offset2x := Round(OffsetRx * Mon2Width)  + Mon2Left
+    Offset2y := Round(OffsetRy * Mon2Height)
+}
+if (Mid = 2) {
+    Offset2x := Mx - Mon2Left
+    Offset2y := My - Mon2Top
+    OffsetRx := Offset2x / Mon2Width
+    OffsetRy := Offset2y / Mon2Height
+
+    Offset1x := Round(OffsetRx * Mon1Width)
+    Offset1y := Round(OffsetRy * Mon1Height)
+}
+
+if (Mid = 1) {
+    MouseMove, %Offset2x%, %Offset2y%
+}
+if (Mid = 2) {
+    MouseMove, %Offset1x%, %Offset1y%
+}
+goto ActivateWinUM
+return
+
+
+
+Jump3:
+
 CoordMode, Mouse, Screen
 MouseGetPos, Mx, My
 SysGet, Mon1, Monitor, 1

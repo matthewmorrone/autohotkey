@@ -1,46 +1,69 @@
-splashOn(a, b:=1000) {
-    SplashTextOn,,,%a%,
+splashOn(a, b:=1000)
+{
+    SplashTextOn, , , %a%, 
     ; SetTimer, splashOff, %b%
     Sleep, 1000
     SplashTextOff
 }
-coolTip(a, b:=1000) {
+coolTip(a, b:=1000)
+{
     Tooltip %a%
     ; SetTimer, foolTip, %b%
     Sleep, 1000
     Tooltip
 }
 
-
 foolTip:
-ToolTip
+    ToolTip
 return
 
 splashOff:
-SplashTextOff
+    SplashTextOff
 return
 
+ActivateWinUM:
+    MouseGetPos, , , WinUMID
+    WinActivate, ahk_id %WinUMID%
+return
 
-
-MouseMove_Ellipse(X1, Y1, X2, Y2, S=1, M=0, I="") {
+MouseMove_Ellipse(X1, Y1, X2, Y2, S=1, M=0, I="")
+{
     MouseGetPos, X0, Y0
-    If(I="") {
-        Random, I, 0, 1
+    If(I="" or I=0) 
+    {
+        Random, I, -1, 1
     }
-    X1 := (X1 != "") ? X1 : X0, Y1 := (Y1 != "") ? Y1 : Y0, B := Abs(X1-X2), A := Abs(Y1-Y2), H := (X1<X2) ? ((Y1<Y2) ? ((I=0) ? X1:X2):((I=0) ? X2:X1)):((Y1<Y2) ? ((I=0) ? X2:X1):((I=0) ? X1:X2)), K := (Y1<Y2) ? ((X1<X2) ? ((I=0) ? Y2:Y1):((I=0) ? Y1:Y2)):((X1<X2) ? ((I=0) ? Y1:Y2):((I=0) ? Y2:Y1)), D := A_MouseDelay 
+    
+    X1 := (X1 != "") ? X1 : X0, 
+    Y1 := (Y1 != "") ? Y1 : Y0, 
+    B := Abs(X1 - X2), 
+    A := Abs(Y1 - Y2), 
+    H := (X1 < X2) ? ((Y1 < Y2) ? ((I = -1) ? X1 : X2):((I = -1) ? X2 : X1)) : ((Y1 < Y2) ? ((I = -1) ? X2 : X1) : ((I = -1) ? X1 : X2)), 
+    K := (Y1 < Y2) ? ((X1 < X2) ? ((I = -1) ? Y2 : Y1):((I = -1) ? Y1 : Y2)) : ((X1 < X2) ? ((I = -1) ? Y1 : Y2) : ((I = -1) ? Y2 : Y1)), 
+    D := A_MouseDelay
+    
     SetMouseDelay, 1
-    If(M) {
+    If(M) 
+    {
         BlockInput, Mouse
     }
-    If(B > A) {
-        Loop, % B / S {
-            M := (X1 < X2) ? ((I=0) ? -1:1):((I=0) ? 1:-1), X := (X1 < X2) ? (X1+A_Index*S) : (X1-A_Index*S), Y := M*Sqrt(A**2*((X-H)**2/B**2-1)*-1)+K
+    If(B > A) 
+    {
+        loop, % B / S 
+        {
+            M := (X1 < X2) ? ((I = -1) ? -1 : 1) : ((I = -1) ? 1 : -1), 
+            X := (X1 < X2) ? (X1 + A_Index * S) : (X1 - A_Index * S), 
+            Y := M * Sqrt(A ** 2 * ((X - H) ** 2 / B ** 2 - 1) * -1) + K
             MouseMove, %X%, %Y%, 0
         }
     }
-    Else {
-        Loop, % A / S {
-            M := (Y1 < Y2) ? ((I=0) ? 1:-1):((I=0) ? -1:1), Y := (Y1 < Y2) ? (Y1+A_Index*S) : (Y1-A_Index*S), X := M*Sqrt(B**2*(1-(Y-K)**2/A**2))+H
+    Else 
+    {
+        loop, % A / S 
+        {
+            M := (Y1 < Y2) ? ((I = -1) ? 1 : -1) : ((I = -1) ? -1 : 1), 
+            Y := (Y1 < Y2) ? (Y1 + A_Index * S) : (Y1 - A_Index * S), 
+            X := M * Sqrt(B ** 2 * (1 - (Y - K) ** 2 / A ** 2)) + H
             MouseMove, %X%, %Y%, 0
         }
     }
@@ -52,60 +75,64 @@ MouseMove_Ellipse(X1, Y1, X2, Y2, S=1, M=0, I="") {
 SetCursor(Cursor = "", cx = 0, cy = 0)
 {
     BlankCursor := 0, SystemCursor := 0, FileCursor := 0 ; init
-
-    SystemCursors = 32512IDC_ARROW,32513IDC_IBEAM,32514IDC_WAIT,32515IDC_CROSS
-    ,32516IDC_UPARROW,32640IDC_SIZE,32641IDC_ICON,32642IDC_SIZENWSE
-    ,32643IDC_SIZENESW,32644IDC_SIZEWE,32645IDC_SIZENS,32646IDC_SIZEALL
-    ,32648IDC_NO,32649IDC_HAND,32650IDC_APPSTARTING,32651IDC_HELP
-
-    If Cursor = ; empty, so create blank cursor
+    
+    SystemCursors = 32512IDC_ARROW, 32513IDC_IBEAM, 32514IDC_WAIT, 32515IDC_CROSS
+    , 32516IDC_UPARROW, 32640IDC_SIZE, 32641IDC_ICON, 32642IDC_SIZENWSE
+    , 32643IDC_SIZENESW, 32644IDC_SIZEWE, 32645IDC_SIZENS, 32646IDC_SIZEALL
+    , 32648IDC_NO, 32649IDC_HAND, 32650IDC_APPSTARTING, 32651IDC_HELP
+    
+    if Cursor = ; empty, so create blank cursor
     {
         VarSetCapacity(AndMask, 32*4, 0xFF), VarSetCapacity(XorMask, 32*4, 0)
         BlankCursor = 1 ; flag for later
     }
     Else If SubStr(Cursor, 1, 4) = "IDC_" ; load system cursor
     {
-        Loop, Parse, SystemCursors, `, 
+        loop, Parse, SystemCursors, `, 
         {
             CursorName := SubStr(A_Loopfield, 6, 15) ; get the cursor name, no trailing space with substr
             CursorID := SubStr(A_Loopfield, 1, 5) ; get the cursor id
             SystemCursor = 1
-            If (CursorName = Cursor)
+            if (CursorName = Cursor) 
             {
                 CursorHandle := DllCall("LoadCursor", Uint, 0, Int, CursorID)
                 Break
             }
         }
-        If CursorHandle = ; invalid cursor name given
+        if CursorHandle = ; invalid cursor name given
         {
-            Msgbox,, SetCursor, Error: Invalid cursor name
+            Msgbox, , SetCursor, Error: Invalid cursor name
             CursorHandle = Error
         }
     }
-    Else If FileExist(Cursor)
+    Else If FileExist(Cursor) 
     {
-        SplitPath, Cursor,,, Ext ; auto-detect type
-        If Ext = ico
+        SplitPath, Cursor, , , Ext ; auto-detect type
+        if Ext = ico 
+        {
             uType := 0x1
-        Else If Ext in cur, ani
+        }
+        Else If Ext in cur, ani 
+        {
             uType := 0x2
+        }
         Else ; invalid file ext
         {
-            Msgbox,, SetCursor, Error: Invalid file type
+            Msgbox, , SetCursor, Error: Invalid file type
             CursorHandle = Error
         }
         FileCursor = 1
     }
-    Else
+    else 
     {
-        Msgbox,, SetCursor, Error: Invalid file path or cursor name
+        Msgbox, , SetCursor, Error: Invalid file path or cursor name
         CursorHandle = Error ; raise for later
     }
-    If CursorHandle != Error
+    if CursorHandle != Error
     {
-        Loop, Parse, SystemCursors, `, 
+        loop, Parse, SystemCursors, `, 
         {
-            If BlankCursor = 1
+            if BlankCursor = 1
             {
                 Type = BlankCursor
                 %Type%%A_Index% := DllCall("CreateCursor", Uint, 0, Int, 0, Int, 0, Int, 32, Int, 32, Uint, &AndMask, Uint, &XorMask)
@@ -133,4 +160,17 @@ RestoreCursor()
 {
     SPI_SETCURSORS := 0x57
     DllCall("SystemParametersInfo", UInt, SPI_SETCURSORS, UInt, 0, UInt, 0, UInt, 0)
+}
+decimal_octal(n)
+{
+    i = 1
+    octal = 0
+    while (n > 0) 
+    {
+        rem := mod(n, 8)
+        n /= 8
+        octal += rem * i
+        i *= 10
+    }
+    return, octal
 }
