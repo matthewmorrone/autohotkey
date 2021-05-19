@@ -11,9 +11,6 @@ WinGetClass, wclass, ahk_id %wid%
 ToolTip, x:%wx% y:%wy%
 return
 
-
-
-
 ; ^+w::
 ; result =
 ; (

@@ -9,3 +9,11 @@ CapsLock::Enter
 ; ^!#CapsLock::		; Ctrl+Alt+Win+CapsLock
 ; ;............		; You can add whatever you want to block
 ; return			; Do nothing, return
+
+
+CL = false
+~CapsLock::
+	Send {enter}
+	CL = !CL
+return
+

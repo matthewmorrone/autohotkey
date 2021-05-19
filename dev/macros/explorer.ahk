@@ -30,6 +30,12 @@ return
 
 
 
+; duplicate a file
+^d::
+Send ^c
+Sleep, 20
+Send ^v
+return
 
 
 

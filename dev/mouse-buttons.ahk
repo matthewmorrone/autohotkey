@@ -1,19 +1,4 @@
 
-; conveniences
-
-CL = false
-~CapsLock::
-	Send {enter}
-	CL = !CL
-return
-
-
-
-; my left mouse button was broken once, now I can't un-get used to it
-LButton::Click right
-RButton::Click
-
-; script assumes mouse buttons are swapped in control panel
 
 
 ; my left mouse button was broken once, now I can't un-get used to it
@@ -63,12 +48,6 @@ Sleep, 20
 Send ^v
 return
 
-; duplicate a file
-^d::
-Send ^c
-Sleep, 20
-Send ^v
-return
 
 ; enter by clicking both mouse buttons
 ~LButton & RButton::
