@@ -23,12 +23,8 @@ else {
 }
 return
 
-
-
-
 #Include util.ahk
 RestoreCursor()
-
 
 Ctrl::Alt
 Alt::Ctrl
@@ -36,11 +32,6 @@ Alt::Ctrl
 CapsLock::Enter
 `::Send {Backspace}
 +`::Send {Delete}
-
-MButton::Ins
-
-XButton1::^v
-XButton2::^c
 
 #1::Send {Home}
 #+1::Send ^{Home}
@@ -58,8 +49,6 @@ XButton2::^c
 
 #Up::WinMaximize, A
 #Down::WinMinimize, A
-
-
 
 ^F6::WinSet, AlwaysOnTop, Toggle, A
 ^F7::Run, "C:\Program Files\AutoHotkey\AU3_Spy.exe"
@@ -83,7 +72,6 @@ Return
 !+Esc::
 Send {^+Esc}
 Return
-
 
 OnClipboardChange:
 Sleep 100
@@ -114,7 +102,6 @@ StringLower, Clipboard, Clipboard
 Send ^v
 return
 
-
 ^F5::
 WinGet, pid, PID, A
 WinGet, pname, ProcessName, A
@@ -125,8 +112,6 @@ splashOn(txt)
 Run, %ppath%
 return
 
-
-
 ^+v::
 WinGetClass, class, A
 if (class = "LyncConversationWindowClass") {
@@ -135,8 +120,6 @@ if (class = "LyncConversationWindowClass") {
     send {Space}
 }
 return
-
-
 
 NumpadClear::Enter
 NumpadIns::Space
@@ -151,13 +134,9 @@ NumpadEnter & NumpadUp::Send 8
 NumpadEnter & NumpadPgUp::Send 9
 NumpadEnter & NumpadDel::Send {Backspace}
 
-
-
 #include mirror.ahk
 
 #include hot.ahk
-
-
 
 #IfWinActive, ahk_exe explorer.exe
 ^w::return
@@ -190,20 +169,9 @@ Sleep, 200
 Send {shift Up}
 return
 
-
-#IfWinActive
-#IfWinActive, ahk_exe chrome.exe
-^w::Return
-^q::Send ^w
-#IfWinActive
-#IfWinActive, ahk_exe lync.exe
-esc::return
 #IfWinActive
 
-
-
-
-^RButton::
+^MButton::
 MsgBox Stay Awake Activated
 SetTimer, StayAwake, 1000
 return
