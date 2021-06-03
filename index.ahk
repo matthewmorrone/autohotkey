@@ -23,7 +23,7 @@ else {
 }
 return
 
-Insert::send {PrintScreen}
+Insert::Send {PrintScreen}
 
 #Include util.ahk
 
@@ -45,7 +45,6 @@ CapsLock::Enter
 
 #include hot.ahk
 
-
 #1::Send {Home}
 #+1::Send ^{Home}
 #2::Send {End}
@@ -60,11 +59,17 @@ CapsLock::Enter
 #a::Send {left}
 #d::Send {right}
 
-#Up::WinMaximize, A
-#Down::WinMinimize, A
+^Esc::
+WinGetActiveTitle, title
+WinClose %title%
+Return
+!+Esc::
+Send {^+Esc}
+Return
 
-
-
+^Space::WinSet, Transparent, 75, A
+^Space UP::WinSet, Transparent, OFF, A
+return
 F3::
 WinSet, AlwaysOnTop, ON, A
 WinSet, Transparent, 200, A
@@ -75,41 +80,6 @@ WinSet, Transparent, OFF, A
 return
 
 
-^F6::WinSet, AlwaysOnTop, Toggle, A
-^F7::Run, "C:\Program Files\AutoHotkey\AU3_Spy.exe"
-^F8::KeyHistory
-^F9::Run, "C:\Users\morronm\AppData\Local\Programs\Microsoft VS Code\Code.exe", "C:\Users\morronm\Documents\autohotkey\index.ahk"
-
-^Space::WinSet, Transparent, 50, A
-^Space UP::WinSet, Transparent, OFF, A
-return
-
-^Esc::
-WinGetActiveTitle, title
-WinClose %title%
-Return
-!+Esc::
-Send {^+Esc}
-Return
-
-
-
-!t::
-Send ^c
-StringUpper, Clipboard, Clipboard, T
-Send ^v
-return
-!u::
-Send ^x
-StringUpper, Clipboard, Clipboard
-Send ^v
-return
-!l::
-Send ^c
-StringLower, Clipboard, Clipboard
-Send ^v
-return
-
 ^F5::
 WinGet, pid, PID, A
 WinGet, pname, ProcessName, A
@@ -119,6 +89,10 @@ txt:=% "Restarting " . ProcessName
 splashOn(txt)
 Run, %ppath%
 return
+
+F7::Run, "C:\Program Files\AutoHotkey\AU3_Spy.exe"
+F8::KeyHistory
+F9::Run, "C:\Users\morronm\AppData\Local\Programs\Microsoft VS Code\Code.exe", "C:\Users\morronm\Documents\autohotkey\index.ahk"
 
 #IfWinActive, ahk_exe explorer.exe
 
@@ -139,22 +113,6 @@ Send {WheelUp}
 Send {Ctrl Down}
 return
 
-^up::
-Send ^x
-Sleep, 200
-send !{up}
-Sleep, 200
-Send {F5}
-Sleep, 200
-Send ^v
-Sleep, 200
-Send {shift Up}
-return
-
-#IfWinActive
-
-#IfWinActive, ahk_exe lync.exe
-Esc::return
 #IfWinActive
 
 ; One-handed Sudoku
@@ -163,49 +121,7 @@ Esc::return
 ^3::Send {7}
 ^4::Send {6}
 
-MButton::
-; SetTimer, StayAwake, 1000
-SetTimer, StayAwake, % (AwakeToggle:=!AwakeToggle) ? 1000 : "Off"
-if (AwakeToggle) {
-    MsgBox, 4, , Stay Awake Activated, 1
-}
-else {
-    MsgBox, 4, , Stay Awake Deactivated, 1
-}
-return
-
-StayAwake:
-If (A_TimeIdle > 60000) {
-    goto Ellipse
-}
-return
-Ellipse:
-R := 2
-S := 2
-MouseGetPos, X, Y
-MouseMove_Ellipse(X,     Y,     X+R,   Y+R,   S, 0, -1)
-MouseMove_Ellipse(X+R,   Y+R,   X,     Y+R*2, S, 0, -1)
-MouseMove_Ellipse(X,     Y+R*2, X-R,   Y+R,   S, 0, -1)
-MouseMove_Ellipse(X-R,   Y+R,   X,     Y,     S, 0, -1)
-MouseMove_Ellipse(X,     Y,     X+R,   Y-R,   S, 0,  1)
-MouseMove_Ellipse(X+R,   Y-R,   X,     Y-R*2, S, 0,  1)
-MouseMove_Ellipse(X,     Y-R*2, X-R,   Y-R,   S, 0,  1)
-MouseMove_Ellipse(X-R,   Y-R,   X,     Y,     S, 0,  1)
-MouseMove_Ellipse(X,     Y,     X+R,   Y+R,   S, 0,  1)
-MouseMove_Ellipse(X+R,   Y+R,   X+R*2, Y,     S, 0,  1)
-MouseMove_Ellipse(X+R*2, Y,     X+R,   Y-R,   S, 0,  1)
-MouseMove_Ellipse(X+R,   Y-R,   X,     Y,     S, 0,  1)
-MouseMove_Ellipse(X,     Y,     X-R,   Y+R,   S, 0, -1)
-MouseMove_Ellipse(X-R,   Y+R,   X-R*2, Y,     S, 0, -1)
-MouseMove_Ellipse(X-R*2, Y,     X-R,   Y-R,   S, 0, -1)
-MouseMove_Ellipse(X-R,   Y-R,   X,     Y,     S, 0, -1)
-goto Jump2
-goto ActivateWinUM
-return
-
-
-
-
+#Include, idle.ahk
 
 #IfWinActive, .ahk
 SetTitleMatchMode 2
