@@ -11,27 +11,39 @@ AutoTrim, Off
 #KeyHistory 16
 
 Menu, Tray, Icon, ico/psi-fff.ico, , 1
-ScrollLock::
+^Insert::
 Suspend, Toggle
 if A_IsSuspended {
-    Menu, Tray, Icon , ico/psi-f00.ico
+    Menu, Tray, Icon, ico/psi-f00.ico
     Send, {LCtrl up}
 }
 else {
-    Menu, Tray, Icon , ico/psi-fff.ico
+    Menu, Tray, Icon, ico/psi-fff.ico
     Send, {LCtrl up}
 }
 return
 
+Insert::Send {PrintScreen}
+
 #Include util.ahk
+
 RestoreCursor()
 
+#IfWinNotActive, Amazon WorkSpaces
 Ctrl::Alt
 Alt::Ctrl
+#IfWinNotActive
+
 ^CapsLock::CapsLock
 CapsLock::Enter
 `::Send {Backspace}
 +`::Send {Delete}
+
+#Include jump.ahk
+
+#Include unicode.ahk
+
+#include hot.ahk
 
 #1::Send {Home}
 #+1::Send ^{Home}
@@ -47,24 +59,6 @@ CapsLock::Enter
 #a::Send {left}
 #d::Send {right}
 
-#Up::WinMaximize, A
-#Down::WinMinimize, A
-
-^F6::WinSet, AlwaysOnTop, Toggle, A
-^F7::Run, "C:\Program Files\AutoHotkey\AU3_Spy.exe"
-^F8::KeyHistory
-
-!d::
-Send +{right}
-Send ^x
-Send {left}
-Send ^v
-return
-
-#Space::WinSet, Transparent, 50, A
-#Space UP::WinSet, Transparent, OFF, A
-return
-
 ^Esc::
 WinGetActiveTitle, title
 WinClose %title%
@@ -73,33 +67,16 @@ Return
 Send {^+Esc}
 Return
 
-OnClipboardChange:
-Sleep 100
-res = `n###%A_YYYY%-%A_MM%-%A_DD%,%A_Hour%`:%A_Min%`:%A_Sec%###`n
-ult = %clipboard%
-result = %res%%ult%
-FileAppend, %result%, log/%A_YYYY%-%A_MM%-%A_DD%.txt
+^Space::WinSet, Transparent, 75, A
+^Space UP::WinSet, Transparent, OFF, A
 return
-
-~^x::
-~^c::
-gosub OnClipboardChange
+F3::
+WinSet, AlwaysOnTop, ON, A
+WinSet, Transparent, 200, A
 return
-
-!t::
-Send ^c
-StringUpper, Clipboard, Clipboard, T
-Send ^v
-return
-!u::
-Send ^x
-StringUpper, Clipboard, Clipboard
-Send ^v
-return
-!l::
-Send ^c
-StringLower, Clipboard, Clipboard
-Send ^v
+F4::
+WinSet, AlwaysOnTop, OFF, A
+WinSet, Transparent, OFF, A
 return
 
 ^F5::
@@ -112,38 +89,16 @@ splashOn(txt)
 Run, %ppath%
 return
 
-^+v::
-WinGetClass, class, A
-if (class = "LyncConversationWindowClass") {
-    send {RButton}
-    send {Down 5}
-    send {Space}
-}
-return
-
-NumpadClear::Enter
-NumpadIns::Space
-NumpadEnter & NumpadEnd::Send 1
-NumpadEnter & NumpadDown::Send 2
-NumpadEnter & NumpadPgDn::Send 3
-NumpadEnter & NumpadLeft::Send 4
-NumpadEnter & NumpadClear::Send 5
-NumpadEnter & NumpadRight::Send 6
-NumpadEnter & NumpadHome::Send 7
-NumpadEnter & NumpadUp::Send 8
-NumpadEnter & NumpadPgUp::Send 9
-NumpadEnter & NumpadDel::Send {Backspace}
-
-#include mirror.ahk
-
-#include hot.ahk
+F7::Run, "C:\Program Files\AutoHotkey\AU3_Spy.exe"
+F8::KeyHistory
+F9::Run, "C:\Users\morronm\AppData\Local\Programs\Microsoft VS Code\Code.exe", "C:\Users\morronm\Documents\autohotkey\index.ahk"
 
 #IfWinActive, ahk_exe explorer.exe
+
 ^w::return
 ^n::Send ^+n
 ^+n::Send ^n
 ^+a::Send !hsi
-; ^+a::send !e{up}{enter}
 
 ^WheelDown::
 Send {Ctrl Up}
@@ -157,38 +112,15 @@ Send {WheelUp}
 Send {Ctrl Down}
 return
 
-^up::
-Send ^x
-Sleep, 200
-send !{up}
-Sleep, 200
-Send {F5}
-Sleep, 200
-Send ^v
-Sleep, 200
-Send {shift Up}
-return
-
 #IfWinActive
 
-^MButton::
-MsgBox Stay Awake Activated
-SetTimer, StayAwake, 1000
-return
-StayAwake:
-If (A_TimeIdle > 60000) {
-    goto Ellipse
-}
-return
-Ellipse:
-MouseGetPos, X, Y
-MouseMove_Ellipse(X,    Y,    X+10, Y+10, 1, 0, 0)
-MouseMove_Ellipse(X+10, Y+10, X,    Y+20, 1, 0, 0)
-MouseMove_Ellipse(X,    Y+20, X-10, Y+10, 1, 0, 0)
-MouseMove_Ellipse(X-10, Y+10, X,    Y,    1, 0, 0)
-return
+; One-handed Sudoku
+^1::Send {9}
+^2::Send {8}
+^3::Send {7}
+^4::Send {6}
 
-^+e::Run, C:\Program Files\Microsoft VS Code\Code.exe, "C:\Users\lidddc6\Documents\autohotkey\main.ahk"
+#Include, idle.ahk
 
 #IfWinActive, .ahk
 SetTitleMatchMode 2

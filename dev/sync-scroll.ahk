@@ -40,8 +40,6 @@ Else
 }
 return
 
-
-
 ; WheelUp::
 ; Send {WheelDown}
 ; Return
